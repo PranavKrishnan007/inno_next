@@ -2,6 +2,31 @@ import React, { useState } from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 
+
+export interface IUser {
+    phone: string;
+    email: string;
+    password: string;
+    location: string;
+    avatar?: string;
+    role? : IStudent | IOrganisation ;
+}
+
+export interface IStudent {
+    firstname: string;
+    lastname: string;
+    gender: string;
+    dob: string;
+    areaOfInterest: string;
+    graduationDocument?: string;
+    profession: string;
+}
+
+export interface IOrganisation {
+    organisationName: string;
+    letterOfIntent?: any; 
+}
+
 export default function Register() {
     const [loginSection, setLoginSection] = useState(0);
     const [orgOrUser, setOrgOrUser] = useState(0);
@@ -10,6 +35,64 @@ export default function Register() {
         setOrgOrUser(value);
         setLoginSection(loginSection+1);
     };
+
+
+    const [userForm, setUserForm] = useState<IUser>
+    ({
+        phone: "",
+        email: "",
+        password: "",
+        location: "",
+        avatar: "",
+    });
+
+    const [studentForm, setStudentForm] = useState<IStudent>(
+        {
+            firstname: "",
+            lastname: "",
+            gender: "",
+            dob: "",
+            areaOfInterest: "",
+            graduationDocument: "",
+            profession: "",
+        }
+    );
+    const [organisationForm, setOrganisationForm] = useState<IOrganisation>(
+        {
+            organisationName: "",
+            letterOfIntent: "",
+        }
+    );
+
+    const handleDOBChange = (e: any) => {
+        setStudentForm((prevState: any) => ({
+            ...prevState,
+            dob: e.format('MM/DD/YYYY')
+        }));
+    };
+
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+        const { id, value } = e.target;
+        
+        console.log(id, value);
+        id in studentForm ? setStudentForm((prevState: any) => ({
+            ...prevState,
+            [id]: value
+        })) :
+
+        id in organisationForm ? setOrganisationForm((prevState: any) => ({
+            ...prevState,
+            [id]: value
+        })) :
+
+        setUserForm((prevState: any) => ({
+            ...prevState,
+            [id]: value
+        }));
+    };
+
+
+
 
     return (
         <div className="flex flex-row h-screen bg-sky-400/20 overflow-hidden">
@@ -52,20 +135,20 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Organisation Name
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="username" type="text" placeholder="Organisation Name"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="organisationName" type="text" placeholder="Organisation Name"/>
                         </div>
                         <div>
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Logo
                             </label>
-                            <input className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input_help" id="file_input" type="file"/>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                            <input onChange={handleFormChange} className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="avatar" id="avatar" type="file"/>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input onChange={handleFormChange}_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>
                         <div>
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Phone Number
                             </label>
-                            <input type="number" id="phone" className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500-500 block w-full p-4 shadow" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={10} required />
+                            <input onChange={handleFormChange} type="number" id="phone" className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500-500 block w-full p-4 shadow" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={10} required />
                         </div>
                     </div>
                 )}
@@ -75,19 +158,19 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Email
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="email" type="email" placeholder="innopsi@gmail.com"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="email" type="email" placeholder="innopsi@gmail.com"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Location
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="location" type="text" placeholder="Delhi"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="location" type="text" placeholder="Delhi"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Password
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="username" type="password" placeholder="j&_hhu441"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="password" type="password" placeholder="j&_hhu441"/>
                         </div>
                     </div>
                 )}
@@ -97,13 +180,13 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Letter of Consent
                             </label>
-                            <input className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input_help" id="file_input" type="file"/>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Upload PDF for validation.</p>
+                            <input onChange={handleFormChange} className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input" id="letterOfIntent" type="file"/>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input onChange={handleFormChange}_help">Upload PDF for validation.</p>
                         </div>
                         <div className="mb-6">
                             <div className="md:w-1/3"></div>
                             <label className="md:w-2/3 block text-gray-500 font-bold">
-                                <input className="mr-2 leading-tight" type="checkbox" />
+                                <input onChange={handleFormChange} className="mr-2 leading-tight" type="checkbox" />
                                 <span className="text-sm">
                                     I agree to terms and conditions
                                 </span>
@@ -119,19 +202,19 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 First Name
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="firstname" type="text" placeholder="First Name"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="firstname" type="text" placeholder="First Name"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Last Name
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="lastname" type="text" placeholder="Last Name"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="lastname" type="text" placeholder="Last Name"/>
                         </div>
                         <div>
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Phone Number
                             </label>
-                            <input type="number" id="phone" className="border border-gray-300 text-gray-900 placeholder:text-lg rounded-lg focus:border-orange-500 text-lg focus:border-orange-500 w-full p-4 shadow" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={10} required />
+                            <input onChange={handleFormChange} type="number" id="phone" className="border border-gray-300 text-gray-900 placeholder:text-lg rounded-lg focus:border-orange-500 text-lg focus:border-orange-500 w-full p-4 shadow" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={10} required />
                         </div>
                     </div>
                 )}
@@ -141,19 +224,19 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Email
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="email" type="email" placeholder="innopsi@gmail.com"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="email" type="email" placeholder="innopsi@gmail.com"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Location
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="location" type="text" placeholder="Delhi"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="location" type="text" placeholder="Delhi"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Password
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="username" type="password" placeholder="j&_hhu441"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="password" type="password" placeholder="j&_hhu441"/>
                         </div>
                     </div>
                 )}
@@ -161,8 +244,8 @@ export default function Register() {
                     <div className="flex flex-col">
                         <div className="mb-4">
                             <div className="mb-8">
-                                <label htmlFor="large" className="block text-gray-700 text-2xl font-medium mb-2 ">Gender</label>
-                                <select id="large" className="w-full text-lg p-6 text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500" placeholder="gender">
+                                <label htmlFor="gender" className="block text-gray-700 text-2xl font-medium mb-2 " id="gender">Gender</label>
+                                <select onChange={handleFormChange} id="gender" className="w-full text-lg p-6 text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500" placeholder="gender">
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                     <option value="T">Transgender</option>
@@ -175,14 +258,14 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Date of Birth
                             </label>
-                            <Datetime closeOnClickOutside={true} dateFormat="DD-MM-YY" timeFormat={false} value={new Date().toDateString()} className="text-lg shadow appearance-none border rounded-xl w-full p-4 text-gray-700 outline-none leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg"/>
+                            <Datetime closeOnClickOutside={true} onChange={handleDOBChange} dateFormat="DD-MM-YY" timeFormat={false} value={new Date().toDateString()} className="text-lg shadow appearance-none border rounded-xl w-full p-4 text-gray-700 outline-none leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Graduation Documentation
                             </label>
-                            <input className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input_help" id="file_input" type="file"/>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Upload PDF for validation.</p>
+                            <input onChange={handleFormChange} className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input" id="graduationDocument" type="file"/>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input onChange={handleFormChange}_help">Upload PDF for validation.</p>
                         </div>
                     </div>
                 )}
@@ -190,13 +273,13 @@ export default function Register() {
                     <div className="flex flex-col">
                         <div className="mb-4">
                             <div className="mb-8">
-                                <label htmlFor="large" className="block text-gray-700 text-2xl font-medium mb-2 ">Profession</label>
-                                <select id="large" className="w-full p-6 text-lg text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500" placeholder="gender">
-                                    <option value="M">Student</option>
-                                    <option value="F">Teacher</option>
-                                    <option value="T">Professional</option>
-                                    <option value="NB">Business Owner</option>
-                                    <option value="NP">Explorer</option>
+                                <label htmlFor="profession" className="block text-gray-700 text-2xl font-medium mb-2 ">Profession</label>
+                                <select onChange={handleFormChange} id="profession" className="w-full p-6 text-lg text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500" placeholder="gender">
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Professional">Professional</option>
+                                    <option value="BussinessOwner">Business Owner</option>
+                                    <option value="Explorer">Explorer</option>
                                 </select>
                             </div>
                         </div>
@@ -204,14 +287,14 @@ export default function Register() {
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Avatar
                             </label>
-                            <input className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="file_input_help" id="file_input" type="file"/>
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                            <input onChange={handleFormChange} className="block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer" aria-describedby="avatar" id="avatar" type="file"/>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input onChange={handleFormChange}_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
                                 Area of Interest
                             </label>
-                            <input className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="username" type="text" placeholder="Organisation Name"/>
+                            <input onChange={handleFormChange} className="shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg" id="areaOfInterest" type="text" placeholder="Organisation Name"/>
                         </div>
                     </div>
                 )}
