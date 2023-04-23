@@ -1,11 +1,10 @@
-
 export interface IUser {
     phone: string
     email: string
     password: string
     location: string
     avatar?: string
-    role?: IStudent | IOrganisation
+    role?: string
   }
   
   export interface IStudent {

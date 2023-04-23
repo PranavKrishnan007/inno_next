@@ -1,9 +1,8 @@
 import {useState} from "react";
-import { axhttp } from '@/src/Services'
 import {IUser, IOrganisation, IStudent} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
-import { fileUpload } from "./uplaoder";
+import { fileUpload, submitOrganisationForm, submitStudentForm  } from "./uploader";
 
 export default function RegisterForm() {
 
@@ -21,6 +20,7 @@ export default function RegisterForm() {
       password: '',
       location: '',
       avatar: '',
+    
     })
   
     const [studentForm, setStudentForm] = useState<IStudent>({
@@ -47,12 +47,13 @@ export default function RegisterForm() {
     const handleFormChange = (
       e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
     ) => {
-      let { id, value, type } = e.target
+      const { id, value, type } = e.target
   
       if (type === 'file') {
         fileUpload(e as React.ChangeEvent<HTMLInputElement>)
           .then((res) => {
-            updateState(id, value)
+            console.log(res)
+            updateState(id, res.value)
           })
           .catch((err) => {
             console.log(err)
@@ -78,6 +79,21 @@ export default function RegisterForm() {
             ...prevState,
             [id]: value,
           }))
+    }
+
+    const nextScreen = () => {
+      
+      if (loginSection === 4 && orgOrUser === 0) {
+        submitStudentForm({userForm, studentForm})
+        return
+      }
+      
+      if(loginSection === 3 && orgOrUser === 1) {
+        submitOrganisationForm({userForm, organisationForm})
+        return
+      }
+
+      setLoginSection(loginSection + 1)
     }
 
     return (
@@ -318,11 +334,11 @@ export default function RegisterForm() {
                   className='w-full text-lg p-6 text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500'
                   placeholder='gender'
                 >
-                  <option value='M'>Male</option>
-                  <option value='F'>Female</option>
-                  <option value='T'>Transgender</option>
-                  <option value='NB'>Non-binary/Non-conforming</option>
-                  <option value='NP'>Prefer not to respond</option>
+                  <option value='MALE'>Male</option>
+                  <option value='FEMALE'>Female</option>
+                  <option value='TRANSGENDER'>Transgender</option>
+                  <option value='NONBINARY'>Non-binary/Non-conforming</option>
+                  <option value='NORESPONSE'>Prefer not to respond</option>
                 </select>
               </div>
             </div>
@@ -421,7 +437,7 @@ export default function RegisterForm() {
               <div className='w-full flex items-center justify-center'>
                 <button
                   className='bg-transparent max-w-min mt-10 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
-                  onClick={() => setLoginSection(loginSection + 1)}
+                  onClick={nextScreen}
                 >
                   Continue
                 </button>
