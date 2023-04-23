@@ -173,9 +173,9 @@ export default function Register() {
                         </div>
                         <div className="mb-12">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
-                                Date of Birth [do not know how to remove the time]
+                                Date of Birth
                             </label>
-                            <Datetime closeOnClickOutside={true} dateFormat="DD-MM-YY" value={new Date()} className="placeholder:text-lg text-lg shadow appearance-none border rounded-xl w-full p-4 text-gray-700 outline-none leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg"/>
+                            <Datetime closeOnClickOutside={true} dateFormat="DD-MM-YY" timeFormat={false} value={new Date().toDateString()} className="text-lg shadow appearance-none border rounded-xl w-full p-4 text-gray-700 outline-none leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg"/>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-2xl font-medium mb-2">
