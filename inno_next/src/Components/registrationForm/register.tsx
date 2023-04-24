@@ -26,7 +26,7 @@ export default function RegisterForm() {
     const [studentForm, setStudentForm] = useState<IStudent>({
       firstname: '',
       lastname: '',
-      gender: '',
+      gender: 'MALE',
       dob: '',
       areaOfInterest: '',
       graduationDocument: '',
@@ -40,7 +40,7 @@ export default function RegisterForm() {
     const handleDOBChange = (e: any) => {
       setStudentForm((prevState: any) => ({
         ...prevState,
-        dob: e.format('MM/DD/YYYY'),
+        dob: e.format('DD/MM/YYYY'),
       }))
     }
   
@@ -48,6 +48,7 @@ export default function RegisterForm() {
       e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
     ) => {
       const { id, value, type } = e.target
+      console.log(id, value)
   
       if (type === 'file') {
         fileUpload(e as React.ChangeEvent<HTMLInputElement>)
@@ -62,6 +63,7 @@ export default function RegisterForm() {
       }
   
       updateState(id, value)
+      console.log(studentForm);
     }
   
     const updateState = (id: string, value: string) => {

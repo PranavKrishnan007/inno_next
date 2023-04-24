@@ -33,6 +33,7 @@ export const submitStudentForm = async (data: any): Promise<any> => {
     axhttp
       .post('/register/student', data)
       .then((res) => {
+        console.log(res)
         resolve(res)
       })
       .catch((err) => {
