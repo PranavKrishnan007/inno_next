@@ -1,6 +1,6 @@
 export default function Login() {
     return (
-        <div className="flex flex-row h-screen bg-sky-400/20 overflow-hidden">
+        <div className="flex flex-row h-screen bg-background overflow-hidden">
             <div className="w-8/12 text-white p-20">
                 <img src="/assets/g20c20.png" alt="c20_logo" className="h-20 w-full object-contain place-items-center" />
             </div>
@@ -10,7 +10,7 @@ export default function Login() {
                 <div className="flex flex-col gap-2">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-lg font-medium mb-2">
-                            Username
+                            Username / Organisatiion name
                         </label>
                         <input className="shadow bg-gray-400/20 appearance-none border rounded-xl w-full p-6 text-gray-700 leading-tight text-lg focus:outline-orange-500 focus:shadow-none placeholder:text-xl" id="username" type="text" placeholder="Username" />
                     </div>
