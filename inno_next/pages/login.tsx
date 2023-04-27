@@ -1,31 +1,110 @@
+import Link from "next/link";
+import { useState } from 'react';
+import {
+    TextInput,
+    createStyles,
+    rem,
+    Group,
+    Anchor,
+    Button
+} from '@mantine/core';
+
+const useStyles = createStyles((theme, { floating }: { floating: boolean }) => ({
+    root: {
+        position: 'relative',
+    },
+
+    label: {
+        position: 'absolute',
+        zIndex: 2,
+        top: rem(12),
+        left: theme.spacing.sm,
+        pointerEvents: 'none',
+        color: floating
+            ? theme.colorScheme === 'dark'
+                ? theme.white
+                : theme.black
+            : theme.colorScheme === 'dark'
+                ? theme.colors.dark[3]
+                : theme.colors.gray[5],
+        transition: 'transform 150ms ease, color 150ms ease, font-size 150ms ease',
+        transform: floating ? `translate(-${theme.spacing.sm}, ${rem(-40)})` : 'none',
+        fontSize: floating ? theme.fontSizes.lg : theme.fontSizes.lg,
+        fontWeight: floating ? 500 : 400,
+    },
+
+    required: {
+        transition: 'opacity 150ms ease',
+        opacity: floating ? 1 : 0,
+    },
+
+    input: {
+        '&::placeholder': {
+            transition: 'color 150ms ease',
+            color: !floating ? 'transparent' : undefined,
+        },
+    },
+}));
+
 export default function Login() {
+    const [focused, setFocused] = useState(false);
+    const [user, setUser] = useState('');
+    const [pass, setPass] = useState('');
+    const { classes } = useStyles({ floating: (user.trim().length !== 0 || pass.trim().length !== 0) || focused });
+
     return (
         <div className="flex flex-row h-screen bg-background overflow-hidden">
-            <div className="w-8/12 text-white p-20">
-                <img src="/assets/g20c20.png" alt="c20_logo" className="h-20 w-full object-contain place-items-center" />
-            </div>
-            <div className="flex flex-col w-4/12 bg-white rounded-l-3xl shadow-2xl p-12">
+            <div className="flex flex-col w-4/12 bg-white rounded-l-3xl shadow-2xl p-20">
                 <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain" />
-                <h1 className="text-5xl pt-24 pb-14 font-bold w-full text-blue-950">Sign In</h1>
+                <h1 className="text-4xl pt-24 pb-2 font-bold w-full text-blue-950">Sign In</h1>
+                <div className="pb-10 text-md font-light">new to innopsi? <Link href='/register' className="text-blue-800 underline">Sign Up</Link> now!</div>
                 <div className="flex flex-col gap-2">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-lg font-medium mb-2">
-                            Username / Organisatiion name
-                        </label>
-                        <input className="shadow bg-gray-400/20 appearance-none border rounded-xl w-full p-6 text-gray-700 leading-tight text-lg focus:outline-orange-500 focus:shadow-none placeholder:text-xl" id="username" type="text" placeholder="Username" />
+                    <div className="mt-8 mb-2">
+                        <TextInput
+                            label="UserName / OrganisationName"
+                            classNames={classes}
+                            value={user}
+                            onChange={(event) => setUser(event.currentTarget.value)}
+                            onFocus={() => setFocused(true)}
+                            onBlur={() => setFocused(false)}
+                            size='lg'
+                            autoComplete="nope"
+                        />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-lg font-medium mb-2">
-                            Password
-                        </label>
-                        <input className="shadow bg-gray-400/20 appearance-none border rounded-xl w-full p-6 text-gray-700 leading-tight focus:outline-orange-500 text-lg focus:shadow-none placeholder:text-xl" id="password" type="text" placeholder="Password" />
+                    <div>
+                        <Group position='right'>
+                            <Anchor<'a'>
+                                href="#"
+                                onClick={(event) => event.preventDefault()}
+                                sx={(theme) => ({
+                                    paddingTop: 2,
+                                    color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
+                                    fontWeight: 500,
+                                    textAlign: 'right',
+                                    fontSize: theme.fontSizes.xs,
+                                })}
+                            >
+                                Forgot your password?
+                            </Anchor>
+                        </Group>
+                        <TextInput
+                            label="Password"
+                            classNames={classes}
+                            value={pass}
+                            onChange={(event) => setPass(event.currentTarget.value)}
+                            onFocus={() => setFocused(true)}
+                            onBlur={() => setFocused(false)}
+                            size='lg'
+                            autoComplete="nope"
+                            type='password'
+                        />
                     </div>
-                    <div className="w-full flex items-center justify-center mt-8">
-                        <button className="bg-transparent w-full hover:bg-orange-400 text-black font-semibold hover:text-white px-4 py-2 text-xl border border-blue-950 hover:border-transparent rounded">
-                            login
-                        </button>
+                    <div className="mt-5 flex justify-center items-center">
+                        <Button className="bg-blue-500 hover:bg-blue-600">
+                            Sign Up
+                        </Button>
                     </div>
-                    {/* <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mt-5">
                         <span className="flex items-center justify-center">
                             <span className="h-px bg-gray-400 w-14"></span>
                             <span className="font-normal text-gray-500 mx-2">or login with</span>
@@ -40,12 +119,12 @@ export default function Login() {
                             >
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                        width="20" height="20"
-                                        viewBox="0 0 48 48">
+                                         width="20" height="20"
+                                         viewBox="0 0 48 48">
                                         <path fill="#fbc02d"
-                                            d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path
-                                                fill="#e53935"
-                                                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z">
+                                              d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path
+                                        fill="#e53935"
+                                        d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z">
                                         </path>
                                         <path
                                             fill="#4caf50"
@@ -63,10 +142,12 @@ export default function Login() {
                                 </span>
                             </a>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
+            <div className="w-8/12 text-white p-20">
+                <img src="/assets/g20c20.png" alt="c20_logo" className="h-20 w-full object-contain place-items-center" />
+            </div>
         </div>
-
     )
 }

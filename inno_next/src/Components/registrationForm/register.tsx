@@ -97,7 +97,11 @@ export default function RegisterForm() {
 
     return (
         <div className='flex flex-col w-4/12 bg-white rounded-3xl shadow-2xl p-12'>
-        <h1 className='text-5xl py-24 font-bold w-full text-blue-950 text-center'>Sign Up</h1>
+            <div className="flex flex-col">
+                <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain mb-3" />
+                <img src="/assets/g20c20.png" alt="c20_logo" className="h-10 w-full object-contain place-items-center" />
+            </div>
+        <h1 className='text-5xl py-18 font-bold w-full text-blue-950 text-center'>Sign Up</h1>
         {loginSection === 0 && (
           <div className='flex flex-col gap-12'>
             <button
