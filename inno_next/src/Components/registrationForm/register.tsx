@@ -2,7 +2,7 @@ import {useState} from "react";
 import {IUser, IOrganisation, IStudent} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
-import { fileUpload, submitOrganisationForm, submitStudentForm  } from "./uploader";
+import { fileUpload, submitOrganisationForm, submitStudentForm } from "@/src/Services";
 
 export default function RegisterForm() {
 

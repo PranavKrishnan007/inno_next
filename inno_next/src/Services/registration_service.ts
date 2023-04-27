@@ -1,5 +1,6 @@
 import { axhttp } from "@/src/Services"
-import { formValidator } from "./validator"
+import { formValidator } from "../Components/registrationForm/validator"
+import { toast } from "react-toastify"
 
 export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<any> => {
   const { id, files } = e.target
@@ -9,7 +10,7 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
     formData.append('files', files[0])
     formData.append('upload_preset', 'innopsi')
 
-    return new Promise((resolve, reject) => {
+    const uploadPromise =  new Promise((resolve, reject) => {
       axhttp
         .post('/upload', formData, {
           headers: {
@@ -26,7 +27,13 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
           reject(err)
         })
     })
+    toast.promise(uploadPromise, {
+      pending: 'Uploading...',
+      success: 'Uploaded',
+      error: 'Upload failed',
+    })
   }
+
 }
 
 export const submitStudentForm = async (data: any): Promise<any> => {
