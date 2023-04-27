@@ -19,7 +19,7 @@ export default function RegisterForm() {
       email: '',
       password: '',
       location: '',
-      avatar: '',
+      avatar: 'default',
     
     })
   
@@ -29,7 +29,7 @@ export default function RegisterForm() {
       gender: 'MALE',
       dob: '',
       areaOfInterest: '',
-      graduationDocument: '',
+      graduationDocument: 'default',
       profession: '',
     })
     const [organisationForm, setOrganisationForm] = useState<IOrganisation>({

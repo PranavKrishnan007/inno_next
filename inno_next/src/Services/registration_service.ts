@@ -32,6 +32,9 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
       success: 'Uploaded',
       error: 'Upload failed',
     })
+
+    return uploadPromise;
+
   }
 
 }
