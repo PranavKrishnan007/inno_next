@@ -3,6 +3,8 @@ import {IUser, IOrganisation, IStudent} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitStudentForm  } from "./uploader";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterForm() {
 
@@ -84,13 +86,14 @@ export default function RegisterForm() {
     }
 
     const nextScreen = () => {
-      
       if (loginSection === 4 && orgOrUser === 0) {
         submitStudentForm({userForm, studentForm})
         return
       }
       
       if(loginSection === 3 && orgOrUser === 1) {
+   
+
         submitOrganisationForm({userForm, organisationForm})
         return
       }

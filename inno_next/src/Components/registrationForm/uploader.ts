@@ -1,4 +1,5 @@
 import { axhttp } from "@/src/Services"
+import { formValidator } from "./validator"
 
 export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<any> => {
   const { id, files } = e.target
@@ -29,11 +30,22 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
 }
 
 export const submitStudentForm = async (data: any): Promise<any> => {
+
+  const {userForm, studentForm} = data
+
+  if(!formValidator(userForm)) {
+    return
+  }
+
+  if(!formValidator(studentForm)) {
+    return
+  }
+
   return new Promise((resolve, reject) => {
+
     axhttp
       .post('/register/student', data)
       .then((res) => {
-        console.log(res)
         resolve(res)
       })
       .catch((err) => {

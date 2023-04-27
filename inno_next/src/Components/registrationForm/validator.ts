@@ -1,37 +1,26 @@
 import { IOrganisation, IStudent, IUser } from "@/src/Interfaces";
+import { toast } from "react-toastify";
 
 
-const studentFormValidator = (values: IStudent) => {
+const formValidator = (values: IUser | IOrganisation | IStudent):boolean => {
+    
+    const missingFields: string[] = [];
 
-    const errorMessages = {
-        required: "Required",
-        invalidEmail: "Invalid email address",
-        invalidPhone: "Invalid phone number",
-        invalidPassword: "Password must be at least 8 characters long",
-        invalidPasswordMatch: "Passwords do not match",
-        invalidDOB: "Invalid date of birth",
-        invalidGraduationDocument: "Invalid graduation document",
-        invalidLetterOfIntent: "Invalid letter of intent",
+    Object.entries(values).forEach(
+        ([key, value]) => {
+            if (value === null || value === undefined || value === '') {
+                missingFields.push(key)
+            }
+        }
+    );
+
+    if (missingFields.length > 0) {
+        toast.error(`Please fill in the following fields: ${missingFields.join(', ')}`)
+        return false
     }
 
-    const errors: any = {}
-
-
-    if (!values.firstname) {
-        errors.firstname = errorMessages.required
-        return errors
-    }
-
-    if (!values.lastname) {
-        errors.lastname = errorMessages.required
-        return errors
-    }
-
-}
-
-const organisationFormValidator = (values: IOrganisation) => {
-
+    return true
 }
 
 
-export { studentFormValidator, organisationFormValidator }
+export { formValidator }
