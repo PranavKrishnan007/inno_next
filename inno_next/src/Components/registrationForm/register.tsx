@@ -3,8 +3,6 @@ import {IUser, IOrganisation, IStudent} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitStudentForm  } from "./uploader";
-import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterForm() {
 
@@ -55,7 +53,6 @@ export default function RegisterForm() {
       if (type === 'file') {
         fileUpload(e as React.ChangeEvent<HTMLInputElement>)
           .then((res) => {
-            console.log(res)
             updateState(id, res.value)
           })
           .catch((err) => {
@@ -65,7 +62,6 @@ export default function RegisterForm() {
       }
   
       updateState(id, value)
-      console.log(studentForm);
     }
   
     const updateState = (id: string, value: string) => {
@@ -92,8 +88,6 @@ export default function RegisterForm() {
       }
       
       if(loginSection === 3 && orgOrUser === 1) {
-   
-
         submitOrganisationForm({userForm, organisationForm})
         return
       }

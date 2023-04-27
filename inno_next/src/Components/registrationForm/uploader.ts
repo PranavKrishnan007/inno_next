@@ -55,6 +55,17 @@ export const submitStudentForm = async (data: any): Promise<any> => {
 }
 
 export const submitOrganisationForm = async (data: any): Promise<any> => {
+
+  const {userForm, organisationForm} = data
+
+  if(!formValidator(userForm)) {
+    return
+  }
+
+  if(!formValidator(organisationForm)) {
+    return
+  }
+
   return new Promise((resolve, reject) => {
     axhttp
       .post('/register/organisation', data)
