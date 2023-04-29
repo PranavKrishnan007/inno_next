@@ -11,6 +11,7 @@ const formValidator = (values: IUser | IOrganisation | IStudent):boolean => {
             if (value === null || value === undefined || value === '') {
                 missingFields.push(key)
             }
+
         }
     );
 

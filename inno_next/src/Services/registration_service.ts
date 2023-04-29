@@ -17,10 +17,10 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((res) => {
+        .then((res:any) => {
           resolve({
             id,
-            value: res.data[0].url,
+            value: res[0].url
           })
         })
         .catch((err) => {
