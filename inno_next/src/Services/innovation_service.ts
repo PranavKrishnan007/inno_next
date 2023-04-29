@@ -4,13 +4,12 @@ import { axhttp } from "./axios_setup";
 
 
 const responseHandler = (response:any) => {
-    if(response.status === 200){
-            return response.data.data
+    
+    if(response && response.data){
+        return response.data
     }
-    console.log(response)
     toast.error("Something went wrong")
 }
-
 
 
 export const createInnovation = async (innovation:IInnovation):Promise<IInnovation> => {
@@ -32,7 +31,6 @@ export const deleteInnovation = async (innovationId:string):Promise<any> => {
 }
 
 export const getAllInnovations = async ():Promise<IInnovation[]> => {
-    // return await axhttp.get('/innovations/')
     return responseHandler(await axhttp.get('/innovations/'))
 }
 

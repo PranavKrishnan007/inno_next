@@ -7,15 +7,15 @@ export default function Home() {
 
   const onlick = () => {
 
-    createInnovation({
-      title: "test",
-      description: "test",
-      header_img: "test",
-      tags: [1,2],
-      status: "test",
-    }).then((data) => {
-      console.log(data)
-    })
+    // createInnovation({
+    //   title: "test",
+    //   description: "test",
+    //   header_img: "test",
+    //   tags: [1,2],
+    //   status: "test",
+    // }).then((data) => {
+    //   console.log(data)
+    // })
    
     getAllInnovations().then((data) => {
       console.log(data)

@@ -3,18 +3,18 @@ export interface IInnovation {
     title: string
     description: string
     header_img: string
-    tags?: number[]
+    tags?: number[] | string[] 
     badges?: string[]
     status: string
     createdBy?: string
 }
 
 export interface IProblem {
-    problemId: string
+    id?: string
     title: string
     description: string
-    headerImage: string
-    tags: string[]
+    header_img: string
+    tags: number[] | string[]
     badges: string[]
     status: string
     createdBy?: string
@@ -22,13 +22,19 @@ export interface IProblem {
 }
 
 export interface IHackathon {
-    hackathonId: string
+    id: string
     title: string
-    description: string
-    headerImage: string
-    tags: string[]
-    badges: string[]
-    status: string
-    createdBy?: string
+    tagline : string
+    about: string
+    partcipantLimit: number
+    applicationOpenDate: Date
+    applicationCloseDate: Date
+    contactDetails: string
+    additionalDetails: string
+    tags:number[] | string[]
+    badges: string[] | number[]
+    participants: string[],
+    accepted?: boolean,
+    enduser? : number
 }
 
