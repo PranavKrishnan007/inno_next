@@ -1,5 +1,6 @@
 export type {
-    IStudent,
+    IGenericUser,
     IUser,
-    IOrganisation
+    IOrganisation,
+    role
 } from './user'

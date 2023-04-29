@@ -1,13 +1,18 @@
+export enum role {
+  STUDENT = 1,
+  ORGANISATION = 2
+}
 export interface IUser {
     phone: string
     email: string
     password: string
     location: string
     avatar?: string
-    role?: string
+    role?: role
+    username : string,
   }
   
-  export interface IStudent {
+  export interface IGenericUser {
     firstname: string
     lastname: string
     gender: string

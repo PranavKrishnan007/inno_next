@@ -1,8 +1,8 @@
-import { IOrganisation, IStudent, IUser } from "@/src/Interfaces";
+import { IOrganisation, IGenericUser, IUser } from "@/src/Interfaces";
 import { toast } from "react-toastify";
 
 
-const formValidator = (values: IUser | IOrganisation | IStudent):boolean => {
+const formValidator = (values: IUser | IOrganisation | IGenericUser ):boolean => {
     
     const missingFields: string[] = [];
 

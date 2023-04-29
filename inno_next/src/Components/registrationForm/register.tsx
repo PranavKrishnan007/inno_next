@@ -1,8 +1,8 @@
 import {useState} from "react";
-import {IUser, IOrganisation, IStudent} from "@/src/Interfaces"
+import {IUser, IOrganisation, IGenericUser} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
-import { fileUpload, submitOrganisationForm, submitStudentForm } from "@/src/Services";
+import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/src/Services";
 
 export default function RegisterForm() {
 
@@ -20,10 +20,10 @@ export default function RegisterForm() {
       password: '',
       location: '',
       avatar: 'default',
-    
+      username: 'default',
     })
   
-    const [studentForm, setStudentForm] = useState<IStudent>({
+    const [genericForm, setgenericForm] = useState<IGenericUser>({
       firstname: '',
       lastname: '',
       gender: 'MALE',
@@ -38,7 +38,7 @@ export default function RegisterForm() {
     })
   
     const handleDOBChange = (e: any) => {
-      setStudentForm((prevState: any) => ({
+      setgenericForm((prevState: any) => ({
         ...prevState,
         dob: e.format('DD/MM/YYYY'),
       }))
@@ -65,8 +65,8 @@ export default function RegisterForm() {
     }
   
     const updateState = (id: string, value: string) => {
-      id in studentForm
-        ? setStudentForm((prevState: any) => ({
+      id in genericForm
+        ? setgenericForm((prevState: any) => ({
             ...prevState,
             [id]: value,
           }))
@@ -83,7 +83,7 @@ export default function RegisterForm() {
 
     const nextScreen = () => {
       if (loginSection === 4 && orgOrUser === 0) {
-        submitStudentForm({userForm, studentForm})
+        submitGenericUser({userForm, genericForm})
         return
       }
       

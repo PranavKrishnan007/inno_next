@@ -23,7 +23,7 @@ export const getProblem = async (problemId:string):Promise<IProblem> => {
 }
 
 export const updateProblem = async (problem:IProblem):Promise<IProblem> => {
-    return responseHandler(await axhttp.put(`/problems/${problem.problemId}`, problem))
+    return responseHandler(await axhttp.put(`/problems/${problem.id}`, problem))
 }
 
 export const deleteProblem = async (problemId:string):Promise<any> => {
