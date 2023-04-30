@@ -24,12 +24,10 @@ export default function Home() {
   }
   
   return (
-    <>
-      <h1 className='text-3xl font-bold underline'>
-        {/* testing api pages */}
-
-        <button className="btn btn-primary " onClick={onlick} >testFunctions</button>
-      </h1>
-    </>
+    <div>
+        <div className="container mx-auto md:px-8 px-4">
+            <h1 className='text-3xl font-bold underline'>Landing page comes here!</h1>
+        </div>
+    </div>
   )
 }
