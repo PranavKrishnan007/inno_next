@@ -17,10 +17,10 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((res) => {
+        .then((res:any) => {
           resolve({
             id,
-            value: res.data[0].url,
+            value: res[0].url
           })
         })
         .catch((err) => {
@@ -39,29 +39,49 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
 
 }
 
-export const submitStudentForm = async (data: any): Promise<any> => {
+export const submitGenericUser = async (data: any): Promise<any> => {
 
-  const {userForm, studentForm} = data
+  const {userForm, genericForm} = data
 
   if(!formValidator(userForm)) {
     return
   }
 
-  if(!formValidator(studentForm)) {
+  if(!formValidator(genericForm)) {
+    return
+  }
+
+  try {
+
+  const genericUser =  await axhttp.post('/genericusers', {
+    data : genericForm
+  })
+
+  if(!genericUser) {
+    toast.error('Something went wrong')
     return
   }
 
   return new Promise((resolve, reject) => {
-
+    userForm.genericuser = genericUser.data.id
+    userForm.username = userForm.email
+    userForm.role = 1
     axhttp
-      .post('/register/student', data)
+      .post('/users', userForm)
       .then((res) => {
+        console.log(res)
         resolve(res)
       })
       .catch((err) => {
         reject(err)
       })
   })
+}
+  catch(err) {
+    toast.error('Something went wrong')
+    return
+  }
+ 
 }
 
 export const submitOrganisationForm = async (data: any): Promise<any> => {
@@ -76,9 +96,23 @@ export const submitOrganisationForm = async (data: any): Promise<any> => {
     return
   }
 
+  try {
+
+  const organisation =  await axhttp.post('/organisations', {
+    data : organisationForm
+  })
+
+  if(!organisation) {
+    toast.error('Something went wrong')
+    return
+  }
+
   return new Promise((resolve, reject) => {
+    userForm.organisation = organisation.data.id
+    userForm.username = userForm.email
+    userForm.role = 2
     axhttp
-      .post('/register/organisation', data)
+      .post('/users', userForm)
       .then((res) => {
         resolve(res)
       })
@@ -86,4 +120,11 @@ export const submitOrganisationForm = async (data: any): Promise<any> => {
         reject(err)
       })
   })
+
+}
+  catch(err) {
+    toast.error('Something went wrong')
+    return
+  }
+  
 }

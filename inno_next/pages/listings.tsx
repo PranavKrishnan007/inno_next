@@ -1,281 +1,321 @@
 import {
-    TextInput,
-    TextInputProps,
-    ActionIcon,
-    clsx,
-    Avatar,
-    Menu,
-    Button,
-    MultiSelect
-} from '@mantine/core';
-import {
-    IconSearch,
-    IconArrowRight,
-    IconSettings,
-    IconLogout
-} from '@tabler/icons-react';
-import React, {useState} from "react";
-import Image from "next/image";
+  TextInput,
+  TextInputProps,
+  ActionIcon,
+  clsx,
+  Avatar,
+  Menu,
+  Button,
+  MultiSelect,
+} from '@mantine/core'
+import { IconSearch, IconArrowRight, IconSettings, IconLogout } from '@tabler/icons-react'
+import React, { useState } from 'react'
+import EventCard from '@/components/listings/EventCard';
 
 export function InputWithButton(props: TextInputProps) {
-
-    return (
-        <TextInput
-            icon={<IconSearch size="1.1rem" stroke={1.5} />}
-            radius="xl"
-            size="md"
-            rightSection={
-                <ActionIcon size={32} radius="xl" className="bg-blue-500 hover:bg-blue-600" variant="filled">
-                    <IconArrowRight size="1.1rem" stroke={1.5} />
-                </ActionIcon>
-            }
-            placeholder="Search questions"
-            rightSectionWidth={42}
-            {...props}
-        />
-    );
+  return (
+    <TextInput
+      icon={<IconSearch size='1.1rem' stroke={1.5} />}
+      radius='xl'
+      size='md'
+      rightSection={
+        <ActionIcon
+          size={32}
+          radius='xl'
+          className='bg-blue-500 hover:bg-blue-600'
+          variant='filled'
+        >
+          <IconArrowRight size='1.1rem' stroke={1.5} />
+        </ActionIcon>
+      }
+      placeholder='Search questions'
+      rightSectionWidth={42}
+      {...props}
+    />
+  )
 }
 
 const PROBLEMS = [
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. asldfkajfja ldkfj klasj fdl jaksldfj lkasj dflkas jdf kas jfdljsakdfj lkasj fklasdjlfkja skldf jlaskjfla slfdj ksa fjlsaj dkfl jaslfj klasj fklsajfls djfl asjkfj asklfdj laks jdfklasjfl asjd flask fjlka sjfklasj klf jaskldfj klas jdfklasj dkflj asklf jsdlfk jasklf jaklsfj asklf jlasfj klasf jklas fjsaj dflajkljflas dfjklas flas I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a website?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. asldfkajfja ldkfj klasj fdl jaksldfj lkasj dflkas jdf kas jfdljsakdfj lkasj fklasdjlfkja skldf jlaskjfla slfdj ksa fjlsaj dkfl jaslfj klasj fklsajfls djfl asjkfj asklfdj laks jdfklasjfl asjd flask fjlka sjfklasj klf jaskldfj klas jdfklasj dkflj asklf jsdlfk jasklf jaklsfj asklf jlasfj klasf jklas fjsaj dflajkljflas dfjklas flas I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a website?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
 ]
 
 const HACKATHONS = [
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a hackathon?',
-        description: 'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a hackathon?',
+    description:
+      'I want to make a hackathon for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
 ]
 
 const INNOVATIONS = [
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
-    {
-        title: 'How to make a innovation?',
-        description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-        image: "/assets/placeholder.jpeg"
-    },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
+  {
+    title: 'How to make a innovation?',
+    description:
+      'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
+    image: '/assets/placeholder.jpeg',
+  },
 ]
 
 const NOTICE = [
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    }
+  {
+    title: 'this is one notice',
+    description: 'this is the description of the notice',
+  },
+  {
+    title: 'this is one notice',
+    description: 'this is the description of the notice',
+  },
+  {
+    title: 'this is one notice',
+    description: 'this is the description of the notice',
+  },
+  {
+    title: 'this is one notice',
+    description: 'this is the description of the notice',
+  },
+  {
+    title: 'this is one notice',
+    description: 'this is the description of the notice',
+  },
 ]
 
-const tabs = ['Problems', 'Innovations', 'Hackathons'];
+const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
-    const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0)
 
     return (
         <div className="bg-background">
@@ -434,8 +474,13 @@ export default function Listings() {
                             </div>
                         </div>
                     </div>
+                  ))}
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
