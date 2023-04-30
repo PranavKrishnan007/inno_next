@@ -26,6 +26,7 @@ export interface IHackathon {
     title: string
     tagline : string
     about: string
+    header_img: string
     partcipantLimit: number
     applicationOpenDate: Date
     applicationCloseDate: Date

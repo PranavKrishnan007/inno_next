@@ -1,6 +1,9 @@
 import React from "react";
 import {Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput} from "@mantine/core";
 import {IconMessageCircle, IconPhoto, IconSettings} from "@tabler/icons-react";
+import ProblemCard from "@/components/Dashboard/ProblemCard";
+import InnovationCard from "@/components/Dashboard/InnovationCard";
+import HackathonCard from "@/components/Dashboard/HackathonCard";
 
 const user = "Someone";
 export default function Dashboard() {
@@ -92,6 +95,14 @@ export default function Dashboard() {
         },
     ]
 
+    const HACKATHON = [
+        {
+            title: 'Hackathon 1',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae eros quis nisl aliquam aliquet. Donec euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, vitae aliquam nisl nisl vitae nisl. Donec euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, vitae aliquam nisl nisl vitae nisl.',
+            tagline : "htihs sj sbfshd fj shd",
+            header_img: '/assets/placeholder.jpeg',
+        }
+    ]
     return (
         <div className="bg-background h-screen overflow-y-scroll">
             <div className="container mx-auto px-4 md:px-8">
@@ -194,61 +205,27 @@ export default function Dashboard() {
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="problems" pt="xs">
-                                        Messages tab content
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {PROBLEM.map((problem) => (
-                                                <Card className="flex gap-2" shadow="sm" padding="lg" radius="md"
-                                                      withBorder>
-                                                    <div className="min-w-max">
-                                                        <Image
-                                                            src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-                                                            // src={problem.image}
-                                                            height="160"
-                                                            alt="Norway"
-                                                            radius="md"
-                                                        />
-                                                    </div>
-                                                    <div className="ml-10">
-                                                        <Group position="apart" mt="md" mb="xs">
-                                                            <h2 className="font-bold text-xl">{problem.title}</h2>
-                                                            <Badge color="pink" variant="light">
-                                                                12
-                                                            </Badge>
-                                                        </Group>
-                                                        <div className="max-w-full text-md text-gray-600">
-                                                            {problem.description}
-                                                        </div>
-
-                                                        <Button variant="light" color="blue" mt="md" radius="md">
-                                                            Go to problem
-                                                        </Button>
-                                                        <div className="flex gap-2 mt-2">
-                                                            <Badge color="orange" variant="light">
-                                                                Tag 1
-                                                            </Badge>
-                                                            <Badge color="red" variant="light">
-                                                                Second
-                                                            </Badge>
-                                                            <Badge color="orange" variant="light">
-                                                                Third
-                                                            </Badge>
-                                                            <Badge color="blue" variant="light">
-                                                                Fourth
-                                                            </Badge>
-
-                                                        </div>
-                                                    </div>
-                                                </Card>
+                                            {PROBLEM.map((problem, index) => (
+                                                <ProblemCard {...problem} key={index}/>
                                             ))}
                                         </div>
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="innovations" pt="xs">
-                                        Settings tab content
+                                        <div className="px-8 py-4 flex flex-col gap-3  w-full">
+                                            {PROBLEM.map((problem, index) => (
+                                                <InnovationCard {...problem} key={index}/>
+                                            ))}
+                                        </div>
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="hackathons" pt="xs">
-                                        Settings tab content
+                                        <div className="px-8 py-4 flex flex-col gap-3  w-full">
+                                            {HACKATHON.map((hackathon, index) => (
+                                                <HackathonCard {...hackathon} key={index}/>
+                                            ))}
+                                        </div>
                                     </Tabs.Panel>
                                 </Tabs>
                             </div>
