@@ -8,6 +8,7 @@ import {
     Anchor,
     Button
 } from '@mantine/core';
+import { login } from "@/src/Services";
 
 const useStyles = createStyles((theme, { floating }: { floating: boolean }) => ({
     root: {
@@ -51,6 +52,15 @@ export default function Login() {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const { classes } = useStyles({ floating: (user.trim().length !== 0 || pass.trim().length !== 0) || focused });
+
+
+    const submit = () => {
+        login({
+            email : user,
+            password : pass
+        })
+    }
+
 
     return (
         <div className="flex flex-row h-screen bg-background overflow-hidden">
@@ -100,7 +110,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="mt-5 flex justify-center items-center">
-                        <Button className="bg-blue-500 hover:bg-blue-600">
+                        <Button onClick={submit} className="bg-blue-500 hover:bg-blue-600">
                             Sign Up
                         </Button>
                     </div>

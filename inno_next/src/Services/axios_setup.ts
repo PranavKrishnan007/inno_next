@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import Cookies from 'js-cookie' 
 
-// const token = localStorage.getItem("token");
-const token = process.env.API_TOKEN
+
+
+const token = Cookies.get('token') ? Cookies.get('token') : process.env.API_TOKEN
 const headers = {
   'Content-Type': 'application/json',
   Authorization: `Bearer ${token}`,
