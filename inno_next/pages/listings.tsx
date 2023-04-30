@@ -11,7 +11,7 @@ import {
 import { IconSearch, IconArrowRight, IconSettings, IconLogout } from '@tabler/icons-react'
 import { useState } from 'react'
 import Image from 'next/image'
-import EventCard from "@/components/listings/EventCard";
+import EventCard from '../components/listings/EventCard';
 
 export function InputWithButton(props: TextInputProps) {
     return (
