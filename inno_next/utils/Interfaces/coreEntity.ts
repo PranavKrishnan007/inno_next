@@ -1,4 +1,10 @@
+export interface IStrapiServerData {
+    id: number
+    attributes: IInnovation | IProblem | IHackathon;
+}
+
 export interface IInnovation {
+    id? : number
     innocationId?: string
     title: string
     description: string
@@ -10,7 +16,7 @@ export interface IInnovation {
 }
 
 export interface IProblem {
-    id?: string
+    id? : number
     title: string
     description: string
     header_img: string
@@ -22,10 +28,10 @@ export interface IProblem {
 }
 
 export interface IHackathon {
-    id: string
+    id? : number
     title: string
     tagline : string
-    about: string
+    description: string
     header_img: string
     partcipantLimit: number
     applicationOpenDate: Date

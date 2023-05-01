@@ -1,18 +1,13 @@
 import Image from 'next/image'
+import { IProblem, IInnovation, IHackathon } from '@/utils/Interfaces/coreEntity'
 
-interface EventPropType {
-  title: string
-  description: string
-  image: string
-}
-
-export default function EventCard(event: EventPropType) {
+export default function EventCard(event: IProblem | IInnovation | IHackathon) {
   return (
     <div className='grid grid-cols-12 gap-2 h-full my-2 space-x-1 mx-2'>
       <div className='bg-white col-span-2 py-1 px-2 rounded-2xl flex justify-center shadow-lg items-center'>
-        {event.image && (
+        {event.header_img && (
           <Image
-            src={event.image}
+            src={event.header_img}
             height={200}
             width={150}
             className='rounded-2xl'
