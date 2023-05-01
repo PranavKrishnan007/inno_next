@@ -3,6 +3,8 @@ import {IUser, IOrganisation, IGenericUser} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/src/Services";
+import {Button, FileInput, TextInput} from "@mantine/core";
+import Link from "next/link";
 
 export default function RegisterForm() {
 
@@ -96,144 +98,134 @@ export default function RegisterForm() {
     }
 
     return (
-        <div className='flex flex-col w-4/12 bg-white rounded-3xl shadow-2xl p-12'>
+        <div className='flex flex-col w-4/12 bg-white shadow-2xl p-20'>
             <div className="flex flex-col">
-                <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain mb-3" />
-                <img src="/assets/g20c20.png" alt="c20_logo" className="h-10 w-full object-contain place-items-center" />
+                <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain " />
             </div>
-        <h1 className='text-5xl py-18 font-bold w-full text-blue-950 text-center'>Sign Up</h1>
-        {loginSection === 0 && (
-          <div className='flex flex-col gap-12'>
-            <button
-              className='flex flex-row group hover:bg-orange-400 border-2
-                         border-orange-500 hover:text-white w-full px-4 py-6 rounded-2xl'
-              onClick={() => setUser({ value: 0 })}
-            >
-              <img
-                src='/assets/user%202.svg'
-                alt='user'
-                className='md:ml-6 w-14 h-14 group-hover:invert my-auto'
-              />
-              <div className='flex flex-col ml-4'>
-                <div className='text-left text-xl w-full font-bold'>Sign Up as User</div>
-                <div className='text-left text-light font-normal w-full'>
-                  sign up as a single user
-                </div>
-              </div>
-            </button>
-            <button
-              className='flex flex-row group hover:bg-orange-400 border-2 border-orange-500 hover:text-white w-full p-4 py-6 rounded-2xl'
-              onClick={() => setUser({ value: 1 })}
-            >
-              <img
-                src='/assets/users.svg'
-                alt='user'
-                className='md:ml-6 w-14 h-14 group-hover:invert my-auto'
-              />
-              <div className='flex flex-col ml-4'>
-                <div className='text-left text-xl w-full font-bold'>Sign Up as Organisation</div>
-                <div className='text-left text-light font-normal w-full'>
-                  sign up as a representative of an organisation
-                </div>
-              </div>
-            </button>
+        <h1 className='text-4xl pt-24 pb-2 font-bold w-full text-blue-950'>Sign Up</h1>
+            <div className="pb-10 text-md font-light">already have an account? <Link href='/login' className="text-blue-800 underline">Sign In</Link></div>
+
+            {loginSection === 0 && (
+          <div className='flex flex-col gap-3'>
+              <Button  className="bg-orange-500 hover:bg-orange-600 mt-10" size="xl" onClick={() => setUser({ value: 0 })}>
+                  <img
+                      src='/assets/user%202.svg'
+                      alt='user'
+                      className='w-10 p-1 invert my-auto mr-4'
+                  />
+                  Sign Up as User
+              </Button>
+              <Button  className="bg-orange-500 hover:bg-orange-600 mt-2" size="xl" onClick={() => setUser({ value: 1 })}>
+                  <img
+                      src='/assets/users.svg'
+                      alt='user'
+                      className='w-10 p-1 invert my-auto mr-4'
+                  />
+                  Sign Up as Organisation
+              </Button>
           </div>
         )}
         {/* section for organisation login. */}
         {loginSection === 1 && orgOrUser === 1 && (
-          <div className='flex flex-col gap-10'>
+          <div className='flex flex-col'>
             <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>
                 Organisation Name
               </label>
-              <input
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
                 id='organisationName'
                 type='text'
+                size='lg'
                 placeholder='Organisation Name'
               />
             </div>
             <div>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Logo</label>
-              <input
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Logo</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer'
                 aria-describedby='avatar'
+                placeholder='Upload Logo'
                 id='avatar'
                 type='file'
+                size='lg'
               />
               <p
-                className='mt-1 text-sm text-gray-500 dark:text-gray-300'
+                className='mt-1 text-sm text-gray-500 dark:text-gray-300 mb-4'
                 id='file_input onChange={handleFormChange}_help'
               >
                 SVG, PNG, JPG or GIF (MAX. 800x400px).
               </p>
             </div>
             <div>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Phone Number</label>
-              <input
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Phone Number</label>
+              <TextInput
                 onChange={handleFormChange}
                 type='number'
                 id='phone'
-                className='border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500-500 block w-full p-4 shadow'
                 placeholder='123-456-7890'
                 pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                 maxLength={10}
                 required
+                size='lg'
+
               />
             </div>
           </div>
         )}
         {loginSection === 2 && orgOrUser === 1 && (
-          <div className='flex flex-col gap-10'>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Email</label>
-              <input
+          <div className='flex flex-col '>
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Email</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
                 id='email'
                 type='email'
                 placeholder='innopsi@gmail.com'
+                size='lg'
+                className="mb-4"
               />
             </div>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Location</label>
-              <input
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Location</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
                 id='location'
                 type='text'
                 placeholder='Delhi'
+                size='lg'
+                className="mb-4"
+
               />
             </div>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Password</label>
-              <input
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Password</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
                 id='password'
                 type='password'
                 placeholder='j&_hhu441'
+                size='lg'
+                className="mb-4"
               />
             </div>
           </div>
         )}
         {loginSection === 3 && orgOrUser === 1 && (
-          <div className='flex flex-col gap-10'>
+          <div className='flex flex-col '>
             <div>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>
                 Letter of Consent
               </label>
-              <input
+              <TextInput
                 onChange={handleFormChange}
-                className='block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer'
+                size='lg'
                 aria-describedby='file_input'
                 id='letterOfIntent'
                 type='file'
               />
               <p
-                className='mt-1 text-sm text-gray-500 dark:text-gray-300'
+                className='mt-1 text-sm text-gray-500 dark:text-gray-300 mb-4'
                 id='file_input onChange={handleFormChange}_help'
               >
                 Upload PDF for validation.
@@ -250,34 +242,36 @@ export default function RegisterForm() {
         )}
         {/* section for user registry. */}
         {loginSection === 1 && orgOrUser === 0 && (
-          <div className='flex flex-col gap-10'>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>First Name</label>
-              <input
+          <div className='flex flex-col '>
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>First Name</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
+                size='lg'
                 id='firstname'
                 type='text'
                 placeholder='First Name'
-              />
-            </div>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Last Name</label>
-              <input
-                onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
-                id='lastname'
-                type='text'
-                placeholder='Last Name'
+                className="mb-4"
               />
             </div>
             <div>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Phone Number</label>
-              <input
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Last Name</label>
+              <TextInput
+                onChange={handleFormChange}
+                size='lg'
+                id='lastname'
+                type='text'
+                placeholder='Last Name'
+                className="mb-4"
+              />
+            </div>
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Phone Number</label>
+              <TextInput
                 onChange={handleFormChange}
                 type='number'
                 id='phone'
-                className='border border-gray-300 text-gray-900 placeholder:text-lg rounded-lg focus:border-orange-500 text-lg w-full p-4 shadow'
+                size='lg'
                 placeholder='123-456-7890'
                 pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                 maxLength={10}
@@ -287,46 +281,49 @@ export default function RegisterForm() {
           </div>
         )}
         {loginSection === 2 && orgOrUser === 0 && (
-          <div className='flex flex-col gap-10'>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Email</label>
-              <input
+          <div className='flex flex-col '>
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Email</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
+                size='lg'
                 id='email'
                 type='email'
                 placeholder='innopsi@gmail.com'
+                className="mb-4"
               />
             </div>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Location</label>
-              <input
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Location</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
+                size='lg'
                 id='location'
                 type='text'
                 placeholder='Delhi'
+                className="mb-4"
               />
             </div>
-            <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Password</label>
-              <input
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Password</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
+                size='lg'
                 id='password'
                 type='password'
                 placeholder='j&_hhu441'
+
               />
             </div>
           </div>
         )}
         {loginSection === 3 && orgOrUser === 0 && (
           <div className='flex flex-col'>
-            <div className='mb-4'>
-              <div className='mb-8'>
+            <div className=''>
+              <div className=''>
                 <label
                   htmlFor='gender'
-                  className='block text-gray-700 text-2xl font-medium mb-2 '
+                  className='block text-gray-700 text-lg font-medium mb-2 '
                   id='gender'
                 >
                   Gender
@@ -334,7 +331,7 @@ export default function RegisterForm() {
                 <select
                   onChange={handleFormChange}
                   id='gender'
-                  className='w-full text-lg p-6 text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500'
+                  className="text-lg w-full outline outline-1 rounded outline-gray-300 p-3 mb-4"
                   placeholder='gender'
                 >
                   <option value='MALE'>Male</option>
@@ -345,27 +342,28 @@ export default function RegisterForm() {
                 </select>
               </div>
             </div>
-            <div className='mb-12'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Date of Birth</label>
+            <div className=''>
+              <label className='block text-gray-700 text-lg font-medium mb-2 '>Date of Birth</label>
               <Datetime
                 closeOnClickOutside={true}
                 onChange={handleDOBChange}
                 dateFormat='DD-MM-YY'
                 timeFormat={false}
                 value={new Date().toDateString()}
-                className='text-lg shadow appearance-none border rounded-xl w-full p-4 text-gray-700 outline-none leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
+                className="group text-lg outline outline-1 rounded outline-gray-300 p-2 mb-4"
               />
             </div>
             <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>
                 Graduation Documentation
               </label>
-              <input
+              <TextInput
                 onChange={handleFormChange}
-                className='block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer'
+                size='lg'
                 aria-describedby='file_input'
                 id='graduationDocument'
                 type='file'
+                className="mb-2 "
               />
               <p
                 className='mt-1 text-sm text-gray-500 dark:text-gray-300'
@@ -378,19 +376,19 @@ export default function RegisterForm() {
         )}
         {loginSection === 4 && orgOrUser === 0 && (
           <div className='flex flex-col'>
-            <div className='mb-4'>
-              <div className='mb-8'>
+            <div>
+              <div>
                 <label
                   htmlFor='profession'
-                  className='block text-gray-700 text-2xl font-medium mb-2 '
+                  className='block text-gray-700 text-lg font-medium mb-2'
                 >
                   Profession
                 </label>
                 <select
                   onChange={handleFormChange}
                   id='profession'
-                  className='w-full p-6 text-lg text-gray-700 outline-none shadow rounded-xl focus:ring-orange-500 focus:border-orange-500'
-                  placeholder='gender'
+                  className="text-lg w-full outline outline-1 rounded outline-gray-300 p-3 mb-4"
+                  placeholder='profession'
                 >
                   <option value='Student'>Student</option>
                   <option value='Teacher'>Teacher</option>
@@ -400,32 +398,32 @@ export default function RegisterForm() {
                 </select>
               </div>
             </div>
-            <div className='mb-8'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Avatar</label>
-              <input
+            <div>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>Avatar</label>
+              <TextInput
                 onChange={handleFormChange}
-                className='block p-4 w-full text-sm text-gray-900 shadow border border-gray-300 rounded-lg cursor-pointer'
+                size='lg'
                 aria-describedby='avatar'
                 id='avatar'
                 type='file'
               />
               <p
-                className='mt-1 text-sm text-gray-500 dark:text-gray-300'
+                className='mt-1 text-sm text-gray-500 dark:text-gray-300 mb-4'
                 id='file_input onChange={handleFormChange}_help'
               >
                 SVG, PNG, JPG or GIF (MAX. 800x400px).
               </p>
             </div>
             <div className='mb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
+              <label className='block text-gray-700 text-lg font-medium mb-2'>
                 Area of Interest
               </label>
-              <input
+              <TextInput
                 onChange={handleFormChange}
-                className='shadow appearance-none border rounded-xl w-full p-4 text-gray-700 leading-tight focus:outline-orange-500 focus:shadow-none placeholder:text-lg'
                 id='areaOfInterest'
                 type='text'
                 placeholder='Organisation Name'
+                size="lg"
               />
             </div>
           </div>
