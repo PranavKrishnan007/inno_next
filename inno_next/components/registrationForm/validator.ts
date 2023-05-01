@@ -1,4 +1,4 @@
-import { IOrganisation, IGenericUser, IUser } from "@/src/Interfaces";
+import { IOrganisation, IGenericUser, IUser } from "@/utils/Interfaces";
 import { toast } from "react-toastify";
 
 

@@ -1,4 +1,4 @@
-import { createInnovation, getAllInnovations } from "@/src/Services"
+import { createInnovation, getAllInnovations } from "@/utils/Services"
 import React, { useEffect } from "react"
 
 

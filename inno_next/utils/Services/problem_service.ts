@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { IProblem } from "../Interfaces/coreEntity";
+import { IProblem } from "../../utils/Interfaces/coreEntity";
 import { axhttp } from "./axios_setup";
 
 

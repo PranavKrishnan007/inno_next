@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { IInnovation } from "../Interfaces/coreEntity";
+import { IInnovation } from "../../utils/Interfaces/coreEntity";
 import { axhttp } from "./axios_setup";
 
 

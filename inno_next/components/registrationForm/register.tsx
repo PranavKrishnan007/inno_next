@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { IUser, IOrganisation, IGenericUser } from "@/src/Interfaces"
+import { IUser, IOrganisation, IGenericUser } from "@/utils/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
-import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/src/Services";
+import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/utils/Services";
 import { Button, TextInput } from "@mantine/core";
 import Link from "next/link";
 
