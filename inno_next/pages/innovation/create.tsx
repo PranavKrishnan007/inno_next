@@ -3,7 +3,7 @@ import 'quill/dist/quill.snow.css'
 import { Avatar, Button, Menu, MultiSelect } from '@mantine/core'
 import { IconLogout, IconSettings } from '@tabler/icons-react'
 
-export default function CreateProblem() {
+export default function CreateInnovation() {
     const { quill, quillRef } = useQuill()
     console.log(quill, quillRef)
 
@@ -28,21 +28,21 @@ export default function CreateProblem() {
                     </div>
                     <div className='bg-background pt-4'>
                         <div className='bg-white text-secondary font-bold p-4 md:p-8 md:text-5xl text-2xl rounded-t-xl border-gray-300/30 border-b-2'>
-                            Submit Problem
+                            Submit Innovation
                         </div>
                     </div>
                 </div>
                 <form className='bg-white rounded-b-xl flex flex-col p-4 md:p-8'>
                     <div className='pb-4'>
                         <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                            Problem Title
+                            Innovation Title
                         </label>
                         <input
                             onChange={() => (null)}
                             className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                            id='problemTitle'
+                            id='innovationTitle'
                             type='text'
-                            placeholder='Problem Title'
+                            placeholder='Innovation Title'
                         />
                     </div>
                     <div className='pb-4'>
