@@ -9,7 +9,7 @@ import {
 import { IconSearch, IconArrowRight } from '@tabler/icons-react'
 import { useState } from 'react'
 import EventCard from '../components/listings/EventCard';
-import Branding from '../src/Components/branding';
+import Branding from '../components/branding';
 
 export function InputWithButton(props: TextInputProps) {
     return (

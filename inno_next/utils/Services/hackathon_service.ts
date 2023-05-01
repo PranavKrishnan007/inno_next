@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { IHackathon } from "../Interfaces/coreEntity";
+import { IHackathon } from "../../utils/Interfaces/coreEntity";
 import { axhttp } from "./axios_setup";
 
 
