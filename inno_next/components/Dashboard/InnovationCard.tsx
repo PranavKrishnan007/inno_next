@@ -1,16 +1,9 @@
 import React from 'react'
 import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
+import { IInnovation } from '@/utils/Interfaces/coreEntity'
 
-interface InnovationPropsI {
-  title: string
-  description: string
-  image?: string
-  tags?: string[]
-  status?: string
-//   link?: string
-}
-export default function InnovationCard(innovation: InnovationPropsI) {
+export default function InnovationCard(innovation: IInnovation) {
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>

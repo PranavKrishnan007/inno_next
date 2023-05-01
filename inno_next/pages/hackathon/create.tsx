@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuill } from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
 import { Button, MultiSelect } from '@mantine/core'
-import Branding from '@/src/Components/branding'
+import Branding from '@/components/branding'
 
 export default function CreateHackathon() {
   const { quill, quillRef } = useQuill()

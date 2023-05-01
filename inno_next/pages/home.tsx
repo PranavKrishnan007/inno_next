@@ -7,11 +7,13 @@ import {
     MultiSelect,
 } from '@mantine/core'
 import { IconSearch, IconArrowRight } from '@tabler/icons-react'
-import { useEffect, useLayoutEffect, useState } from 'react'
-import EventCard from '../components/listings/EventCard';
+import { useEffect, useState } from 'react'
 import Branding from '../components/branding';
 import { IHackathon, IInnovation, IProblem } from '@/utils/Interfaces/coreEntity';
 import { getAllInnovations, getAllProblems, getAllHackathons} from '@/utils/Services';
+import ProblemCard from '@/components/Dashboard/ProblemCard';
+import InnovationCard from '@/components/Dashboard/InnovationCard';
+import HackathonCard from '@/components/Dashboard/HackathonCard';
 
 export function InputWithButton(props: TextInputProps) {
     return (
@@ -143,15 +145,15 @@ export default function Listings() {
                                         <div className="bg-gray-300/30 flex flex-col gap-3 rounded-2xl p-2">
                                             {activeTab === 0 &&
                                                 problems.map((problem, index) => (
-                                                    <EventCard {...problem} key={index}/>
+                                                    <ProblemCard {...problem} key={index}/>
                                                 ))}
                                             {activeTab === 1 &&
                                                 innovations.map((innovation, index) => (
-                                                    <EventCard {...innovation} key={index}/>
+                                                    <InnovationCard {...innovation} key={index}/>
                                                 ))}
                                             {activeTab === 2 &&
                                                 hackathons.map((hackathon, index) => (
-                                                    <EventCard {...hackathon} key={index}/>
+                                                    <HackathonCard {...hackathon} key={index}/>
                                                 ))}
                                         </div>
                                     </div>

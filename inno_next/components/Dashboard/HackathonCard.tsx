@@ -1,16 +1,9 @@
 import React from 'react'
 import { Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight, IconEdit } from '@tabler/icons-react'
+import { IHackathon } from '@/utils/Interfaces/coreEntity'
 
-interface HackathonPropsI {
-  title: string
-  about: string
-  tagline?: string
-  header_img?: string
-  tags?: string[]
-  status?: string
-}
-export default function HackathonCard(hackathon: HackathonPropsI) {
+export default function HackathonCard(hackathon: IHackathon) {
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
@@ -34,7 +27,7 @@ export default function HackathonCard(hackathon: HackathonPropsI) {
             </Badge>
           </Group>
           <div className='text-lg my-1 text-slate-600'>{hackathon.tagline}</div>
-          <div className='max-w-full text-md text-gray-600 line-clamp-3'>{hackathon.about}</div>
+          <div className='max-w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
           <div className=' flex justify-start items-center'>
             <Button
               variant='light'

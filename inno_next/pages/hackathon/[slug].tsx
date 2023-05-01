@@ -1,4 +1,4 @@
-import Branding from '../../src/Components/branding'
+import Branding from '@/components/branding'
 import { Image } from '@mantine/core'
 
 export default function Hackathon() {

@@ -1,16 +1,9 @@
 import React from 'react'
 import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
+import { IProblem } from '@/utils/Interfaces/coreEntity'
 
-interface ProblemPropsI {
-  title: string
-  description: string
-  image?: string
-  tags?: string[]
-  status?: string
-  link?: string
-}
-export default function ProblemCard(problem: ProblemPropsI) {
+export default function ProblemCard(problem: IProblem) {
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
