@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { IInnovation } from "../../utils/Interfaces/coreEntity";
+import { IInnovation, IProblem, IStrapiServerData } from "../../utils/Interfaces/coreEntity";
 import { axhttp } from "./axios_setup";
 
 
@@ -31,6 +31,12 @@ export const deleteInnovation = async (innovationId:string):Promise<any> => {
 }
 
 export const getAllInnovations = async ():Promise<IInnovation[]> => {
-    return responseHandler(await axhttp.get('/innovations/'))
+    const res = responseHandler(await axhttp.get('/innovations/') as IStrapiServerData[])
+    return res.map((innovation:IStrapiServerData) => {
+        innovation.attributes.id = innovation.id
+        return innovation.attributes as IInnovation
+    })
+
+   
 }
 

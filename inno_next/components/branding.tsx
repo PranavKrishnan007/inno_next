@@ -1,5 +1,6 @@
 import { Avatar, Menu } from "@mantine/core"
 import { IconLogout, IconSettings } from "@tabler/icons-react"
+import Link from "next/link";
 
 const Branding = () => {
     return (
@@ -12,7 +13,7 @@ const Branding = () => {
                         <Avatar size="lg" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" />
                     </Menu.Target>
                     <Menu.Dropdown>
-                        <Menu.Item icon={<IconSettings size={14} />}>Dashboard</Menu.Item>
+                        <Menu.Item icon={<IconSettings size={14} />}> <Link href='/dashboard' >Dashboard</Link></Menu.Item>
                         <Menu.Item icon={<IconLogout size={14} />}>Log Out</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
