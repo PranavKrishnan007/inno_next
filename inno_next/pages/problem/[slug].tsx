@@ -1,7 +1,13 @@
+import Branding from "@/src/Components/branding";
+
 export default function Problem() {
     return (
-        <div className="container mx-auto">
-            <h1>Problem page comes here!</h1>
+        <div className="bg-background">
+            <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
+                <div className="bg-white sticky flex flex-col top-0 z-50">
+                    <Branding />
+                </div>
+            </div>
         </div>
     )
 }
