@@ -3,7 +3,7 @@ import {IUser, IOrganisation, IGenericUser} from "@/src/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/src/Services";
-import {Button, FileInput, TextInput} from "@mantine/core";
+import {Button, TextInput} from "@mantine/core";
 import Link from "next/link";
 
 export default function RegisterForm() {
