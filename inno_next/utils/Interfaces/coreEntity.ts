@@ -30,6 +30,8 @@ export interface IHackathon {
     partcipantLimit: number
     applicationOpenDate: Date
     applicationCloseDate: Date
+    hackathonStartDate: Date
+    hackathonEndDate: Date
     contactDetails: string
     additionalDetails: string
     tags:number[] | string[]
