@@ -1,4 +1,4 @@
-import { axhttp } from "@/src/Services"
+import { axhttp } from "@/utils/Services"
 import { formValidator } from "../../components/registrationForm/validator"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
