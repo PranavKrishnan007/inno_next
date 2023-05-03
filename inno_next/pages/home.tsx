@@ -14,6 +14,8 @@ import { getAllInnovations, getAllProblems, getAllHackathons} from '@/utils/Serv
 import ProblemCard from '@/components/Dashboard/ProblemCard';
 import InnovationCard from '@/components/Dashboard/InnovationCard';
 import HackathonCard from '@/components/Dashboard/HackathonCard';
+import { useAuth } from '@/utils/auth';
+
 
 export function InputWithButton(props: TextInputProps) {
     return (
@@ -64,14 +66,18 @@ const NOTICE = [
 ]
 const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
+
     const [activeTab, setActiveTab] = useState(1);
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
 
+    const { isAuthenticated, user } = useAuth();
+
     useEffect(() => {
         console.log(activeTab)
         if(activeTab == 0) {
+            console.log(isAuthenticated, user)
             getAllProblems().then((res:IProblem[]) => {
                 setProblems(res)
             })
@@ -87,6 +93,7 @@ export default function Listings() {
 
         if(activeTab == 2) {
             getAllHackathons().then((res:IHackathon[]) => {
+                console.log(res)
                 setHackathons(res)
             })
 

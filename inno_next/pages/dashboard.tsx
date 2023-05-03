@@ -1,108 +1,39 @@
-import React from "react";
-import {Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput} from "@mantine/core";
+import React, { useEffect, useState } from "react";
+import {Avatar, Button,Tabs, Textarea, TextInput} from "@mantine/core";
 import {IconMessageCircle, IconPhoto, IconSettings} from "@tabler/icons-react";
 import ProblemCard from "@/components/Dashboard/ProblemCard";
 import InnovationCard from "@/components/Dashboard/InnovationCard";
 import HackathonCard from "@/components/Dashboard/HackathonCard";
+import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity";
+import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
 
 const user = "Someone";
-export default function Dashboard() {
-    const PROBLEM = [
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. asldfkajfja ldkfj klasj fdl jaksldfj lkasj dflkas jdf kas jfdljsakdfj lkasj fklasdjlfkja skldf jlaskjfla slfdj ksa fjlsaj dkfl jaslfj klasj fklsajfls djfl asjkfj asklfdj laks jdfklasjfl asjd flask fjlka sjfklasj klf jaskldfj klas jdfklasj dkflj asklf jsdlfk jasklf jaklsfj asklf jlasfj klasf jklas fjsaj dflajkljflas dfjklas flas I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-        {
-            title: 'How to make a website?',
-            description: 'I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me? I want to make a website for my business. I have no idea how to start. Can someone help me?',
-            image: "/assets/placeholder.jpeg"
-        },
-    ]
+export default function Dashboard( props :any) {
 
-    const HACKATHON = [
-        {
-            title: 'Hackathon 1',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae eros quis nisl aliquam aliquet. Donec euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, vitae aliquam nisl nisl vitae nisl. Donec euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, vitae aliquam nisl nisl vitae nisl.',
-            tagline : "htihs sj sbfshd fj shd",
-            header_img: '/assets/placeholder.jpeg',
-        }
-    ]
+    const [problems, setProblems] = useState<IProblem[]>([]);
+    const [hackathons, setHackathons] = useState<IHackathon[]>([]);
+    const [innovations, setInnovations] = useState<IInnovation[]>([]);
+
+    useEffect(() => {
+        console.log("Dashboard")
+  
+            getAllProblems().then((res:IProblem[]) => {
+                setProblems(res)
+            })
+
+            getAllInnovations().then((res:IInnovation[]) => {
+                setInnovations(res)
+            })
+            
+            getAllHackathons().then((res:IHackathon[]) => {
+                console.log(res)
+                setHackathons(res)
+            })
+
+      
+
+    }, [])
+
     return (
         <div className="bg-background h-screen overflow-y-scroll">
             <div className="container mx-auto px-4 md:px-8">
@@ -206,7 +137,7 @@ export default function Dashboard() {
 
                                     <Tabs.Panel value="problems" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {PROBLEM.map((problem, index) => (
+                                            {problems.map((problem:IProblem, index:number) => (
                                                 <ProblemCard {...problem} key={index}/>
                                             ))}
                                         </div>
@@ -214,15 +145,15 @@ export default function Dashboard() {
 
                                     <Tabs.Panel value="innovations" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {PROBLEM.map((problem, index) => (
-                                                <InnovationCard {...problem} key={index}/>
+                                            {innovations.map((innovation:IInnovation, index:number) => (
+                                                <InnovationCard {...innovation} key={index}/>
                                             ))}
                                         </div>
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="hackathons" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {HACKATHON.map((hackathon, index) => (
+                                            {hackathons.map((hackathon:IHackathon, index:number) => (
                                                 <HackathonCard {...hackathon} key={index}/>
                                             ))}
                                         </div>
