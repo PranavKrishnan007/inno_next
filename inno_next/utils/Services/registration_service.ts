@@ -54,8 +54,6 @@ export const submitGenericUser = async (data: any): Promise<any> => {
   }
 
   try {
-    console.log(genericForm)
-
   const genericUser =  await axhttp.post('/genericusers', {
     data : genericForm
   })

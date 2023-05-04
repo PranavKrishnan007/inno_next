@@ -4,6 +4,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 import Cookies from 'js-cookie'
 // import Router, { useRouter } from 'next/router'
 import { axhttp } from './Services';
+import { useRouter } from 'next/router';
 
 
 
@@ -13,17 +14,20 @@ export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const router = useRouter()
     useEffect(() => {
         async function loadUserFromCookies() {
             const token = Cookies.get('token')
-            const userData = JSON.parse( Cookies.get('user') as string )
+       
             if (token) {
+                const userData = JSON.parse( Cookies.get('user') as string )
                 console.log("Got a token in the cookies, let's see if it is valid")
                 axhttp.defaults.headers.Authorization = `Bearer ${token}`
-                // const { data: user } = await axhttp.get('/auth/me')
                 console.log("Got user", userData)
-                if (userData) setUser(userData);
+                if (userData) {
+                    setUser(userData)
+                    if (window.location.pathname === '/login' || window.location.pathname === '/register') router.push('/dashboard')
+                }
             }
             setLoading(false)
         }

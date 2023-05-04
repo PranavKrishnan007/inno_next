@@ -6,17 +6,17 @@ import InnovationCard from "@/components/Dashboard/InnovationCard";
 import HackathonCard from "@/components/Dashboard/HackathonCard";
 import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity";
 import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
+import { useAuth } from "@/utils/auth";
 
-const user = "Someone";
+// const user = "Someone"; 
 export default function Dashboard( props :any) {
 
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
+    const { user } = useAuth();
 
     useEffect(() => {
-        console.log("Dashboard")
-  
             getAllProblems().then((res:IProblem[]) => {
                 setProblems(res)
             })
@@ -26,12 +26,8 @@ export default function Dashboard( props :any) {
             })
             
             getAllHackathons().then((res:IHackathon[]) => {
-                console.log(res)
                 setHackathons(res)
             })
-
-      
-
     }, [])
 
     return (
@@ -48,7 +44,7 @@ export default function Dashboard( props :any) {
                                 className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
                                     <div className="text-white text-5xl">
-                                        Hello, {user}
+                                        Hello, asd
                                     </div>
                                     <div className="text-white font-light text-lg pt-2">
                                         Welcome to Innopsi!
