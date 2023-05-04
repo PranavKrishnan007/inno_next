@@ -13,6 +13,8 @@ const problems =  [{
       tag1:'Haptic Technology',
       tag2:'Smart Learning',
       tag3:'Skill Development',
+      src:'/assets/haptic .jpeg',
+      votes: '230 '
     },
     {
       title: 'Developing Coir Fibre for Sustainable Cooling Systems',
@@ -23,6 +25,9 @@ const problems =  [{
       tag1:'Eco-friendly Cooling',
       tag2:'Coir Fibre',
       tag3:'Sustainability',
+      src:'/assets/coir.jpeg',
+        votes: '845 '
+
     },
     {
       title: 'Developing an IoT Room for the Elderly',
@@ -34,6 +39,9 @@ const problems =  [{
       tag1:'Smart IoT',
       tag2:'Elderly Care',
       tag3:'Health Care',
+        src: '/assets/iot.jpeg',
+        votes: '430 '
+
     },
     ]
 
@@ -90,9 +98,6 @@ export default function Home(){
               Change <span className="text-orange-500">the</span> world!!
             </h1>
             <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
-              We offer comprehensive platform that empowers users to seek solutions to everyday challenges
-              within the context of United Nations Sustainable Development Goals. Join our community and collaborate with experts to solve your
-              problems.
               Be the change you wish to see in the world. Join Innopsi and together,
               let's create a positive impact through meaningful discussions and problem-solving.
             </h4>
