@@ -8,6 +8,8 @@ import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity
 import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
 import { useAuth } from "@/utils/auth";
 import { IUser } from "@/utils/Interfaces";
+import {useRouter} from "next/navigation";
+import Branding from "@/components/branding";
 // const user = "Someone"; 
 export default function Dashboard( props :any) {
 
@@ -29,17 +31,17 @@ export default function Dashboard( props :any) {
                 setHackathons(res)
             })
     }, [])
+    const {push} = useRouter();
 
     return (
-        <div className="bg-background h-screen overflow-y-scroll">
+        <div className="h-screen overflow-y-scroll">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex flex-row justify-center items-center p-10 gap-6">
-                    <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain"/>
-                    <img src="/assets/g20c20.png" alt="g20c20_logo" className="object-contain"/>
+                  <Branding />
                 </div>
                 <div className="flex flex-row gap-4">
                     <div className="w-3/4">
-                        <div className="bg-white rounded-xl p-1">
+                        <div className=" rounded-xl p-1 bg-gray-300/30 ">
                             <div
                                 className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
@@ -56,7 +58,7 @@ export default function Dashboard( props :any) {
                             </div>
                         </div>
                         <div className="pt-4">
-                            <div className="bg-white rounded-xl p-2">
+                            <div className="bg-white border rounded-xl p-2">
                                 <Tabs defaultValue="editProfile">
                                     <Tabs.List>
                                         <Tabs.Tab value="editProfile" icon={<IconPhoto size="0.8rem"/>}>Edit
@@ -68,7 +70,6 @@ export default function Dashboard( props :any) {
                                         <Tabs.Tab value="hackathons" icon={<IconSettings size="0.8rem"/>}>Your
                                             Hackathons</Tabs.Tab>
                                     </Tabs.List>
-
                                     <Tabs.Panel value="editProfile" pt="xs">
                                         <div className="px-8 py-4 flex flex-col w-full">
                                             <div className="text-gray-700 border-gray-300/30 border-b-2 text-3xl">
