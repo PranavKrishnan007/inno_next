@@ -22,8 +22,8 @@ export interface IProblem {
   description: string
   header_img: string
   tags: number[] | string[]
-  badges: string[]
-  status: string
+  badges?: string[]
+  status?: string
   createdBy?: string
   innovations?: IInnovation[]
   content: string

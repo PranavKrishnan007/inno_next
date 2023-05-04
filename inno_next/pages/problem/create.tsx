@@ -2,10 +2,28 @@ import { useQuill } from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
 import { Button, MultiSelect } from '@mantine/core'
 import Branding from '@/components/branding'
+import { IProblem } from '@/utils/Interfaces'
+import { useState } from 'react'
 
 export default function CreateProblem() {
     const { quill, quillRef } = useQuill()
     console.log(quill, quillRef)
+
+    const [problem, setProblem] = useState<IProblem>({
+        title: '',
+        description: '',
+        header_img: '',
+        content: '',
+        tags: [],
+    })
+
+    const handleProblemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setProblem({
+            ...problem,
+            [e.target.id]: e.target.value
+        })
+    }
+
 
     return (
         <div className="bg-background">
@@ -34,6 +52,18 @@ export default function CreateProblem() {
                     <div className='pb-4'>
                         <label className='block text-gray-700 text-2xl font-medium mb-2'>
                             Description
+                        </label>
+                        <input
+                            onChange={() => (null)}
+                            className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                            id='problemDescription'
+                            type='text'
+                            placeholder='Description'
+                        />
+                    </div>
+                    <div className='pb-4'>
+                        <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                            Content
                         </label>
                         <div className='w-full h-72'>
                             <div style={{ height: "100%", width: "100%" }}>
