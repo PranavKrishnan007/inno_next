@@ -40,3 +40,11 @@ export const getAllInnovations = async ():Promise<IInnovation[]> => {
    
 }
 
+export const getInnovationsByUser = async (userId:string):Promise<IInnovation[]> => {
+    const res = responseHandler(await axhttp.get(`/innovations?filters[user]=${userId}`) as IStrapiServerData[])
+    return res.map((innovation:IStrapiServerData) => {
+        innovation.attributes.id = innovation.id
+        return innovation.attributes as IInnovation
+    })
+}
+

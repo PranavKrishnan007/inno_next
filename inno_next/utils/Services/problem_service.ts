@@ -38,6 +38,14 @@ export const getAllProblems = async ():Promise<IProblem[]> => {
     })
 
 }
+// get problems by login user
+export const getProblemsByUser = async (userId:string):Promise<IProblem[]> => {
+    const res = responseHandler(await axhttp.get(`/problems?filters[user]=${userId}`) as IStrapiServerData[])
+    return res.map((problem:IStrapiServerData) => {
+        problem.attributes.id = problem.id
+        return problem.attributes as IProblem
+    })
+}
 
 
 
