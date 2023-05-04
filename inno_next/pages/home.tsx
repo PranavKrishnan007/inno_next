@@ -46,6 +46,7 @@ const NOTICE = [
     {
         title: 'this is one notice',
         description: 'this is the description of the notice',
+
     },
     {
         title: 'this is one notice',
@@ -153,7 +154,8 @@ export default function Listings() {
                                             {activeTab === 0 &&
                                                 problems.map((problem, index) => (
                                                     <ProblemCard {...problem} key={index}/>
-                                                ))}
+                                                ))
+                                            }
                                             {activeTab === 1 &&
                                                 innovations.map((innovation, index) => (
                                                     <InnovationCard {...innovation} key={index}/>
