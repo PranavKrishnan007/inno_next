@@ -10,8 +10,9 @@ export default function ProblemCard(problem: IProblem) {
         <div className='min-w-max my-auto'>
           <Image
             src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
-            // src={problem.image}
+            // src={problem.src}
             height='160'
+            width='160'
             alt='Norway'
             radius='md'
           />
@@ -32,20 +33,17 @@ export default function ProblemCard(problem: IProblem) {
               radius='md'
               className='bg-blue-100 hover:bg-blue-200 my-4 md:mr-5'
             >
-              Go to problem <IconArrowRight />
+              Go to Challenge <IconArrowRight />
             </Button>
             <div className='flex gap-2 mt-2 md:ml-4'>
               <Badge color='orange' variant='light'>
-                Tag 1
+                {problem.tag1}
               </Badge>
               <Badge color='red' variant='light'>
-                Second
+                {problem.tag2}
               </Badge>
               <Badge color='orange' variant='light'>
-                Third
-              </Badge>
-              <Badge color='blue' variant='light'>
-                Fourth
+                {problem.tag3}
               </Badge>
             </div>
           </div>
