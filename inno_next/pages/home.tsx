@@ -180,9 +180,6 @@ export default function Listings() {
                             </div>
                             <div className="flex justify-between">
                                 <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full border-t pt-3">{activeTab === 0 ? "Problems" : activeTab === 1 ? "Innovations" : "Hackathons"}</p>
-                                <div className="w-fit p-5 text-xl font-bold text-gray-700 tracking-wide -mt-8 rounded-lg border-2 border-white">
-                                    Open
-                                </div>
                             </div>
                             <div className="flex flex-row gap-10">
                                 <div className="flex flex-col gap-4 w-full">

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } from '@mantine/core'
+import {  Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
 import { IProblem } from '@/utils/Interfaces/coreEntity'
+
 
 export default function ProblemCard(problem: IProblem) {
   return (
