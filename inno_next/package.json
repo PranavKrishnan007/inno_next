@@ -32,6 +32,7 @@
     "dayjs": "^1.11.7",
     "embla-carousel-react": "^7.1.0",
     "eslint-config-next": "13.3.0",
+    "html-react-parser": "^3.0.16",
     "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "next": "13.3.0",

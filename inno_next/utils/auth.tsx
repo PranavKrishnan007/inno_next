@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children } : any) => {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         async function loadUserFromCookies() {
             const token = Cookies.get('token')
-       
+
             if (token) {
                 const userData = JSON.parse( Cookies.get('user') as string )
                 console.log("Got a token in the cookies, let's see if it is valid")

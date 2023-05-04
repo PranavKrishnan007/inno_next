@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Branding = () => {
     return (
-        <div className="flex flex-col md:flex-row w-full relative justify-center items-center bg-background gap-4 md:gap-10">
+        <div className="flex flex-col md:flex-row w-full relative justify-center items-center gap-4 md:gap-10">
             <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain" />
             <img src="/assets/g20c20.png" alt="g20c20_logo" className="object-contain" />
             <div className="absolute top-2 right-0">
