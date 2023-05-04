@@ -1,7 +1,7 @@
-import { axhttp } from "@/utils/Services"
-import { formValidator } from "../../components/registrationForm/validator"
-import { toast } from "react-toastify"
-import Cookies from "js-cookie"
+import { axhttp } from '@/utils/Services'
+import { formValidator } from '../../components/registrationForm/validator'
+import { toast } from 'react-toastify'
+import Cookies from 'js-cookie'
 
 export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<any> => {
   const { id, files } = e.target
@@ -11,17 +11,17 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
     formData.append('files', files[0])
     formData.append('upload_preset', 'innopsi')
 
-    const uploadPromise =  new Promise((resolve, reject) => {
+    const uploadPromise = new Promise((resolve, reject) => {
       axhttp
         .post('/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((res:any) => {
+        .then((res: any) => {
           resolve({
             id,
-            value: res[0].url
+            value: process.env.SERVER_URL + res[0].url,
           })
         })
         .catch((err) => {
@@ -34,112 +34,99 @@ export const fileUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promis
       error: 'Upload failed',
     })
 
-    return uploadPromise;
-
+    return uploadPromise
   }
-
 }
 
-
 export const submitGenericUser = async (data: any): Promise<any> => {
+  const { userForm, genericForm } = data
 
-  const {userForm, genericForm} = data
-
-  if(!formValidator(userForm)) {
+  if (!formValidator(userForm)) {
     return
   }
 
-  if(!formValidator(genericForm)) {
+  if (!formValidator(genericForm)) {
     return
   }
 
   try {
-  const genericUser =  await axhttp.post('/genericusers', {
-    data : genericForm
-  })
+    const genericUser = await axhttp.post('/genericusers', {
+      data: genericForm,
+    })
 
-  if(!genericUser) {
-    toast.error('Something went wrong')
-    return
-  }
+    if (!genericUser) {
+      toast.error('Something went wrong')
+      return
+    }
 
-  return new Promise((resolve, reject) => {
-    userForm.genericuser = genericUser.data.id
-    userForm.username = userForm.email
-    userForm.role = 1
-    axhttp
-      .post('/auth/local/register', userForm)
-      .then((res:any) => {
-        Cookies.set('token', res.jwt)
-        Cookies.set('user', res.user)
-        resolve(res)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
-}
-  catch(err) {
+    return new Promise((resolve, reject) => {
+      userForm.genericuser = genericUser.data.id
+      userForm.username = userForm.email
+      userForm.role = 1
+      axhttp
+        .post('/auth/local/register', userForm)
+        .then((res: any) => {
+          Cookies.set('token', res.jwt)
+          Cookies.set('user', res.user)
+          resolve(res)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  } catch (err) {
     console.log(err)
     toast.error('Something went wrong')
     return
   }
- 
 }
 
 export const submitOrganisationForm = async (data: any): Promise<any> => {
+  const { userForm, organisationForm } = data
 
-  const {userForm, organisationForm} = data
-
-  if(!formValidator(userForm)) {
+  if (!formValidator(userForm)) {
     return
   }
 
-  if(!formValidator(organisationForm)) {
+  if (!formValidator(organisationForm)) {
     return
   }
 
   try {
+    const organisation = await axhttp.post('/organisations', {
+      data: organisationForm,
+    })
 
-  const organisation =  await axhttp.post('/organisations', {
-    data : organisationForm
-  })
+    if (!organisation) {
+      toast.error('Something went wrong')
+      return
+    }
 
-  if(!organisation) {
+    return new Promise((resolve, reject) => {
+      userForm.organisation = organisation.data.id
+      userForm.username = userForm.email
+      userForm.role = 2
+      axhttp
+        .post('/auth/local/register', userForm)
+        .then((res: any) => {
+          Cookies.set('token', res.jwt)
+          Cookies.set('user', res.user)
+          resolve(res)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  } catch (err) {
     toast.error('Something went wrong')
     return
   }
-
-  return new Promise((resolve, reject) => {
-    userForm.organisation = organisation.data.id
-    userForm.username = userForm.email
-    userForm.role = 2
-    axhttp
-      .post('/auth/local/register', userForm)
-      .then((res:any) => {
-        Cookies.set('token', res.jwt)
-        Cookies.set('user', res.user)
-        resolve(res)
-      })
-      .catch((err) => {
-        reject(err)
-      })
-  })
-
 }
-  catch(err) {
-    toast.error('Something went wrong')
-    return
-  }
-  
-}
-
 
 export const login = async (data: any): Promise<any> => {
+  const { email, password } = data
 
-  const {email, password} = data
-
-  if(!email || !password) {
+  if (!email || !password) {
     toast.error('Email and Password are required')
     return
   }
@@ -150,7 +137,7 @@ export const login = async (data: any): Promise<any> => {
         identifier: email,
         password: password,
       })
-      .then((res:any) => {
+      .then((res: any) => {
         Cookies.set('token', res.jwt)
         Cookies.set('user', JSON.stringify(res.user))
         axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
@@ -161,4 +148,3 @@ export const login = async (data: any): Promise<any> => {
       })
   })
 }
-

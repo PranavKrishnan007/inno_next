@@ -7,14 +7,14 @@ import HackathonCard from "@/components/Dashboard/HackathonCard";
 import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity";
 import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
 import { useAuth } from "@/utils/auth";
-
+import { IUser } from "@/utils/Interfaces";
 // const user = "Someone"; 
 export default function Dashboard( props :any) {
 
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
-    const { user } = useAuth();
+    const {user} = useAuth() as {user: IUser}
 
     useEffect(() => {
             getAllProblems().then((res:IProblem[]) => {
@@ -44,7 +44,7 @@ export default function Dashboard( props :any) {
                                 className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
                                     <div className="text-white text-5xl">
-                                        Hello, asd
+                                        Hello, {user?.genericuser?.firstname}!
                                     </div>
                                     <div className="text-white font-light text-lg pt-2">
                                         Welcome to Innopsi!
@@ -80,7 +80,7 @@ export default function Dashboard( props :any) {
                                                 </div>
                                                 <div className="flex justify-start items-center flex-row">
                                                     <Avatar radius="xl" size="xl"
-                                                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"/>
+                                                            src={ user?.avatar }/>
                                                     <div className="flex flex-col gap-2">
                                                         <Button variant="outline" color="blue"
                                                                 className="ml-4">Upload</Button>
@@ -91,7 +91,7 @@ export default function Dashboard( props :any) {
                                             </div>
                                             <div>
                                                 <div className="pt-5 text-gray-500 font-medium pb-1">
-                                                    Name
+                                                    Name 
                                                 </div>
                                                 <TextInput
                                                     placeholder="Your name"

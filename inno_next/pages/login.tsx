@@ -8,7 +8,7 @@ import {
     Anchor,
     Button
 } from '@mantine/core';
-import { login } from "@/utils/Services";
+import { useAuth } from "@/utils/auth";
 
 const useStyles = createStyles((theme, { floating }: { floating: boolean }) => ({
     root: {
@@ -52,13 +52,13 @@ export default function Login() {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const { classes } = useStyles({ floating: (user.trim().length !== 0 || pass.trim().length !== 0) || focused });
-
+    const {login} = useAuth() as any;
 
     const submit = () => {
-        login({
-            email : user,
-            password : pass
-        })
+        login(
+            user,
+            pass
+        )
     }
 
 

@@ -72,7 +72,7 @@ export default function Listings() {
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
 
-    const { isAuthenticated, user } : any = useAuth();
+    const { isAuthenticated, user } = useAuth() as any;
 
     useEffect(() => {
         console.log(activeTab)
