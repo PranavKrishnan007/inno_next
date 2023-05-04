@@ -1,51 +1,50 @@
 import React from 'react'
-import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } from '@mantine/core'
+import {  Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
 import { IProblem } from '@/utils/Interfaces/coreEntity'
 
+
 export default function ProblemCard(problem: IProblem) {
   return (
-    <div>
-      <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
-        <div className='min-w-max my-auto'>
+    <div >
+      <Card className='flex border-b gap-1'  padding='sm'  >
+        <div className='min-w-max my-auto px-2'>
           <Image
             src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
-            // src={problem.image}
+            // src={problem.src}
             height='160'
+            width='160'
             alt='Norway'
-            radius='md'
+            radius='sm'
           />
         </div>
-        <div className='ml-10'>
+        <div className="">
           <Group position='apart' mt='md' mb='xs'>
-            <div className='font-bold text-2xl'>{problem.title}</div>
+            <div className='w-4/6 font-extrabold text-ellipsis overflow-hidden text-gray-700 text-lg line-clamp-1'>{problem.title}</div>
             <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
             </Badge>
           </Group>
-          <div className='max-w-full text-md text-gray-600 line-clamp-3'>{problem.description}</div>
+          <div className='min-w-full text-ellipsis  overflow-hidden text-md text-gray-500 tracking-wide line-clamp-3'>{problem.description}</div>
           <div className=' flex justify-start items-center'>
             <Button
-              variant='light'
-              color='blue'
+              variant='outline'
               mt='md'
-              radius='md'
-              className='bg-blue-100 hover:bg-blue-200 my-4 md:mr-5'
+              radius='sm'
+              className=' hover:bg-blue-500 transition  ease-in-out hover:text-white my-4 md:mr-5'
             >
-              Go to problem <IconArrowRight />
+              <span className="">Go to Challenge</span>
+              <IconArrowRight />
             </Button>
             <div className='flex gap-2 mt-2 md:ml-4'>
               <Badge color='orange' variant='light'>
-                Tag 1
+                tag1
               </Badge>
               <Badge color='red' variant='light'>
-                Second
+                tag2
               </Badge>
               <Badge color='orange' variant='light'>
-                Third
-              </Badge>
-              <Badge color='blue' variant='light'>
-                Fourth
+                tag3
               </Badge>
             </div>
           </div>
