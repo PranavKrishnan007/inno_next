@@ -35,31 +35,31 @@ export default function Dashboard( props :any) {
     }, [])
 
     return (
-        <div className="bg-background h-screen overflow-y-scroll">
+        <div className=" h-screen overflow-y-scroll">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex flex-row justify-center items-center p-10 gap-6">
                     <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain"/>
                     <img src="/assets/g20c20.png" alt="g20c20_logo" className="object-contain"/>
                 </div>
-                <div className="flex flex-row gap-4">
+                <div className="flex flex-row gap-4 ">
                     <div className="w-3/4">
-                        <div className="bg-white rounded-xl p-1">
+                        <div className="bg-white rounded-xl bg-gray-300/20 p-2">
                             <div
-                                className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
+                                className="w-full flex flex-row  rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
-                                    <div className="text-white text-5xl">
+                                    <div className="text-white font-bold text-5xl">
                                         Hello, {user}
                                     </div>
-                                    <div className="text-white font-light text-lg pt-2">
+                                    <div className="text-white font-medium text-lg pt-2">
                                         Welcome to Innopsi!
                                     </div>
                                 </div>
-                                <div className="float-right">
+                                <div className="float-right ml-10 text-white">
                                     Space for image
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-4">
+                        <div className="pt-4 border mt-2 rounded-2xl">
                             <div className="bg-white rounded-xl p-2">
                                 <Tabs defaultValue="editProfile">
                                     <Tabs.List>
@@ -75,7 +75,7 @@ export default function Dashboard( props :any) {
 
                                     <Tabs.Panel value="editProfile" pt="xs">
                                         <div className="px-8 py-4 flex flex-col w-full">
-                                            <div className="text-gray-700 border-gray-300/30 border-b-2 text-3xl">
+                                            <div className="text-gray-700 font-bold border-gray-300/30 border-b-2 mb-2 text-3xl">
                                                 Edit Profile
                                             </div>
                                             <div>
@@ -83,12 +83,12 @@ export default function Dashboard( props :any) {
                                                     Profile Picture
                                                 </div>
                                                 <div className="flex justify-start items-center flex-row">
-                                                    <Avatar radius="xl" size="xl"
+                                                    <Avatar radius="xl" size="lg" className="w-40 h-40 rounded-full shadow-xl"
                                                             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"/>
-                                                    <div className="flex flex-col gap-2">
-                                                        <Button variant="outline" color="blue"
+                                                    <div className="flex flex-col  gap-2">
+                                                        <Button variant="outline" color="blue" fullWidth
                                                                 className="ml-4">Upload</Button>
-                                                        <Button variant="outline" color="red"
+                                                        <Button variant="outline" color="red" fullWidth
                                                                 className="ml-4">Delete</Button>
                                                     </div>
                                                 </div>
