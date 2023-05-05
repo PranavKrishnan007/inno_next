@@ -53,7 +53,7 @@ export default function Home(){
   return(
       <div className="absolute">
           <div className="flex justify-between mx-20 my-4 align-text-bottom	">
-            <h2 className="flex gap-10" >
+            <h2 className="flex gap-10"  onClick={()=>{push('/')} } >
               <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 p-1 object-contain" />
               <img src="/assets/g20c20.png" alt="g20c20_logo" className="h-10 p-1 object-contain" />
             </h2>

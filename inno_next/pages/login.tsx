@@ -65,7 +65,7 @@ export default function Login() {
     return (
         <div className="flex flex-row h-screen bg-background overflow-hidden">
             <div className="flex flex-col md:w-4/12 w-full bg-white rounded-l-3xl shadow-2xl md:p-20 p-10">
-                <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-20 object-contain" />
+                <img src="/assets/innopsi.png"  alt="innopsi_logo" className="h-20 object-contain" />
                 <h1 className="text-4xl pt-24 pb-2 font-bold w-full text-blue-950">Sign In</h1>
                 <div className="pb-10 text-md font-light">new to innopsi? <Link href='/register' className="text-blue-800 underline">Sign Up</Link> now!</div>
                 <div className="flex flex-col gap-2">
@@ -111,7 +111,7 @@ export default function Login() {
                     </div>
                     <div className="mt-5 flex justify-center items-center">
                         <Button onClick={submit} className="bg-blue-500 hover:bg-blue-600">
-                            Sign Up
+                            Sign In
                         </Button>
                     </div>
                     <div className="flex flex-col gap-2 mt-5">

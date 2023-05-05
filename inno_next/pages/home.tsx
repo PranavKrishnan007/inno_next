@@ -15,6 +15,7 @@ import ProblemCard from '@/components/Dashboard/ProblemCard';
 import InnovationCard from '@/components/Dashboard/InnovationCard';
 import HackathonCard from '@/components/Dashboard/HackathonCard';
 import { useAuth } from '@/utils/auth';
+import {useRouter} from "next/navigation";
 
 const testProblem =  [{
     title: 'Developing a Haptic Technology-based Skill Development Program ',
@@ -142,6 +143,7 @@ export default function Listings() {
         }
 
     }, [activeTab])
+    const {push} = useRouter();
 
     return (
         <div className="">
@@ -173,8 +175,12 @@ export default function Listings() {
                                     </div>
                                 </div>
                                 <div className="w-1/3 bg-gray-300/30 p-1 rounded-lg border-2 border-white">
-                                    <Button className="bg-primary hover:bg-orange-500/90 w-full text-white">
+                                    <Button
+                                        className="bg-primary hover:bg-orange-500/90 w-full text-white"
+                                        onClick={() => {activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : push('/home')}}
+                                    >
                                         {activeTab === 0 ? "Create Problems" : activeTab === 1 ? " Create Innovations" : "Create Hackathons"}
+
                                     </Button>
                                 </div>
                             </div>
