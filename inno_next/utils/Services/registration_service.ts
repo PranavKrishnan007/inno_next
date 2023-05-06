@@ -75,7 +75,6 @@ export const submitGenericUser = async (data: any): Promise<any> => {
         })
     })
   } catch (err) {
-    console.log(err)
     toast.error('Something went wrong')
     return
   }
@@ -143,7 +142,6 @@ export const login = async (data: any): Promise<any> => {
         axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
       })
       .catch((err) => {
-        console.log(err)
         toast.error('Invalid Credentials')
       })
   })
