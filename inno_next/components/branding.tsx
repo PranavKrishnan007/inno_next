@@ -1,3 +1,4 @@
+import { useAuth } from "@/utils/auth";
 import { Avatar, Menu } from "@mantine/core"
 import { IconLogout, IconSettings } from "@tabler/icons-react"
 import Link from "next/link";
@@ -5,7 +6,7 @@ import {useRouter} from "next/navigation";
 
 const Branding = () => {
     const {push} = useRouter();
-
+    const {logout} = useAuth() as any
     return (
         <div className="flex flex-col md:flex-row w-full relative justify-center items-center  gap-4 md:gap-10">
             <img src="/assets/innopsi.png" alt="innopsi_logo" onClick={()=>{push('/home')}} className="h-20 object-contain" />
@@ -17,7 +18,7 @@ const Branding = () => {
                     </Menu.Target>
                     <Menu.Dropdown>
                         <Menu.Item icon={<IconSettings size={14} />}> <Link href='/dashboard' >Dashboard</Link></Menu.Item>
-                        <Menu.Item icon={<IconLogout size={14} />}>Log Out</Menu.Item>
+                        <Menu.Item icon={<IconLogout size={14} /> } onClick={logout} >Log Out</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
             </div>

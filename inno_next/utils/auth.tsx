@@ -1,8 +1,5 @@
-// contexts/auth.js
-
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import Cookies from 'js-cookie'
-// import Router, { useRouter } from 'next/router'
 import { axhttp } from './Services'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
@@ -14,13 +11,12 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState<IUser>()
   const [loading, setLoading] = useState(true)
   const router = useRouter()
+
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get('token')
-
       if (token) {
         const userData = JSON.parse(Cookies.get('user') as string)
-        console.log("Got a token in the cookies, let's see if it is valid")
         axhttp.defaults.headers.Authorization = `Bearer ${token}`
         console.log('Got user', userData)
         if (userData) {
@@ -39,27 +35,34 @@ export const AuthProvider = ({ children }) => {
       toast.error('Email and Password are required')
       return
     }
-    const res:any = await axhttp.post('/auth/local', {
-      identifier: email,
-      password: password,
-    })
-
-    if(res.user) {
-      const user = await axhttp.get(`/users/${res.user.id}?populate=*`)
-      setUser(user as unknown as IUser )
-      Cookies.set('token', res.jwt)
-      Cookies.set('user', JSON.stringify(user))
-      axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
-      router.push('/dashboard')
+   
+    try {
+      const res:any = await axhttp.post('/auth/local', {
+        identifier: email,
+        password: password,
+      })
+  
+      if(res.user) {
+        console.log(axhttp.defaults.headers)
+        const user = await axhttp.get(`/users/${res.user.id}?populate=*`)
+        setUser(user as unknown as IUser )
+        Cookies.set('token', res.jwt)
+        Cookies.set('user', JSON.stringify(user))
+        axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
+        router.push('/dashboard')
+      }
+    }
+    catch (err) {
+      toast.error('Invalid Credentials')
     }
     
   }
 
   const logout = (email: string, password: string) => {
-    Cookies.remove('token')
     setUser(undefined)
-    delete axhttp.defaults.headers.Authorization
-    window.location.pathname = '/login'
+    Cookies.set('token', process.env.API_TOKEN as string)
+    axhttp.defaults.headers.common['Authorization'] = `Bearer ${process.env.API_TOKEN}`
+    router.push('/login')
   }
 
   return (
