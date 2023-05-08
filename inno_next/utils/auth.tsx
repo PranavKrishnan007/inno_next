@@ -14,11 +14,11 @@ export const AuthProvider = ({ children } : any) => {
 
   useEffect(() => {
     async function loadUserFromCookies() {
+      const user = Cookies.get('user')
       const token = Cookies.get('token')
-      if (token) {
+      if (user) {
         const userData = JSON.parse(Cookies.get('user') as string)
         axhttp.defaults.headers.Authorization = `Bearer ${token}`
-        console.log('Got user', userData)
         if (userData) {
           setUser(userData)
           if (window.location.pathname === '/login' || window.location.pathname === '/register')
@@ -61,6 +61,7 @@ export const AuthProvider = ({ children } : any) => {
   const logout = (email: string, password: string) => {
     setUser(undefined)
     Cookies.set('token', process.env.API_TOKEN as string)
+    Cookies.remove('user')
     axhttp.defaults.headers.common['Authorization'] = `Bearer ${process.env.API_TOKEN}`
     router.push('/login')
   }

@@ -24,7 +24,7 @@ export interface IProblem {
   tags: number[] | string[]
   badges?: string[]
   status?: string
-  author?: string
+  author?: number
   innovations?: IInnovation[]
   content: string
 }

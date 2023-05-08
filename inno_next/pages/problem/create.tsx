@@ -1,6 +1,6 @@
 import { useQuill} from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
-import { Button, MultiSelect } from '@mantine/core'
+import { Button } from '@mantine/core'
 import Branding from '@/components/branding'
 import { IProblem } from '@/utils/Interfaces'
 import { useState } from 'react'
@@ -29,6 +29,7 @@ export default function CreateProblem() {
     })
 
     const handleProblemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value, e.target.id)
         setProblem({
             ...problem,
             [e.target.id]: e.target.value
@@ -46,7 +47,7 @@ export default function CreateProblem() {
         const problemData:IProblem = {
             ...problem,
             content : quill.root.innerHTML,
-            author : user.id,
+            author : user.id as number,
         }
         createProblem(problemData)
 
@@ -85,7 +86,7 @@ export default function CreateProblem() {
                             Problem Title
                         </label>
                         <input
-                            onChange={() => (handleProblemChange)}
+                            onChange={handleProblemChange}
                             className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                             id='title'
                             type='text'
@@ -97,7 +98,7 @@ export default function CreateProblem() {
                             Description
                         </label>
                         <input
-                            onChange={() => (handleProblemChange)}
+                            onChange={handleProblemChange}
                             className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                             id='description'
                             type='text'
