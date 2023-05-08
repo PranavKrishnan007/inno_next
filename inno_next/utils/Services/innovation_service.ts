@@ -6,6 +6,7 @@ const responseHandler = (response: any) => {
   if (response && response.data) {
     return response.data
   }
+  return false
 }
 
 export const createInnovation = async (innovation: IInnovation): Promise<IInnovation> => {
@@ -30,6 +31,7 @@ export const deleteInnovation = async (innovationId: string): Promise<any> => {
 
 export const getAllInnovations = async (): Promise<IInnovation[]> => {
   const res = responseHandler((await axhttp.get('/innovations/')) as IStrapiServerData[])
+  if (!res) return []
   return res.map((innovation: IStrapiServerData) => {
     innovation.attributes.id = innovation.id
     return innovation.attributes as IInnovation
@@ -40,6 +42,7 @@ export const getInnovationsByUser = async (userId: string): Promise<IInnovation[
   const res = responseHandler(
     (await axhttp.get(`/innovations?filters[user]=${userId}`)) as IStrapiServerData[],
   )
+  if (!res) return []
   return res.map((innovation: IStrapiServerData) => {
     innovation.attributes.id = innovation.id
     return innovation.attributes as IInnovation
