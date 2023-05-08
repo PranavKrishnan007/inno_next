@@ -1,13 +1,14 @@
-import { useQuill } from 'react-quilljs'
+import { useQuill} from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
 import { Button, MultiSelect } from '@mantine/core'
 import Branding from '@/components/branding'
 import { IProblem } from '@/utils/Interfaces'
 import { useState } from 'react'
+import { useLayoutEffect } from 'react'
+import { fileUpload } from '@/utils/Services'
 
 export default function CreateProblem() {
-    const { quill, quillRef } = useQuill()
-    console.log(quill, quillRef)
+    const { quill, quillRef } = useQuill(    )
 
     const [problem, setProblem] = useState<IProblem>({
         title: '',
@@ -17,6 +18,12 @@ export default function CreateProblem() {
         tags: [],
     })
 
+    useLayoutEffect(()=>{
+        if(quill) {
+            quill.getModule('toolbar').addHandler('image', imageHandler)
+        }
+    })
+
     const handleProblemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setProblem({
             ...problem,
@@ -24,6 +31,37 @@ export default function CreateProblem() {
         })
     }
 
+    const handleSelectChange = (e : string[]) => {
+        setProblem({
+            ...problem,
+            tags : e
+        })
+    }
+
+    const submit = ()=> {
+        const problemData:IProblem = {
+            ...problem,
+            content : quill.root.innerHTML
+        }
+        console.log(quill)
+        console.log(problemData)
+    }
+
+    const imageHandler = async () =>{
+        const input = document.createElement('input');  
+  
+        input.setAttribute('type', 'file');  
+        input.setAttribute('accept', 'image/*');  
+        input.click();  
+
+
+        input.onchange = async (e:any) => {  
+            const imageData = await fileUpload(e);
+            if(!imageData) return 
+            const range = quill.getSelection();
+            quill.insertEmbed(range.index, 'image', imageData.value )
+        }; 
+    }
 
     return (
         <div className="bg-background">
@@ -42,9 +80,9 @@ export default function CreateProblem() {
                             Problem Title
                         </label>
                         <input
-                            onChange={() => (null)}
+                            onChange={() => (handleProblemChange)}
                             className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                            id='problemTitle'
+                            id='title'
                             type='text'
                             placeholder='Problem Title'
                         />
@@ -54,9 +92,9 @@ export default function CreateProblem() {
                             Description
                         </label>
                         <input
-                            onChange={() => (null)}
+                            onChange={() => (handleProblemChange)}
                             className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                            id='problemDescription'
+                            id='description'
                             type='text'
                             placeholder='Description'
                         />
@@ -82,10 +120,11 @@ export default function CreateProblem() {
                             searchable
                             className='focus:border-primary focus:border-2'
                             nothingFound='No tags found'
+                            onChange={handleSelectChange}
                         />
                     </div>
                     <div className='pt-5'>
-                        <Button type='submit' variant='outline'>Submit for Moderation</Button>
+                        <Button onClick={submit} variant='outline'>Submit for Moderation</Button>
                     </div>
                 </form>
             </div>

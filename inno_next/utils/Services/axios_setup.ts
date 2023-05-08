@@ -22,15 +22,18 @@ axhttp.interceptors.response.use(
     return response.data
   },
   async (error) => {
-    if (error.response?.data?.error?.details?.details?.errors[0]?.message) {
-      toast.error(
-        error.response.data.error.details.details.errors[0].message +
-          ' ' +
-          error.response.data.error.details.details.errors[0].path[0],
-      )
-      return
+    console.log(error)
+    if (error.response?.data?.error) {
+      if (error.response.data.error.details?.details) {
+        toast.error(
+          error.response.data.error.details?.details.errors[0].message +
+            ' ' +
+            error.response.data.error.details?.details.errors[0].path[0],
+        )
+        return
+      }
     }
-    toast.error('Network Error')
+    toast.error(error.response?.data?.error?.message)
   },
 )
 
