@@ -193,7 +193,7 @@ export default function Listings() {
                                         <div className=" border-2   flex flex-col  rounded-2xl p-2">
                                             {activeTab === 0 &&
                                                 testProblem.map((problem, index) => (
-                                                    <ProblemCard {...problem} key={index}/>
+                                                    <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'}/>
                                                 ))
                                             }
                                             {activeTab === 1 &&
