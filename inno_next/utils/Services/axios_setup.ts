@@ -22,7 +22,7 @@ axhttp.interceptors.response.use(
     return response.data
   },
   async (error) => {
-    if (error.response.data.error.details?.details?.errors[0]?.message) {
+    if (error.response?.data?.error?.details?.details?.errors[0]?.message) {
       toast.error(
         error.response.data.error.details.details.errors[0].message +
           ' ' +
@@ -30,8 +30,7 @@ axhttp.interceptors.response.use(
       )
       return
     }
-    toast.error('Something went wrong')
-    return Promise.reject(error)
+    toast.error('Network Error')
   },
 )
 
