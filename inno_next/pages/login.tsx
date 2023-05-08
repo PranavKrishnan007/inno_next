@@ -167,11 +167,11 @@ export default function Login() {
                   <div className="flex flex-col gap-4">
                       <div className="flex flex-col">
                           <label className="text-white ml-1 text-lg font-light">Email</label>
-                          <input type="text" className="border-2 border-white rounded-lg p-2 max-w-xl text-white placeholder:text-white/50" placeholder="Enter your Email."/>
+                          <input type="text" className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50" placeholder="Enter your Email."/>
                       </div>
                       <div className="flex flex-col">
                           <label className="text-lg font-light ml-1 text-white">Password</label>
-                          <input type="password" className="border-2 border-white rounded-lg p-2 text-white placeholder:text-white/50" placeholder="Enter your Password."/>
+                          <input type="password" className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50" placeholder="Enter your Password."/>
                           <div className="flex justify-end text-lg font-light text-hover-primary">Forgot Password?</div>
                       </div>
                   </div>
