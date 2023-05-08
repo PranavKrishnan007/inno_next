@@ -107,7 +107,7 @@ export default function Home(){
           </div>
           <div className="xl:w-1/2 flex p-10 m-4 h-fit my-auto xl:bg-white  rounded-3xl">
             <img src="/assets/illustration-12.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl"  />
-        </div>  
+        </div>
         </div>
         <div className="flex-1  bg-blue-950   py-12 text-white mx-auto text-center my-auto text-left text-blue-950 ">
           <h4 className="text-xl md:text-2xl font-medium tracking-wide ">
@@ -154,10 +154,9 @@ export default function Home(){
              Glimpse of Challenges...
           </h4>
         <div className="flex flex-col px-20 mx-auto gap-3 my-6">
-          { problems.map((problem, index) => (
-                  <ProblemCard {...problem} key={index}/>
-              ))
-          }
+          {problems.map((problem, index) => (
+            <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'}/>
+          ))}
         </div>
         <div className="flex-1   mx-auto  px-32 py-12  my-auto text-left text-blue-950 ">
           <h4 className="text-2xl md:text-2xl my-4 font-bold tracking-wide ">

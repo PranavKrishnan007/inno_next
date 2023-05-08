@@ -7,7 +7,7 @@ import { IUser } from './Interfaces'
 
 const AuthContext = createContext({})
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children } : any) => {
   const [user, setUser] = useState<IUser>()
   const [loading, setLoading] = useState(true)
   const router = useRouter()
@@ -35,13 +35,13 @@ export const AuthProvider = ({ children }) => {
       toast.error('Email and Password are required')
       return
     }
-   
+
     try {
       const res:any = await axhttp.post('/auth/local', {
         identifier: email,
         password: password,
       })
-  
+
       if(res.user) {
         console.log(axhttp.defaults.headers)
         const user = await axhttp.get(`/users/${res.user.id}?populate=*`)
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     catch (err) {
       toast.error('Invalid Credentials')
     }
-    
+
   }
 
   const logout = (email: string, password: string) => {

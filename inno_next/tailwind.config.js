@@ -16,7 +16,7 @@ module.exports = {
         'hover-primary': '#fb923c',
         secondary: '#3b82f6',
         'secondary-contrast': '#172554',
-        background: '#38bdf833',
+        background: '#1B3381',
         'field-background': '#9ca3af33'
       }
     }

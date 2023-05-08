@@ -5,7 +5,7 @@ import StarterKit from '@tiptap/starter-kit';
 import ListItem from '@tiptap/extension-list-item';
 import { IconBold, IconItalic,IconH1,IconH2, IconH3, IconClearAll, IconArrowBack, IconList, IconStrikethrough, IconCode} from '@tabler/icons-react';
 
-const MenuBar = ({ editor }) => {
+const MenuBar = ({ editor } : any) => {
   if (!editor) {
     return null
   }
@@ -62,7 +62,6 @@ const MenuBar = ({ editor }) => {
         }
         className={editor.isActive('code') ? 'is-active' : ''}
       >
-        <Icon/>
       </button>
       <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
         clear marks
@@ -166,7 +165,7 @@ const MenuBar = ({ editor }) => {
       >
         redo
       </button>
-      
+
     </>
   )
 }

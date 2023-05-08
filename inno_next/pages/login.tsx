@@ -160,7 +160,7 @@ export default function Login() {
         //     </div>
         // </div>
       <div className="flex flex-row h-screen">
-          <div className="md:w-1/2 w-full bg-blue-800 h-full justify-center items-center flex flex-col">
+          <div className="md:w-1/2 w-full bg-background h-full justify-center items-center flex flex-col">
               <div className="flex flex-col px-2 w-96">
                   <h1 className="text-white text-5xl py-2 font-semibold">Sign In</h1>
                   <div className="pb-10 text-white text-lg font-light">Welcome back! Please enter your details</div>
