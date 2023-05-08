@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 const problem = {
     title: "Problem Title",
     url: "/assets/amrita-tec.jpg",
-    description: "<p>Problem somethings</p>"
+    description: '<p class="ql-indent-6">asdasd<img src="http://localhost:1337/uploads/Screenshot_from_2023_05_02_22_14_52_66aea64fce.png"> </p><p class="ql-indent-2">asdasd </p><p class="ql-indent-2">asd as</p><p class="ql-indent-2">d </p><p class="ql-indent-2">asd</p><p class="ql-indent-2"> a</p><p class="ql-indent-2">sd </p>'
 };
 
 export default function Problem() {

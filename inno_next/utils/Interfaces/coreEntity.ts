@@ -12,7 +12,7 @@ export interface IInnovation {
   tags?: number[] | string[]
   badges?: string[]
   status: string
-  createdBy?: string
+  author?: string
   content: string
 }
 
@@ -24,7 +24,7 @@ export interface IProblem {
   tags: number[] | string[]
   badges?: string[]
   status?: string
-  createdBy?: string
+  author?: string
   innovations?: IInnovation[]
   content: string
 }
@@ -47,4 +47,12 @@ export interface IHackathon {
   participants: string[]
   accepted?: boolean
   enduser?: number
+}
+
+export interface ITags {
+  id?: number
+  title?: string
+  innovations?: string[] | number[] | IInnovation[]
+  problems?: string[] | number[] | IProblem[]
+  hackathons?: string[] | number[] | IHackathon[]
 }

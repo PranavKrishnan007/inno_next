@@ -5,10 +5,14 @@ import Branding from '@/components/branding'
 import { IProblem } from '@/utils/Interfaces'
 import { useState } from 'react'
 import { useLayoutEffect } from 'react'
-import { fileUpload } from '@/utils/Services'
+import { createProblem, fileUpload } from '@/utils/Services'
+import { useAuth } from '@/utils/auth'
+import { TagSelector } from '@/components/tagSelector'
+
 
 export default function CreateProblem() {
-    const { quill, quillRef } = useQuill(    )
+    const { quill, quillRef } = useQuill()
+    const {user} = useAuth() as any
 
     const [problem, setProblem] = useState<IProblem>({
         title: '',
@@ -41,10 +45,11 @@ export default function CreateProblem() {
     const submit = ()=> {
         const problemData:IProblem = {
             ...problem,
-            content : quill.root.innerHTML
+            content : quill.root.innerHTML,
+            author : user.id,
         }
-        console.log(quill)
-        console.log(problemData)
+        createProblem(problemData)
+
     }
 
     const imageHandler = async () =>{
@@ -113,15 +118,7 @@ export default function CreateProblem() {
                         <label className='block text-gray-700 text-2xl font-medium mb-2'>
                             Tags
                         </label>
-                        <MultiSelect
-                            data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
-                            placeholder="Select a tag"
-                            transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
-                            searchable
-                            className='focus:border-primary focus:border-2'
-                            nothingFound='No tags found'
-                            onChange={handleSelectChange}
-                        />
+                        <TagSelector createable={true} onChange={handleSelectChange} id="tagSelector"></TagSelector>
                     </div>
                     <div className='pt-5'>
                         <Button onClick={submit} variant='outline'>Submit for Moderation</Button>
