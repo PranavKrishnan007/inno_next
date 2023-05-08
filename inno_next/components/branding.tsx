@@ -5,10 +5,7 @@ import Link from "next/link";
 import {useRouter} from "next/navigation";
 
 const Branding = () => {
-<<<<<<< HEAD
     const {push} = useRouter();
-=======
->>>>>>> main
     const {logout} = useAuth() as any
     return (
         <div className="flex flex-col md:flex-row w-full relative justify-center items-center  gap-4 md:gap-10">
