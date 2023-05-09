@@ -9,8 +9,8 @@ export default function HackathonCard(hackathon: IHackathon) {
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
         <div className='min-w-max my-auto'>
           <Image
-            src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
-            // src={innovation.image}
+            // src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+            src={hackathon.header_img}
             height='160'
             alt='Norway'
             radius='md'
