@@ -5,6 +5,7 @@ import { IInnovation } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
 
 export default function InnovationCard(innovation: IInnovation) {
+  console.log(innovation)
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
@@ -35,7 +36,7 @@ export default function InnovationCard(innovation: IInnovation) {
             >
               Go to problem <IconArrowRight />
             </Button>
-            <TagDisplayer tags={innovation.tags as any} ></TagDisplayer>
+            <TagDisplayer tags={innovation.tags} ></TagDisplayer>
           </div>
         </div>
       </Card>

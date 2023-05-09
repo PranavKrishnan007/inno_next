@@ -22,7 +22,7 @@ export const deleteInnovation = async (innovationId: string): Promise<any> => {
 }
 
 export const getAllInnovations = async (): Promise<IInnovation[]> => {
-  const res = responseHandler((await axhttp.get('/innovations/')) as IStrapiServerData[])
+  const res = responseHandler((await axhttp.get('/innovations?populate=*')) as IStrapiServerData[])
   if (!res) return []
   return res?.map((innovation: IStrapiServerData) => {
     innovation.attributes.id = innovation.id
