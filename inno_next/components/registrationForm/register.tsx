@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from 'react'
 import { IUser, IOrganisation, IGenericUser } from "@/utils/Interfaces"
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
@@ -7,8 +7,10 @@ import clsx from 'clsx'
 
 export default function RegisterForm() {
 
-  const [loginSection, setLoginSection] = useState(0)
-  const [orgOrUser, setOrgOrUser] = useState(0)
+  const [loginSection, setLoginSection] = useState(0);
+  const [orgOrUser, setOrgOrUser] = useState(0);
+  const [pass, setPass] = useState('');
+  const [checkPass, setCheckPass] = useState('');
 
   const setUser = ({ value }: { value: number }) => {
     setOrgOrUser(value)
@@ -45,24 +47,25 @@ export default function RegisterForm() {
   }
 
   const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
+    e: CustomEvent | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const { id, value, type } = e.target
-    console.log(id, value)
+    const { id, value, type } = e instanceof CustomEvent ? e.detail : e.target;
+    console.log(id, value);
 
     if (type === 'file') {
       fileUpload(e as React.ChangeEvent<HTMLInputElement>)
         .then((res) => {
-          updateState(id, res.value)
+          updateState(id, res.value);
         })
         .catch((err) => {
-          console.log(err)
-        })
-      return
+          console.log(err);
+        });
+      return;
     }
 
-    updateState(id, value)
-  }
+    updateState(id, value);
+  };
+
 
   const updateState = (id: string, value: string) => {
     id in genericForm
@@ -80,6 +83,28 @@ export default function RegisterForm() {
           [id]: value,
         }))
   }
+
+  const handleGoBack = () => {
+    setLoginSection(loginSection - 1);
+    setPass('');
+    setCheckPass('');
+  }
+
+  useEffect(() => {
+    if (pass !== checkPass) {
+      console.log('Password does not match');
+    }
+    if (pass === checkPass && pass.length > 8) {
+      const event = new CustomEvent('input', {
+        detail: {
+          id: 'password',
+          value: pass,
+          type: 'text',
+        },
+      });
+      handleFormChange(event);
+    }
+  }, [pass, checkPass]);
 
   const nextScreen = () => {
     if (loginSection === 4 && orgOrUser === 0) {
@@ -186,16 +211,26 @@ export default function RegisterForm() {
                   <label className="text-lg font-light ml-1 text-white">Password</label>
                   <input id='password'
                          type="password"
-                         className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
+                         className={clsx([
+                           "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
+                           pass !== checkPass && "border-red-500",
+                         ])}
                          placeholder="Enter your password"
+                         value={pass}
+                         onChange={(e) => setPass(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Confirm Password</label>
                   <input id='password'
                          type="password"
-                         className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
+                         className={clsx([
+                           "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
+                            pass !== checkPass && "border-red-500",
+                         ])}
                          placeholder="Confirm your password"
+                         value={checkPass}
+                         onChange={(e) => setCheckPass(e.target.value)}
                   />
                 </div>
               </div>
@@ -273,6 +308,8 @@ export default function RegisterForm() {
                   <input type="password"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
                          placeholder="Enter your password"
+                         value={pass}
+                         onChange={(e) => setPass(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -280,6 +317,8 @@ export default function RegisterForm() {
                   <input type="password"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
                          placeholder="Confirm your password"
+                         value={checkPass}
+                         onChange={(e) => setCheckPass(e.target.value)}
                   />
                 </div>
               </div>
@@ -378,7 +417,7 @@ export default function RegisterForm() {
           <div className="flex flex-row gap-4 justify-center py-5 w-full">
             {loginSection > 0 && (
               <button className="bg-hover-primary text-lg font-medium text-white w-full rounded-lg p-2"
-                      onClick={() => setLoginSection(loginSection - 1)}
+                      onClick={() => handleGoBack()}
               >
                 Go back
               </button>
