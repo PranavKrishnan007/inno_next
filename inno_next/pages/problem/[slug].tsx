@@ -3,7 +3,7 @@ import { IProblem } from "@/utils/Interfaces";
 import { getProblem } from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Problem() {
 
@@ -17,13 +17,13 @@ export default function Problem() {
         tags  :[]
       });
     
-      useLayoutEffect( () => {
+      useEffect( () => {
         slug ? getProblem(slug as string).then(res => {
           console.log(res)
           setProblems(res);
         }
         ) : null;
-      })
+      },[])
 
     return (
         <div className="">

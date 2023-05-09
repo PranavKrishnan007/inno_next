@@ -3,15 +3,14 @@ import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } 
 import { IconArrowRight } from '@tabler/icons-react'
 import { IInnovation } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
+import { router } from 'next/client'
 
 export default function InnovationCard(innovation: IInnovation) {
-  console.log(innovation)
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
         <div className='min-w-max my-auto'>
           <Image
-            // src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
             src={innovation.header_img}
             height='160'
             alt='Norway'
@@ -33,6 +32,7 @@ export default function InnovationCard(innovation: IInnovation) {
               mt='md'
               radius='md'
               className='bg-blue-100 hover:bg-blue-200 my-4 md:mr-5'
+              onClick={() => router.push(`/innovation/${innovation.id}`)}
             >
               Go to problem <IconArrowRight />
             </Button>

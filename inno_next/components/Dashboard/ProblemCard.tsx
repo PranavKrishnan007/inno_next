@@ -3,10 +3,10 @@ import {  Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
 import { IProblem } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
+import { router } from 'next/client'
 
 
 export default function ProblemCard(problem: IProblem) {
-  console.log(problem)
   return (
     <div >
       <Card className='flex border-b gap-1'  padding='sm'  >
@@ -33,6 +33,7 @@ export default function ProblemCard(problem: IProblem) {
               mt='md'
               radius='sm'
               className=' hover:bg-blue-500 transition  ease-in-out hover:text-white my-4 md:mr-5'
+              onClick={() => router.push(`/problem/${problem.id}`)}
             >
               <span className="">Go to Challenge</span>
               <IconArrowRight />

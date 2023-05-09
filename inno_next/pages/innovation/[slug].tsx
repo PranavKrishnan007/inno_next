@@ -3,7 +3,7 @@ import { IInnovation } from "@/utils/Interfaces";
 import { getInnovation } from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Innovation() {
@@ -16,13 +16,12 @@ export default function Innovation() {
     description : ''
   });
 
-  useLayoutEffect( () => {
+  useEffect( () => {
     slug ? getInnovation(slug as string).then(res => {
-      console.log(res)
       setInnovation(res);
     }
     ) : null;
-  })
+  }, [])
 
 
   return (
