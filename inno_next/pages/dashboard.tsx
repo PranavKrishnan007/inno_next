@@ -10,7 +10,7 @@ import { useAuth } from "@/utils/auth";
 import { IUser } from "@/utils/Interfaces";
 import {useRouter} from "next/navigation";
 import Branding from "@/components/branding";
-// const user = "Someone"; 
+// const user = "Someone";
 export default function Dashboard( props :any) {
 
     const [problems, setProblems] = useState<IProblem[]>([]);
@@ -26,7 +26,7 @@ export default function Dashboard( props :any) {
             getAllInnovations().then((res:IInnovation[]) => {
                 setInnovations(res)
             })
-            
+
             getAllHackathons().then((res:IHackathon[]) => {
                 setHackathons(res)
             })
@@ -92,7 +92,7 @@ export default function Dashboard( props :any) {
                                             </div>
                                             <div>
                                                 <div className="pt-5 text-gray-500 font-medium pb-1">
-                                                    Name 
+                                                    Name
                                                 </div>
                                                 <TextInput
                                                     placeholder="Your name"
@@ -134,7 +134,7 @@ export default function Dashboard( props :any) {
 
                                     <Tabs.Panel value="problems" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {problems.map((problem:IProblem, index:number) => (
+                                            {problems?.map((problem:IProblem, index:number) => (
                                                 <ProblemCard {...problem} key={index}/>
                                             ))}
                                         </div>
@@ -142,7 +142,7 @@ export default function Dashboard( props :any) {
 
                                     <Tabs.Panel value="innovations" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {innovations.map((innovation:IInnovation, index:number) => (
+                                            {innovations?.map((innovation:IInnovation, index:number) => (
                                                 <InnovationCard {...innovation} key={index}/>
                                             ))}
                                         </div>
@@ -150,7 +150,7 @@ export default function Dashboard( props :any) {
 
                                     <Tabs.Panel value="hackathons" pt="xs">
                                         <div className="px-8 py-4 flex flex-col gap-3  w-full">
-                                            {hackathons.map((hackathon:IHackathon, index:number) => (
+                                            {hackathons?.map((hackathon:IHackathon, index:number) => (
                                                 <HackathonCard {...hackathon} key={index}/>
                                             ))}
                                         </div>

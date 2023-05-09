@@ -4,6 +4,7 @@ import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/utils/Services";
 import clsx from 'clsx'
+import { toast } from 'react-toastify'
 
 export default function RegisterForm() {
 
@@ -107,6 +108,16 @@ export default function RegisterForm() {
   }, [pass, checkPass]);
 
   const nextScreen = () => {
+    if (loginSection === 2 && pass.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+      return;
+    }
+
+    if (loginSection === 2 && pass !== checkPass) {
+      toast.error('Password does not match');
+      return;
+    }
+
     if (loginSection === 4 && orgOrUser === 0) {
       submitGenericUser({ userForm, genericForm })
       return
@@ -213,7 +224,7 @@ export default function RegisterForm() {
                          type="password"
                          className={clsx([
                            "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
-                           pass !== checkPass && "border-red-500",
+                           pass !== checkPass && "!border-red-500",
                          ])}
                          placeholder="Enter your password"
                          value={pass}
@@ -226,7 +237,7 @@ export default function RegisterForm() {
                          type="password"
                          className={clsx([
                            "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
-                            pass !== checkPass && "border-red-500",
+                            pass !== checkPass && "!border-red-500",
                          ])}
                          placeholder="Confirm your password"
                          value={checkPass}
@@ -306,7 +317,10 @@ export default function RegisterForm() {
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Password</label>
                   <input type="password"
-                         className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
+                         className={clsx([
+                           "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
+                           pass !== checkPass && "!border-red-500",
+                         ])}
                          placeholder="Enter your password"
                          value={pass}
                          onChange={(e) => setPass(e.target.value)}
@@ -315,7 +329,10 @@ export default function RegisterForm() {
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Confirm Password</label>
                   <input type="password"
-                         className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
+                         className={clsx([
+                           "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
+                           pass !== checkPass && "!border-red-500",
+                         ])}
                          placeholder="Confirm your password"
                          value={checkPass}
                          onChange={(e) => setCheckPass(e.target.value)}

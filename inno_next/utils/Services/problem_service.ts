@@ -10,9 +10,9 @@ const responseHandler = (response: any) => {
 }
 
 export const getAllProblems = async (): Promise<IProblem[]> => {
-  const res = responseHandler((await axhttp.get('/problems/')) as IStrapiServerData[])
+  const res = responseHandler((await axhttp.get('/problems?populate=*')) as IStrapiServerData[])
   if (!res) return []
-  return res.map((problem: IStrapiServerData) => {
+  return res?.map((problem: IStrapiServerData) => {
     problem.attributes.id = problem.id
     return problem.attributes as IProblem
   })
@@ -23,7 +23,7 @@ export const getProblemsByUser = async (userId: string): Promise<IProblem[]> => 
     (await axhttp.get(`/problems?filters[user]=${userId}`)) as IStrapiServerData[],
   )
   if (!res) return []
-  return res.map((problem: IStrapiServerData) => {
+  return res?.map((problem: IStrapiServerData) => {
     problem.attributes.id = problem.id
     return problem.attributes as IProblem
   })

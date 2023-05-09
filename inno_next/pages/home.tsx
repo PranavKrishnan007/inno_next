@@ -17,38 +17,38 @@ import HackathonCard from '@/components/Dashboard/HackathonCard';
 import { useAuth } from '@/utils/auth';
 import {useRouter} from "next/navigation";
 
-const testProblem =  [{
-    title: 'Developing a Haptic Technology-based Skill Development Program ',
-    description: 'Skill development is crucial for the growth and development of individuals and communities.' +
-        ' However, traditional skill development programs often face challenges such as lack of access,' +
-        ' low participation rates, and limited feedback mechanisms. The use of haptic technology in skill ' +
-        'development programs has the potential to enhance the learning experience and improve the effectiveness of the program...',
-    tag1:'Haptic Technology',
-    tag2:'Smart Learning',
-    tag3:'Skill Development',
-},
-    {
-        title: 'Developing Coir Fibre for Sustainable Cooling Systems',
-        description: 'The use of conventional refrigeration systems for cooling contributes significantly to global' +
-            ' warming and is unsustainable. Coir fibre is a natural, renewable material that has shown promise as a' +
-            ' sustainable alternative for cooling systems. Coir fibre has excellent moisture absorption properties and ' +
-            'can be used to regulate temperature and humidity. ',
-        tag1:'Eco-friendly Cooling',
-        tag2:'Coir Fibre',
-        tag3:'Sustainability',
-    },
-    {
-        title: 'Developing an IoT Room for the Elderly',
-        description: ' As the population ages, there is a growing need for smart technologies ' +
-            'that can enhance the quality of life of the elderly. One of the key challenges faced by' +
-            ' the elderly is a loss of independence due to physical and cognitive limitations. Smart technologies,' +
-            ' such as the Internet of Things (IoT), can play a significant role in addressing these challenges and' +
-            ' improving the quality of life for the elderly. ',
-        tag1:'Smart IoT',
-        tag2:'Elderly Care',
-        tag3:'Health Care',
-    },
-]
+// const testProblem =  [{
+//     title: 'Developing a Haptic Technology-based Skill Development Program ',
+//     description: 'Skill development is crucial for the growth and development of individuals and communities.' +
+//         ' However, traditional skill development programs often face challenges such as lack of access,' +
+//         ' low participation rates, and limited feedback mechanisms. The use of haptic technology in skill ' +
+//         'development programs has the potential to enhance the learning experience and improve the effectiveness of the program...',
+//     tag1:'Haptic Technology',
+//     tag2:'Smart Learning',
+//     tag3:'Skill Development',
+// },
+//     {
+//         title: 'Developing Coir Fibre for Sustainable Cooling Systems',
+//         description: 'The use of conventional refrigeration systems for cooling contributes significantly to global' +
+//             ' warming and is unsustainable. Coir fibre is a natural, renewable material that has shown promise as a' +
+//             ' sustainable alternative for cooling systems. Coir fibre has excellent moisture absorption properties and ' +
+//             'can be used to regulate temperature and humidity. ',
+//         tag1:'Eco-friendly Cooling',
+//         tag2:'Coir Fibre',
+//         tag3:'Sustainability',
+//     },
+//     {
+//         title: 'Developing an IoT Room for the Elderly',
+//         description: ' As the population ages, there is a growing need for smart technologies ' +
+//             'that can enhance the quality of life of the elderly. One of the key challenges faced by' +
+//             ' the elderly is a loss of independence due to physical and cognitive limitations. Smart technologies,' +
+//             ' such as the Internet of Things (IoT), can play a significant role in addressing these challenges and' +
+//             ' improving the quality of life for the elderly. ',
+//         tag1:'Smart IoT',
+//         tag2:'Elderly Care',
+//         tag3:'Health Care',
+//     },
+// ]
 
 
 export function InputWithButton(props: TextInputProps) {
@@ -117,9 +117,7 @@ export default function Listings() {
     const { isAuthenticated, user } = useAuth() as any;
 
     useEffect(() => {
-        console.log(activeTab)
         if(activeTab == 0) {
-            console.log(isAuthenticated, user)
             getAllProblems().then((res:IProblem[]) => {
                 setProblems(res)
             })
@@ -154,7 +152,7 @@ export default function Listings() {
                         <div className="flex flex-row w-full gap-2 ">
                             <div className="bg-white w-full p-2 rounded-full">
                                 <div className="flex flex-row h-full justify-center shadow gap-1 p-1 items-center rounded-md bg-gray-300/30">
-                                    {tabs.map((tabName, index) => (
+                                    {tabs?.map((tabName, index) => (
                                         <div className={clsx([
                                             "flex justify-center items-center w-1/3 h-full p-2 rounded-md  font-semibold hover:bg-primary/80  hover:text-white transition duration-300 ease-in-out",
                                             activeTab === index ? "bg-primary text-white" : "text-gray-500"
@@ -190,16 +188,16 @@ export default function Listings() {
                                 <div className="bg-white rounded-2xl p-2">
                                     <div className=" border-2   flex flex-col  rounded-2xl p-2">
                                         {activeTab === 0 &&
-                                            testProblem.map((problem, index) => (
-                                                <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'}/>
+                                            problems?.map((problem, index) => (
+                                                <ProblemCard {...problem} key={index} />
                                             ))
                                         }
                                         {activeTab === 1 &&
-                                            innovations.map((innovation, index) => (
+                                            innovations?.map((innovation, index) => (
                                                 <InnovationCard {...innovation} key={index}/>
                                             ))}
                                         {activeTab === 2 &&
-                                            hackathons.map((hackathon, index) => (
+                                            hackathons?.map((hackathon, index) => (
                                                 <HackathonCard {...hackathon} key={index}/>
                                             ))}
                                     </div>
@@ -236,7 +234,7 @@ export default function Listings() {
                         <div className="pt-4 flex flex-col w-full h-fit sticky ">
                             <div className="bg-white rounded-2xl p-2">
                                 <div className=" flex flex-col  rounded-2xl p-3">
-                                    {NOTICE.map((notice) => (
+                                    {NOTICE?.map((notice) => (
                                         <div className="flex flex-col gap-1 hover:shadow-xl hover:border-r-4 border-b-2 px-3 py-2 bg-white  transition duration-350 ease-in-out ">
                                             <div className="font-bold text-sm text-gray-700 border-b border-white">
                                                 {notice.title}
