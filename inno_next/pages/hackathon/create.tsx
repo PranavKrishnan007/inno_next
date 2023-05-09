@@ -8,6 +8,7 @@ export default function CreateHackathon() {
   const { quill, quillRef } = useQuill()
   console.log(quill, quillRef)
 
+  
   return (
     <div>
       <div>
@@ -103,22 +104,6 @@ export default function CreateHackathon() {
                 onChange={() => null}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='additionalDetails'
-              />
-            </div>
-            <div className='w-full bg-white pb-5 rounded-lg'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>Badges</label>
-              <MultiSelect
-                data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
-                placeholder='Select a tag'
-                transitionProps={{
-                  duration: 150,
-                  transition: 'pop-top-left',
-                  timingFunction: 'ease',
-                }}
-                searchable
-                className='focus:border-primary focus:border-2'
-                nothingFound='No tags found'
-                id='badges'
               />
             </div>
             <div className='pb-4'>
