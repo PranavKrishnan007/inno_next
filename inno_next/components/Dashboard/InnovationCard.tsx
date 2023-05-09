@@ -3,9 +3,10 @@ import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } 
 import { IconArrowRight } from '@tabler/icons-react'
 import { IInnovation } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
-import { router } from 'next/client'
+import { useRouter } from 'next/navigation'
 
 export default function InnovationCard(innovation: IInnovation) {
+  const {push} = useRouter();
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
@@ -32,7 +33,7 @@ export default function InnovationCard(innovation: IInnovation) {
               mt='md'
               radius='md'
               className='bg-blue-100 hover:bg-blue-200 my-4 md:mr-5'
-              onClick={() => router.push(`/innovation/${innovation.id}`)}
+              onClick={() => push(`/innovation/${innovation.id}`)}
             >
               Go to problem <IconArrowRight />
             </Button>

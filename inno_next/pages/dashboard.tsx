@@ -31,8 +31,6 @@ export default function Dashboard( props :any) {
                 setHackathons(res)
             })
     }, [])
-    const {push} = useRouter();
-
     return (
         <div className="h-screen overflow-y-scroll">
             <div className="container mx-auto px-4 md:px-8">

@@ -5,7 +5,6 @@ import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/utils/Services";
 import clsx from 'clsx'
 import { toast } from 'react-toastify'
-import { router } from 'next/client'
 
 export default function RegisterForm() {
 

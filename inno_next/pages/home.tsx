@@ -17,39 +17,6 @@ import HackathonCard from '@/components/Dashboard/HackathonCard';
 import { useAuth } from '@/utils/auth';
 import {useRouter} from "next/navigation";
 
-// const testProblem =  [{
-//     title: 'Developing a Haptic Technology-based Skill Development Program ',
-//     description: 'Skill development is crucial for the growth and development of individuals and communities.' +
-//         ' However, traditional skill development programs often face challenges such as lack of access,' +
-//         ' low participation rates, and limited feedback mechanisms. The use of haptic technology in skill ' +
-//         'development programs has the potential to enhance the learning experience and improve the effectiveness of the program...',
-//     tag1:'Haptic Technology',
-//     tag2:'Smart Learning',
-//     tag3:'Skill Development',
-// },
-//     {
-//         title: 'Developing Coir Fibre for Sustainable Cooling Systems',
-//         description: 'The use of conventional refrigeration systems for cooling contributes significantly to global' +
-//             ' warming and is unsustainable. Coir fibre is a natural, renewable material that has shown promise as a' +
-//             ' sustainable alternative for cooling systems. Coir fibre has excellent moisture absorption properties and ' +
-//             'can be used to regulate temperature and humidity. ',
-//         tag1:'Eco-friendly Cooling',
-//         tag2:'Coir Fibre',
-//         tag3:'Sustainability',
-//     },
-//     {
-//         title: 'Developing an IoT Room for the Elderly',
-//         description: ' As the population ages, there is a growing need for smart technologies ' +
-//             'that can enhance the quality of life of the elderly. One of the key challenges faced by' +
-//             ' the elderly is a loss of independence due to physical and cognitive limitations. Smart technologies,' +
-//             ' such as the Internet of Things (IoT), can play a significant role in addressing these challenges and' +
-//             ' improving the quality of life for the elderly. ',
-//         tag1:'Smart IoT',
-//         tag2:'Elderly Care',
-//         tag3:'Health Care',
-//     },
-// ]
-
 
 export function InputWithButton(props: TextInputProps) {
     return (
