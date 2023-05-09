@@ -150,8 +150,8 @@ export default function RegisterForm() {
             {loginSection === 0 && (
               <div className='flex flex-col gap-4'>
                 <button className={clsx([
-                  "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-white hover:text-hover-primary text-2xl py-4 px-8",
-                  orgOrUser === 0 && "bg-white !text-hover-primary",
+                  "border-2 border-white flex flex-row justify-center items-center  text-white font-light rounded-lg hover:bg-blue-950 hover:text-hover-primary text-xl py-4 px-4",
+                  orgOrUser === 0 && "bg-blue-950  border-primary  font-medium !text-hover-primary",
                 ])}
                         onClick={() => setUser({ value: 0 })}
                 >
@@ -163,8 +163,8 @@ export default function RegisterForm() {
                   Sign Up as User
                 </button>
                 <button className={clsx([
-                  "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-white hover:text-hover-primary text-2xl py-4 px-8",
-                  orgOrUser === 1 && "bg-white !text-hover-primary",
+                  "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-blue-950 hover:text-hover-primary text-xl py-4 px-4",
+                  orgOrUser === 1 && "bg-blue-950 border-primary font-medium !text-hover-primary",
                 ])}
                         onClick={() => setUser({ value: 1 })}
                 >
@@ -397,7 +397,7 @@ export default function RegisterForm() {
                     dateFormat='DD-MM-YY'
                     timeFormat={false}
                     value={new Date().toDateString()}
-                    className="group text-lg outline outline-1 rounded outline-gray-300 p-2 mb-4"
+                    className="group text-lg outline outline-1 rounded outline-gray-300 p-2"
                   />
                 </div>
               </div>
@@ -414,7 +414,7 @@ export default function RegisterForm() {
                   <select
                     onChange={handleFormChange}
                     id='profession'
-                    className="text-lg w-full outline outline-1 rounded outline-gray-300 p-3 mb-4"
+                    className="text-lg w-full outline outline-1 rounded outline-gray-300 p-2"
                     placeholder='profession'
                   >
                     <option value='Student'>Student</option>
