@@ -40,12 +40,21 @@ export default function RegisterForm() {
     letterOfIntent: '',
   })
 
+
+
   const handleDOBChange = (e: any) => {
-    setgenericForm((prevState: any) => ({
-      ...prevState,
-      dob: e.format('DD/MM/YYYY'),
-    }))
-  }
+    const selectedDate = e.toDate(); // get the selected date object
+    const currentDate = new Date(); // get the current date object
+
+    if (selectedDate > currentDate) { // compare selected date with current date
+      toast.error('Please select a valid date of birth.'); // show error message
+    } else {
+      setgenericForm((prevState: any) => ({
+        ...prevState,
+        dob: e.format('DD/MM/YYYY'),
+      }));
+    }
+  };
 
   const handleFormChange = (
     e: CustomEvent | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
