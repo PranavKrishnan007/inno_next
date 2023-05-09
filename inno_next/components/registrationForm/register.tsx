@@ -182,7 +182,7 @@ export default function RegisterForm() {
             {loginSection === 1 && orgOrUser === 1 && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">Organisation Name</label>
+                  <label className="text-white ml-1 text-lg font-light">Organisation Name<span className="text-red-500 ml-1">*</span></label>
                   <input id='organisationName'
                          onChange={handleFormChange}
                          type="text"
@@ -205,7 +205,7 @@ export default function RegisterForm() {
                   </p>
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Phone Number</label>
+                  <label className="text-lg font-light ml-1 text-white">Phone Number<span className="text-red-500 ml-1">*</span></label>
                   <input id='phone'
                          onChange={handleFormChange}
                          type="tel"
@@ -219,7 +219,7 @@ export default function RegisterForm() {
             {loginSection === 2 && orgOrUser === 1 && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">Email</label>
+                  <label className="text-white ml-1 text-lg font-light">Email<span className="text-red-500 ml-1">*</span></label>
                   <input id="email"
                          onChange={handleFormChange}
                          type="email"
@@ -228,7 +228,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Password</label>
+                  <label className="text-lg font-light ml-1 text-white">Password<span className="text-red-500 ml-1">*</span></label>
                   <input id='password'
                          type="password"
                          className={clsx([
@@ -241,7 +241,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Confirm Password</label>
+                  <label className="text-lg font-light ml-1 text-white">Confirm Password<span className="text-red-500 ml-1">*</span></label>
                   <input id='password'
                          type="password"
                          className={clsx([
@@ -258,7 +258,7 @@ export default function RegisterForm() {
             {loginSection === 3 && orgOrUser === 1 && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">Letter of Consent</label>
+                  <label className="text-white ml-1 text-lg font-light">Letter of Consent<span className="text-red-500 ml-1">*</span></label>
                   <input id="letterOfIntent"
                          onChange={handleFormChange}
                          type="file"
@@ -282,8 +282,7 @@ export default function RegisterForm() {
                 </div>
                 <label className='md:w-2/3 flex justify-center items-center text-gray-500 font-bold'>
                   <input onChange={handleFormChange} className='mr-2 leading-tight' type='checkbox' />
-                  <span className='text-sm text-white'>I agree to terms and conditions</span>
-                </label>
+                  <div className='text-sm text-white flex flex-row whitespace-nowrap'>I agree to terms and conditions<span className="text-red-500 ml-1">*</span></div>                </label>
               </div>
             )}
 
@@ -292,7 +291,7 @@ export default function RegisterForm() {
             {loginSection === 1 && orgOrUser === 0 && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">First Name</label>
+                  <label className="text-white ml-1 text-lg font-light">First Name<span className="text-red-500 ml-1">*</span></label>
                   <input id='firstname'
                          onChange={handleFormChange}
                          type="text"
@@ -301,7 +300,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">Last Name</label>
+                  <label className="text-white ml-1 text-lg font-light">Last Name<span className="text-red-500 ml-1">*</span></label>
                   <input id='lastname'
                          type="text"
                          onChange={handleFormChange}
@@ -310,7 +309,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Phone Number</label>
+                  <label className="text-lg font-light ml-1 text-white">Phone Number<span className="text-red-500 ml-1">*</span></label>
                   <input id='phone'
                          type="tel"
                          onChange={handleFormChange}
@@ -323,7 +322,7 @@ export default function RegisterForm() {
             {loginSection === 2 && orgOrUser === 0 && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <label className="text-white ml-1 text-lg font-light">Email</label>
+                  <label className="text-white ml-1 text-lg font-light">Email<span className="text-red-500 ml-1">*</span></label>
                   <input id='email'
                          type="text"
                          onChange={handleFormChange}
@@ -332,7 +331,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Password</label>
+                  <label className="text-lg font-light ml-1 text-white">Password<span className="text-red-500 ml-1">*</span></label>
                   <input type="password"
                          className={clsx([
                            "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
@@ -344,7 +343,7 @@ export default function RegisterForm() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-lg font-light ml-1 text-white">Confirm Password</label>
+                  <label className="text-lg font-light ml-1 text-white">Confirm Password<span className="text-red-500 ml-1">*</span></label>
                   <input type="password"
                          className={clsx([
                            "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
@@ -375,6 +374,7 @@ export default function RegisterForm() {
                     id='gender'
                   >
                     Gender
+                    <span className="text-red-500 ml-1">*</span>
                   </label>
                   <select
                     onChange={handleFormChange}
@@ -390,7 +390,7 @@ export default function RegisterForm() {
                   </select>
                 </div>
                 <div className='flex flex-col'>
-                  <label className='block text-white text-lg font-medium'>Date of Birth</label>
+                  <label className='block text-white text-lg font-medium'>Date of Birth<span className="text-red-500 ml-1">*</span></label>
                   <Datetime
                     closeOnClickOutside={true}
                     onChange={handleDOBChange}
@@ -449,7 +449,7 @@ export default function RegisterForm() {
                 </div>
                 <label className='md:w-2/3 flex justify-center items-center text-gray-500 font-bold'>
                   <input onChange={handleFormChange} className='mr-2 leading-tight' type='checkbox' />
-                  <span className='text-sm text-white'>I agree to terms and conditions</span>
+                  <div className='text-sm text-white flex flex-row whitespace-nowrap'>I agree to terms and conditions<span className="text-red-500 ml-1">*</span></div>
                 </label>
               </div>
             )}
