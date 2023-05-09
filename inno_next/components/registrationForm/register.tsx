@@ -5,6 +5,7 @@ import 'react-datetime/css/react-datetime.css'
 import { fileUpload, submitOrganisationForm, submitGenericUser } from "@/utils/Services";
 import clsx from 'clsx'
 import { toast } from 'react-toastify'
+import { router } from 'next/client'
 
 export default function RegisterForm() {
 
@@ -284,21 +285,27 @@ export default function RegisterForm() {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
                   <label className="text-white ml-1 text-lg font-light">First Name</label>
-                  <input type="text"
+                  <input id='firstname'
+                         onChange={handleFormChange}
+                         type="text"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50"
                          placeholder="Enter your First Name"
                   />
                 </div>
                 <div className="flex flex-col">
                   <label className="text-white ml-1 text-lg font-light">Last Name</label>
-                  <input type="text"
+                  <input id='lastname'
+                         type="text"
+                         onChange={handleFormChange}
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50"
                          placeholder="Enter your Last Name"
                   />
                 </div>
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Phone Number</label>
-                  <input type="tel"
+                  <input id='phone'
+                         type="tel"
+                         onChange={handleFormChange}
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
                          placeholder="Enter your phone number"
                   />
@@ -309,7 +316,9 @@ export default function RegisterForm() {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
                   <label className="text-white ml-1 text-lg font-light">Email</label>
-                  <input type="text"
+                  <input id='email'
+                         type="text"
+                         onChange={handleFormChange}
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50"
                          placeholder="Enter your email"
                   />
@@ -344,7 +353,9 @@ export default function RegisterForm() {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Location</label>
-                  <input type="text"
+                  <input id='location'
+                         onChange={handleFormChange}
+                         type="text"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
                          placeholder="Enter your location"
                   />
@@ -407,7 +418,9 @@ export default function RegisterForm() {
                 </div>
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Avatar</label>
-                  <input type="file"
+                  <input id='avatar'
+                         onChange={handleFormChange}
+                         type="file"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50"
                   />
                   <p
@@ -419,7 +432,9 @@ export default function RegisterForm() {
                 </div>
                 <div className="flex flex-col">
                   <label className="text-white ml-1 text-lg font-light">Area of interest</label>
-                  <input type="text"
+                  <input id='areaOfInterest'
+                         onChange={handleFormChange}
+                         type="text"
                          className="border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white placeholder:text-white/50"
                          placeholder="Enter your area of interest"
                   />
