@@ -22,7 +22,6 @@ export const TagSelector = (props : ITagSelector) => {
         getAllTags().then((res) => {
             let formattedTags: SelectItem[] = [];
             res.forEach(tag => {
-                console.log(tag)
                 formattedTags.push({
                     label: tag.title + '',
                     value : tag.id + '',
@@ -38,9 +37,9 @@ const createTag = (name: string) => {
             label: name,
             value: res.id + '',
         }])
-        return name;
+        return res.id;
     })
-    return name;
+    return null;
 }
 
     return (

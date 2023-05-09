@@ -29,7 +29,18 @@ export default function CreateProblem() {
     })
 
     const handleProblemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value, e.target.id)
+
+        if (e.target.id === 'header_img') {
+            fileUpload(e).then(res => {
+                if(!res) return
+                setProblem({
+                    ...problem,
+                    header_img: res.value
+                })
+        })
+        return
+    }
+
         setProblem({
             ...problem,
             [e.target.id]: e.target.value
@@ -90,7 +101,7 @@ export default function CreateProblem() {
                                 />
                             </svg>
                             <span className="mt-2 text-base leading-normal">Select a file</span>
-                            <input type='file' className="hidden"/>
+                            <input id='header_img' onChange={handleProblemChange} type='file' className="hidden"/>
                         </label>
                         <div>
                             <img src={problem.header_img || '/assets/c20-tst-cover.jpg'} alt="" className="flex object-cover" width="700px" height="300px"/>

@@ -5,14 +5,13 @@ export interface IStrapiServerData {
 
 export interface IInnovation {
   id?: number
-  innocationId?: string
   title: string
   description: string
-  header_img: string
+  header_img?: string
   tags?: number[] | string[]
   badges?: string[]
-  status: string
-  author?: string
+  status?: string
+  author?: number
   content: string
 }
 
