@@ -203,7 +203,7 @@ export default function Listings() {
                         </div>
                         <div className="w-full px-7 pt-4">
                             <Button
-                                className="bg-primary py-4 hover:bg-orange-500/90 w-full text-white"
+                                className="bg-primary py-2 hover:bg-orange-500/90 w-full text-white"
                                 onClick={() => { activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : push('/home') }}
                             >
                                 {activeTab === 0 ? "Create Problems" : activeTab === 1 ? " Create Innovations" : "Create Hackathons"}
