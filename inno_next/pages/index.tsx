@@ -108,104 +108,93 @@ export default function Home(){
           <div className="xl:w-1/2 flex p-10 m-4 h-fit my-auto xl:bg-white  rounded-3xl">
             <img src="/assets/illustration-12.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl"  />
         </div>
+      </div>
+      <div className="xl:flex mx-auto px-32">
+        <div className="flex p-10 m-4 h-fit my-auto rounded-3xl">
+          <img src="/assets/illustration-11.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl" />
         </div>
-        <div className="flex-1  bg-blue-950   py-12 text-white mx-auto text-center my-auto text-left text-blue-950 ">
-          <h4 className="text-xl md:text-2xl font-medium tracking-wide ">
-            Have you ever wished for technology to solve a compelling need?
+        <div className="flex-1 p-4 my-auto text-left text-blue-950">
+          <h1 className="text-4xl md:text-6xl font-bold mt-5 ">
+            What <span className="text-orange-500">we</span> do?
+          </h1>
+          <h4 className="text-lg md:text-xl mt-4 tracking-wide">
+            We offer comprehensive platform that empowers users to seek solutions to everyday challenges
+            within the context United Nations Sustainable Development Goals. Join our community and collaborate with experts to solve your
+            problems.
           </h4>
-          <h4 className="text-xl md:text-2xl mt-4 font-medium tracking-wide ">
-            Have you witnessed simple technologies that made things easier for you or someone else?
-          </h4>
-          <h4 className="text-xl md:text-2xl mt-4 font-medium tracking-wide ">
-            Have you felt technology should be simplified for an application?
-          </h4>
-          <h4 className="text-xl md:text-2xl mt-4 font-medium tracking-wide ">
-            Have you wished for any technology to be more available and affordable?
-          </h4>
-        </div>
-        <div className="xl:flex mx-auto min-h-[50vh]  px-10 md:max-w-[90%] ">
-          <div className="xl:w-1/2 flex p-10 m-4 h-fit my-auto xl:bg-white  rounded-3xl">
-            <img src="/assets/illustration-11.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl"  />
-          </div>
-          <div className="flex-1 p-4 my-auto text-left text-blue-950 ">
-              <h1 className="text-4xl md:text-6xl font-bold mt-5 ">
-                What <span className="text-orange-500">we</span> do?
-              </h1>
-            <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
-              We offer comprehensive platform that empowers users to seek solutions to everyday challenges
-              within the context United Nations Sustainable Development Goals. Join our community and collaborate with experts to solve your
-              problems.
-            </h4>
-            <div className=" mt-4 px-48 " >
-              <img src="/assets/vector-1.png" alt="innopsi_logo" className="h-48 object-contain" />
-            </div>
+          <div className=" mt-4 px-48 " >
+            <img src="/assets/vector-1.png" alt="innopsi_logo" className="h-48 object-contain" />
           </div>
         </div>
-        <div className=" justify-center mx-auto text-center h-fit">
-          <h2 className="text-6xl font-bold ">
-            Ideate | Create | Empower
-          </h2>
-          <p className="text-2xl mt-5">
-            tackle life's challenges along with us
-          </p>
-          <img src="/assets/vector-3.png" alt="g20c20_logo" className="my-auto h-[50vh] object-contain w-full p-10 rounded-2xl"/>
-        </div>
-          <h4 className="text-2xl md:text-4xl my-4 px-20 mx-auto font-bold tracking-wide text-blue-950 ">
-             Glimpse of Challenges...
+      </div>
+      <div className=" justify-center mx-auto bg-blue-950 py-20 text-white text-center h-fit">
+        <h2 className="text-6xl font-bold ">
+          Ideate | Create | Empower
+        </h2>
+        <p className="text-2xl mt-5">
+          tackle life's challenges along with us
+        </p>
+        <img src="/assets/vector-3.png" alt="g20c20_logo" className="my-auto h-[40vh] object-contain w-full p-10" />
+      </div>
+      <h4 className="text-2xl pt-20 md:text-4xl my-4 px-20 mx-auto font-bold tracking-wide text-blue-950 ">
+        Glimpse of Challenges...
+      </h4>
+      <div className="flex flex-col px-20 mx-auto gap-3 my-6">
+        {problems.map((problem, index) => (
+          <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'} />
+        ))}
+        <Link href='/home' className="relative z-10 text-center hover:text-blue-500 hover:">
+          view more
+        </Link>
+      </div>
+      <div className="flex-1  mx-auto  px-32 py-12  my-auto text-left text-blue-950 ">
+        <h4 className="text-2xl md:text-2xl my-4 font-bold tracking-wide">
+          Our Mission
+        </h4>
+        <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
+          INNOPSI is a social innovation platform addressing societal challenges by
+          bringing together diverse perspectives, fostering collaboration, and supporting stakeholders.
+          We believe that social innovation is critical to creating a more equitable and sustainable world.
+          We support and empower social innovators by providing them with the tools, resources, and connections
+          they need to make a societal impact.
+        </h4>
+      </div>
+      <div className="flex mx-auto bg-blue-950 p-4 mt-12 text-white px-32  my-auto text-left text-blue-950 ">
+        <img src="/assets/amm-c20.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-1/2 inline-flex rounded-3xl" />
+        <div className="my-auto">
+          <h4 className="text-xl font-medium  md:text-xl mt-4 tracking-wide ">
+            Message from the Chair, C20 India 2023
+            <br />
+            <p className=" font-light">
+              Our Inspiration
+            </p>
+            <br />
+            <p className="text-lg font-light w-5/6">
+              Knowledge is like a river. Its nature is to flow to all corners of the world and nourish the culture there.
+              By sharing knowledge and experiences, we can prevent the beautiful flower that is this world from wilting.
+              By bringing together diverse streams of knowledge, we can create a magnificent river. May this great river
+              of knowledge flow to caress the countries and communities of the world. May it overflow the borders between
+              people and countries. May it impart the water of life to all of humanity, and thus nurture the blooming of
+              culture throughout the world.
+            </p>
+            <br />
+            Amma,
+            <br />
+            Sri Mata Amritanandamayi Devi
           </h4>
-        <div className="flex flex-col px-20 mx-auto gap-3 my-6">
-          {problems?.map((problem, index) => (
-            <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'}/>
-          ))}
         </div>
-        <div className="flex-1   mx-auto  px-32 py-12  my-auto text-left text-blue-950 ">
-          <h4 className="text-2xl md:text-2xl my-4 font-bold tracking-wide ">
-            Our Mission
-          </h4>
-          <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
-            INNOPSI is a social innovation platform addressing societal challenges by
-            bringing together diverse perspectives, fostering collaboration, and supporting stakeholders.
-            We believe that social innovation is critical to creating a more equitable and sustainable world.
-            We support and empower social innovators by providing them with the tools, resources, and connections
-            they need to make a societal impact.
-          </h4>
+      </div>
+      <div className="flex justify-between px-48 bg-slate-100" >
+        <div className="flex justify-center text-center gap-5 px-20  align-middle py-10" >
+          <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 object-contain my-auto" />
         </div>
-        <div className="flex mx-auto bg-blue-950 p-4 mt-12 text-white px-32  my-auto text-left text-blue-950 ">
-          <img src="/assets/amm-c20.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-1/2 inline-flex rounded-3xl"  />
-          <div className="my-auto">
-            <h4 className="text-xl font-medium  md:text-xl mt-4 tracking-wide ">
-              Message from the Chair, C20 India 2023
-              <br/>
-              <p className=" font-light">
-                Our Inspiration
-              </p>
-              <br/>
-              <p className="text-lg font-light w-5/6">
-                Knowledge is like a river. Its nature is to flow to all corners of the world and nourish the culture there.
-                By sharing knowledge and experiences, we can prevent the beautiful flower that is this world from wilting.
-                By bringing together diverse streams of knowledge, we can create a magnificent river. May this great river
-                of knowledge flow to caress the countries and communities of the world. May it overflow the borders between
-                people and countries. May it impart the water of life to all of humanity, and thus nurture the blooming of
-                culture throughout the world.
-              </p>
-              <br/>
-              Amma,
-              <br/>
-              Sri Mata Amritanandamayi Devi
-            </h4>
-          </div>
-        </div>
-        <div className="flex justify-between px-48 mt-20 bg-slate-100" >
-          <div className="flex justify-center text-center gap-5 px-20  align-middle py-10" >
-            <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 object-contain my-auto" />
-          </div>
-          <p className="inline-block text-sm my-auto font-light align-middle">
-            About Us
-          </p>
-          <p className='inline-block text-sm my-auto font-light align-middle'>
-            Partners
-          </p>
-        </div>
+        <p className="inline-block text-sm my-auto font-light align-middle">
+          About Us
+        </p>
+        <p className='inline-block text-sm my-auto font-light align-middle'>
+          Partners
+        </p>
+      </div>
 
       </div>
   );
