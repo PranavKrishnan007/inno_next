@@ -1,13 +1,30 @@
 import Branding from "@/components/branding";
+import { IProblem } from "@/utils/Interfaces";
+import { getProblem } from "@/utils/Services";
 import parse from 'html-react-parser';
-
-const problem = {
-    title: "Problem Title",
-    url: "/assets/amrita-tec.jpg",
-    description: '<p class="ql-indent-6">asdasd<img src="http://localhost:1337/uploads/Screenshot_from_2023_05_02_22_14_52_66aea64fce.png"> </p><p class="ql-indent-2">asdasd </p><p class="ql-indent-2">asd as</p><p class="ql-indent-2">d </p><p class="ql-indent-2">asd</p><p class="ql-indent-2"> a</p><p class="ql-indent-2">sd </p>'
-};
+import { useRouter } from "next/router";
+import { useState, useLayoutEffect } from "react";
 
 export default function Problem() {
+
+    const router = useRouter();
+    const { slug } = router.query;
+    const [problem, setProblems] = useState<IProblem>({
+        title: '',
+        content : '',
+        header_img : '',
+        description : '', 
+        tags  :[]
+      });
+    
+      useLayoutEffect( () => {
+        slug ? getProblem(slug as string).then(res => {
+          console.log(res)
+          setProblems(res);
+        }
+        ) : null;
+      })
+
     return (
         <div className="">
             <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
@@ -17,13 +34,16 @@ export default function Problem() {
                 <div className="h-screen py-10">
                     <div className="h-full bg-white border rounded-2xl p-10">
                         <div className="rounded-xl h-52 px-10 text-left text-5xl text-white">
-                            <img src={problem.url} alt="problem_image" className="outline outline-gray-700/30 h-full w-full object-cover rounded-xl" />
+                            <img src={problem.header_img} alt="problem_image" className="outline outline-gray-700/30 h-full w-full object-cover rounded-xl" />
                         </div>
                         <div className="w-full text-center py-10 font-semibold tracking-wider text-5xl">
                             {problem.title}
                         </div>
-                        <div className="w-full justify-center tracking-normal text-lg px-10">
-                            {parse(problem.description)}
+                        <div className="w-full tracking-normal text-lg px-10">
+                            {problem.description}
+                        </div>
+                        <div className="w-full tracking-normal text-lg px-10">
+                            {parse(problem.content)}
                         </div>
                     </div>
                 </div>

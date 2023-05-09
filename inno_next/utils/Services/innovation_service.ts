@@ -10,7 +10,7 @@ const responseHandler = (response: any) => {
 }
 
 export const getInnovation = async (innovationId: string): Promise<IInnovation> => {
-  return responseHandler(await axhttp.get(`/innovations/${innovationId}`))
+  return responseHandler(await axhttp.get(`/innovations/${innovationId}`)).attributes as IInnovation
 }
 
 export const updateInnovation = async (innovation: IInnovation): Promise<IInnovation> => {

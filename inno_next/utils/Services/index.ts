@@ -13,5 +13,5 @@ export {
   getAllInnovations,
   getInnovationsByUser,
 } from './innovation_service'
-export { getAllProblems, getProblemsByUser, createProblem } from './problem_service'
+export { getAllProblems, getProblemsByUser, createProblem, getProblem } from './problem_service'
 export { getAllHackathons } from './hackathon_service'

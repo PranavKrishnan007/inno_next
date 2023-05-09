@@ -42,3 +42,7 @@ export const createProblem = async (problem: IProblem) => {
   return res.attributes as IProblem
 }
 // update problem
+
+export const getProblem = async (problemId: string): Promise<IProblem> => {
+  return responseHandler(await axhttp.get(`/problems/${problemId}`)).attributes as IProblem
+}
