@@ -9,20 +9,12 @@ const responseHandler = (response: any) => {
   return false
 }
 
-export const createInnovation = async (innovation: IInnovation): Promise<IInnovation> => {
-  return responseHandler(
-    await axhttp.post('/innovations/', {
-      data: innovation,
-    }),
-  )
-}
-
 export const getInnovation = async (innovationId: string): Promise<IInnovation> => {
   return responseHandler(await axhttp.get(`/innovations/${innovationId}`))
 }
 
 export const updateInnovation = async (innovation: IInnovation): Promise<IInnovation> => {
-  return responseHandler(await axhttp.put(`/innovations/${innovation.innocationId}`, innovation))
+  return responseHandler(await axhttp.put(`/innovations/${innovation.id}`, innovation))
 }
 
 export const deleteInnovation = async (innovationId: string): Promise<any> => {
@@ -47,4 +39,13 @@ export const getInnovationsByUser = async (userId: string): Promise<IInnovation[
     innovation.attributes.id = innovation.id
     return innovation.attributes as IInnovation
   })
+}
+
+export const createInnovation = async (innovation: IInnovation) => {
+  const res = responseHandler(
+    await axhttp.post('/innovations/', { data: innovation }),
+  ) as IStrapiServerData
+  if (!res) return false
+  res.attributes.id = res.id
+  return res.attributes as IInnovation
 }

@@ -2,16 +2,17 @@ import React from 'react'
 import {  Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
 import { IProblem } from '@/utils/Interfaces/coreEntity'
+import { TagDisplayer } from '../tagDisplayer'
 
 
 export default function ProblemCard(problem: IProblem) {
+  console.log(problem)
   return (
     <div >
       <Card className='flex border-b gap-1'  padding='sm'  >
         <div className='min-w-max my-auto px-2'>
           <Image
-            src='https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
-            // src={problem.src}
+            src={problem.header_img}
             height='160'
             width='160'
             alt='Norway'
@@ -36,17 +37,7 @@ export default function ProblemCard(problem: IProblem) {
               <span className="">Go to Challenge</span>
               <IconArrowRight />
             </Button>
-            <div className='flex gap-2 mt-2 md:ml-4'>
-              <Badge color='orange' variant='light'>
-                tag1
-              </Badge>
-              <Badge color='red' variant='light'>
-                tag2
-              </Badge>
-              <Badge color='orange' variant='light'>
-                tag3
-              </Badge>
-            </div>
+            <TagDisplayer tags={problem.tags} ></TagDisplayer>
           </div>
         </div>
       </Card>
