@@ -17,40 +17,6 @@ import HackathonCard from '@/components/Dashboard/HackathonCard';
 import { useAuth } from '@/utils/auth';
 import {useRouter} from "next/navigation";
 
-// const testProblem =  [{
-//     title: 'Developing a Haptic Technology-based Skill Development Program ',
-//     description: 'Skill development is crucial for the growth and development of individuals and communities.' +
-//         ' However, traditional skill development programs often face challenges such as lack of access,' +
-//         ' low participation rates, and limited feedback mechanisms. The use of haptic technology in skill ' +
-//         'development programs has the potential to enhance the learning experience and improve the effectiveness of the program...',
-//     tag1:'Haptic Technology',
-//     tag2:'Smart Learning',
-//     tag3:'Skill Development',
-// },
-//     {
-//         title: 'Developing Coir Fibre for Sustainable Cooling Systems',
-//         description: 'The use of conventional refrigeration systems for cooling contributes significantly to global' +
-//             ' warming and is unsustainable. Coir fibre is a natural, renewable material that has shown promise as a' +
-//             ' sustainable alternative for cooling systems. Coir fibre has excellent moisture absorption properties and ' +
-//             'can be used to regulate temperature and humidity. ',
-//         tag1:'Eco-friendly Cooling',
-//         tag2:'Coir Fibre',
-//         tag3:'Sustainability',
-//     },
-//     {
-//         title: 'Developing an IoT Room for the Elderly',
-//         description: ' As the population ages, there is a growing need for smart technologies ' +
-//             'that can enhance the quality of life of the elderly. One of the key challenges faced by' +
-//             ' the elderly is a loss of independence due to physical and cognitive limitations. Smart technologies,' +
-//             ' such as the Internet of Things (IoT), can play a significant role in addressing these challenges and' +
-//             ' improving the quality of life for the elderly. ',
-//         tag1:'Smart IoT',
-//         tag2:'Elderly Care',
-//         tag3:'Health Care',
-//     },
-// ]
-
-
 export function InputWithButton(props: TextInputProps) {
     return (
       <TextInput
@@ -81,13 +47,10 @@ export function InputWithButton(props: TextInputProps) {
     )
 }
 
-
-
 const NOTICE = [
     {
         title: 'this is one notice',
         description: 'this is the description of the notice',
-
     },
     {
         title: 'this is one notice',
@@ -108,14 +71,11 @@ const NOTICE = [
 ]
 const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
-
     const [activeTab, setActiveTab] = useState(1);
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
-
     const { isAuthenticated, user } = useAuth() as any;
-
     useEffect(() => {
         if(activeTab == 0) {
             getAllProblems().then((res:IProblem[]) => {
@@ -123,76 +83,28 @@ export default function Listings() {
             })
             return
         }
-
         if(activeTab == 1) {
             getAllInnovations().then((res:IInnovation[]) => {
                 setInnovations(res)
             })
             return
         }
-
         if(activeTab == 2) {
             getAllHackathons().then((res:IHackathon[]) => {
                 console.log(res)
                 setHackathons(res)
             })
-
             return
         }
-
     }, [activeTab])
     const {push} = useRouter();
 
     return (
-      <div className="min-h-screen mx-auto relative">
-          <div className="bg-white sticky flex flex-col top-0 ">
+      <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
+          <div className="bg-white sticky flex flex-col top-0 z-50">
               <Branding />
-
-              <div className="flex grow flex-row pb-2 min-h-[80vh]">
-                  <div className="fixed top-0 pt-44 left-0 h-screen w-1/4 bg-background ">
-                      <div className="border bg-background my-3 p-1 mx-1  rounded-full w-ful">
-                          <MultiSelect
-                            data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
-                            placeholder="Select a tag"
-                            styles={(theme) => ({
-                                input: {
-                                    '&:focus-within': {
-                                        borderColor: theme.colors.orange[7],
-                                    },
-                                },
-                            })}
-                            transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
-                            searchable
-                            nothingFound='No tags found'
-                            radius="xl"
-                            variant="filled"
-                          />
-                      </div>
-                      <div className="flex flex-col bg-white rounded-full h-fit mt-5 p-2">
-                          <div className="h-full bg-gray-300/30 shadow rounded-full">
-                              <div className="flex justify-center p-2 items-center h-full font-semibold text-gray-700">
-                                  Notices
-                              </div>
-                          </div>
-                      </div>
-                      <div className="pt-4 flex flex-col w-full h-fit sticky ">
-                          <div className="bg-white rounded-2xl p-2">
-                              <div className=" flex flex-col  rounded-2xl p-3">
-                                  {NOTICE?.map((notice) => (
-                                    <div className="flex flex-col gap-1 hover:shadow-xl hover:border-r-4 border-b-2 px-3 py-2 bg-white  transition duration-350 ease-in-out ">
-                                        <div className="font-bold text-sm text-gray-700 border-b border-white">
-                                            {notice.title}
-                                        </div>
-                                        <div className="text-gray-500 font-light text-sm">
-                                            {notice.description}
-                                        </div>
-                                    </div>
-                                  ))}
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="fixed right-0 flex flex-col gap-4 w-3/4 pt-4">
+              <div className="flex flex-row gap-10 pb-2 h-fit min-h-[80vh]">
+                  <div className="flex flex-col gap-4 w-3/4 pt-4">
                       <div className="flex flex-row w-full gap-2 ">
                           <div className="bg-white w-full p-2 rounded-full">
                               <div className="flex flex-row h-full justify-center shadow gap-1 p-1 items-center rounded-md bg-gray-300/30">
@@ -249,7 +161,49 @@ export default function Listings() {
                           </div>
                       </div>
                   </div>
-
+                  <div className="pt-4 w-1/4 ">
+                      <div className="border bg-white my-3 p-1 mx-1  rounded-full w-ful">
+                          <MultiSelect
+                            data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
+                            placeholder="Select a tag"
+                            styles={(theme) => ({
+                                input: {
+                                    '&:focus-within': {
+                                        borderColor: theme.colors.orange[7],
+                                    },
+                                },
+                            })}
+                            transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
+                            searchable
+                            nothingFound='No tags found'
+                            radius="xl"
+                            variant="filled"
+                          />
+                      </div>
+                      <div className="flex flex-col bg-white rounded-full h-fit mt-5 p-2">
+                          <div className="h-full bg-gray-300/30 shadow  rounded-full">
+                              <div className="flex justify-center p-2 items-center h-full font-semibold text-gray-700">
+                                  Notices
+                              </div>
+                          </div>
+                      </div>
+                      <div className="pt-4 flex flex-col w-full h-fit sticky ">
+                          <div className="bg-white rounded-2xl p-2">
+                              <div className=" flex flex-col  rounded-2xl p-3">
+                                  {NOTICE?.map((notice) => (
+                                    <div className="flex flex-col gap-1 hover:shadow-xl hover:border-r-4 border-b-2 px-3 py-2 bg-white  transition duration-350 ease-in-out ">
+                                        <div className="font-bold text-sm text-gray-700 border-b border-white">
+                                            {notice.title}
+                                        </div>
+                                        <div className="text-gray-500 font-light text-sm">
+                                            {notice.description}
+                                        </div>
+                                    </div>
+                                  ))}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
       </div>
