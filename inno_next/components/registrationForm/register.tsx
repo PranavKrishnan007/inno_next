@@ -130,12 +130,6 @@ export default function RegisterForm() {
     }
 
     setLoginSection(loginSection + 1)
-    if (loginSection === 5 && orgOrUser === 0){
-      router.push('/home')
-    }
-    if (loginSection === 4 && orgOrUser === 1){
-      router.push('/home')
-    }
   }
 
   return (
