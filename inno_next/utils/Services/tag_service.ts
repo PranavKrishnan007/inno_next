@@ -4,7 +4,7 @@ import { axhttp } from './axios_setup'
 export const getAllTags = async (): Promise<ITags[]> => {
   const tags: IStrapiServerData[] = await axhttp.get('/tags/').then((res) => res.data)
   if (!tags) return []
-  const formattedTags: ITags[] = tags.map((tag: IStrapiServerData) => {
+  const formattedTags: ITags[] = tags?.map((tag: IStrapiServerData) => {
     return {
       id: tag.id,
       title: tag.attributes.title,

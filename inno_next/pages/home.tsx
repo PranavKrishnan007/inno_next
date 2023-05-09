@@ -152,7 +152,7 @@ export default function Listings() {
                         <div className="flex flex-row w-full gap-2 ">
                             <div className="bg-white w-full p-2 rounded-full">
                                 <div className="flex flex-row h-full justify-center shadow gap-1 p-1 items-center rounded-md bg-gray-300/30">
-                                    {tabs.map((tabName, index) => (
+                                    {tabs?.map((tabName, index) => (
                                         <div className={clsx([
                                             "flex justify-center items-center w-1/3 h-full p-2 rounded-md  font-semibold hover:bg-primary/80  hover:text-white transition duration-300 ease-in-out",
                                             activeTab === index ? "bg-primary text-white" : "text-gray-500"
@@ -188,16 +188,16 @@ export default function Listings() {
                                 <div className="bg-white rounded-2xl p-2">
                                     <div className=" border-2   flex flex-col  rounded-2xl p-2">
                                         {activeTab === 0 &&
-                                            problems.map((problem, index) => (
+                                            problems?.map((problem, index) => (
                                                 <ProblemCard {...problem} key={index} />
                                             ))
                                         }
                                         {activeTab === 1 &&
-                                            innovations.map((innovation, index) => (
+                                            innovations?.map((innovation, index) => (
                                                 <InnovationCard {...innovation} key={index}/>
                                             ))}
                                         {activeTab === 2 &&
-                                            hackathons.map((hackathon, index) => (
+                                            hackathons?.map((hackathon, index) => (
                                                 <HackathonCard {...hackathon} key={index}/>
                                             ))}
                                     </div>
@@ -234,7 +234,7 @@ export default function Listings() {
                         <div className="pt-4 flex flex-col w-full h-fit sticky ">
                             <div className="bg-white rounded-2xl p-2">
                                 <div className=" flex flex-col  rounded-2xl p-3">
-                                    {NOTICE.map((notice) => (
+                                    {NOTICE?.map((notice) => (
                                         <div className="flex flex-col gap-1 hover:shadow-xl hover:border-r-4 border-b-2 px-3 py-2 bg-white  transition duration-350 ease-in-out ">
                                             <div className="font-bold text-sm text-gray-700 border-b border-white">
                                                 {notice.title}
