@@ -12,7 +12,7 @@ const responseHandler = (response: any) => {
 export const getAllHackathons = async (): Promise<IHackathon[]> => {
   const res = responseHandler(await axhttp.get('/hackathons/')) as IStrapiServerData[]
   if (!res) return []
-  return res.map((hackathon: IStrapiServerData) => {
+  return res?.map((hackathon: IStrapiServerData) => {
     hackathon.attributes.id = hackathon.id
     return hackathon.attributes as IHackathon
   })

@@ -154,7 +154,7 @@ export default function Home(){
              Glimpse of Challenges...
           </h4>
         <div className="flex flex-col px-20 mx-auto gap-3 my-6">
-          {problems.map((problem, index) => (
+          {problems?.map((problem, index) => (
             <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'}/>
           ))}
         </div>
