@@ -150,8 +150,8 @@ export default function RegisterForm() {
             {loginSection === 0 && (
               <div className='flex flex-col gap-4'>
                 <button className={clsx([
-                  "border-2 border-white flex flex-row justify-center items-center  text-white font-light rounded-lg hover:bg-blue-950 hover:text-hover-primary text-xl py-4 px-4",
-                  orgOrUser === 0 && "bg-blue-950  border-primary  font-medium !text-hover-primary",
+                  "border-2 border-white flex flex-row justify-center items-center  text-white font-light rounded-lg hover:bg-blue-950 text-xl py-4 px-4",
+                  orgOrUser === 0 && "bg-blue-950  border-primary  font-medium",
                 ])}
                         onClick={() => setUser({ value: 0 })}
                 >
@@ -163,8 +163,8 @@ export default function RegisterForm() {
                   Sign Up as User
                 </button>
                 <button className={clsx([
-                  "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-blue-950 hover:text-hover-primary text-xl py-4 px-4",
-                  orgOrUser === 1 && "bg-blue-950 border-primary font-medium !text-hover-primary",
+                  "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-blue-950 text-xl py-4 px-4",
+                  orgOrUser === 1 && "bg-blue-950 border-primary font-medium",
                 ])}
                         onClick={() => setUser({ value: 1 })}
                 >
