@@ -41,7 +41,7 @@ export default function Dashboard( props :any) {
                     <div className="w-3/4">
                         <div className="mt-4 rounded-xl p-1 bg-gray-300/30 ">
                         <div
-                                className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
+                                className="w-full flex flex-row justify-between shadow-xl  rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
                                     <div className="text-white text-5xl">
                                         Hello, {user?.genericuser?.firstname}!
@@ -50,8 +50,8 @@ export default function Dashboard( props :any) {
                                         Welcome to Innopsi!
                                     </div>
                                 </div>
-                                <div className="float-right">
-                                    Space for image
+                                <div>
+                                    <img src={user?.avatar} alt="avatar" className="h-32 w-32 shadow-xl rounded-full"/>
                                 </div>
                             </div>
                         </div>
