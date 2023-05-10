@@ -35,7 +35,6 @@ export const getHackathon = async (id: string) => {
   ) as IStrapiServerData
   if (!res) return
   res.attributes.id = res.id
-  // check the type of attributes
   res.attributes = res.attributes as IHackathon
   res.attributes.applicationCloseDate = new Date(res.attributes.applicationCloseDate)
   res.attributes.applicationOpenDate = new Date(res.attributes.applicationOpenDate)
@@ -43,4 +42,24 @@ export const getHackathon = async (id: string) => {
   res.attributes.hackathonStartDate = new Date(res.attributes.hackathonStartDate)
 
   return res.attributes as IHackathon
+}
+
+export const registerForHackathon = async (hackathonId: string, userId: string) => {
+  const res = responseHandler(
+    await axhttp.put(`/hackathons/${hackathonId}/`, {
+      data: {
+        participants: {
+          connect: [userId],
+        },
+      },
+    }),
+  )
+  if (!res) return false
+  return res
+}
+
+export const getHackathonRegistrations = async (hackathonId: string) => {
+  const res = responseHandler(await axhttp.get(`/hackathons/${hackathonId}/registrations`))
+  if (!res) return false
+  return res
 }
