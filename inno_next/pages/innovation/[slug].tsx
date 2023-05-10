@@ -4,6 +4,7 @@ import { getInnovation } from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import CommentCard from "@/components/commentSection";
 
 
 export default function Innovation() {
@@ -26,10 +27,10 @@ export default function Innovation() {
 
   return (
     <div className="">
+      <div className="absolute w-full flex flex-col top-0 z-50">
+        <Branding />
+      </div>
       <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
-        <div className="bg-white sticky flex flex-col top-0 z-50">
-          <Branding />
-        </div>
         <div className="h-screen py-10">
           <div className="h-full bg-white border rounded-2xl p-10">
             <div className="rounded-xl h-52 px-10 text-left text-5xl text-white">
@@ -40,6 +41,9 @@ export default function Innovation() {
             </div>
             <div className="w-full justify-center tracking-normal text-lg px-10">
               {parse(innovation.description)}
+            </div>
+            <div className="bg-gray-100 w-full mt-4 p-4">
+              <CommentCard comment={null} />
             </div>
           </div>
         </div>
