@@ -11,18 +11,19 @@ export default function ProblemCard(problem: IProblem) {
   return (
     <div >
       <Card className='flex border-b gap-1'  padding='sm'  >
-        <div className='min-w-max my-auto px-2'>
+        <div className='max-w-1/4 my-auto px-2'>
           <Image
             src={problem.header_img}
             height='160'
-            width='160'
+            width='180'
             alt='Norway'
             radius='sm'
+            className='bg-gray-200 rounded-2xl'
           />
         </div>
-        <div className="">
+        <div className="min-w-4/6">
           <Group position='apart' mt='md' mb='xs'>
-            <div className='w-4/6 font-extrabold text-ellipsis overflow-hidden text-gray-700 text-lg line-clamp-1'>{problem.title}</div>
+            <div className=' font-extrabold text-ellipsis overflow-hidden text-gray-700 text-lg line-clamp-1'>{problem.title}</div>
             <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
             </Badge>
