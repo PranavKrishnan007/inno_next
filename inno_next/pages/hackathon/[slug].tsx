@@ -52,57 +52,55 @@ export default function Hackathon() {
   }
 
   return (
-    <div className='bg-background'>
-      <div className='min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative'>
-        <div className='bg-white sticky flex flex-col top-0 z-50'>
-          <Branding />
-        </div>
-        <div>
-          <div className='flex flex-col container bg-white mt-16 rounded-xl'>
-            <div className='flex flex-col lg:flex-row-reverse'>
-              <div className='mx-auto my-5 '>
-                <Image
-                  src={hackathon.header_img}
-                  height='250'
-                  width='512'
-                  alt='Norway'
-                  radius='md'
-                />
-              </div>
-              <div className='m-4 md:m-5 md:w-1/2'>
-                <h1 className='text-4xl font-bold md:my-3'>{hackathon.title}</h1>
-                <h3 className='text-lg font-medium text-gray-800'>{hackathon.tagline}</h3>
-                <div className='grid md:grid-cols-2 gap-2 my-5'>
-                  <div>
-                    Dates: {hackathon.hackathonStartDate.toDateString()} -{' '}
-                    {hackathon.hackathonEndDate.toDateString()}
-                  </div>
-                  <div>Applications close on: {hackathon.applicationCloseDate.toDateString()}</div>
-                  <div>Number of Teams:{hackathon.partcipantLimit}</div>
+    <div className='min-h-screen shadow container mx-auto px-4 md:px-8 md:py-10 relative'>
+      <div className='bg-white sticky flex flex-col top-0 z-50'>
+        <Branding />
+      </div>
+      <div>
+        <div className='flex flex-col container bg-white mt-16 rounded-xl'>
+          <div className='flex flex-col lg:flex-row-reverse'>
+            <div className='mx-auto my-5 '>
+              <Image
+                src={hackathon.header_img}
+                height='250'
+                width='512'
+                alt='Norway'
+                radius='md'
+              />
+            </div>
+            <div className='m-4 md:m-5 md:w-1/2'>
+              <h1 className='text-4xl font-bold md:my-3'>{hackathon.title}</h1>
+              <h3 className='text-lg font-medium text-gray-800'>{hackathon.tagline}</h3>
+              <div className='grid md:grid-cols-2 gap-2 my-5'>
+                <div>
+                  Dates: {hackathon.hackathonStartDate.toDateString()} -{' '}
+                  {hackathon.hackathonEndDate.toDateString()}
                 </div>
-                {!isRegister ? (
-                  <button
-                    onClick={() => register()}
-                    disabled={!user}
-                    className='btn mx-1 text-xl font-semibold bg-orange-500 w-min text-white py-2 px-5 rounded-lg'
-                  >
-                    Register
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => register()}
-                    disabled={true}
-                    className='btn mx-1 text-xl font-semibold bg-gray-500 w-min text-white py-2 px-5 rounded-lg'
-                  >
-                    Registered
-                  </button>
-                )}
+                <div>Applications close on: {hackathon.applicationCloseDate.toDateString()}</div>
+                <div>Number of Teams:{hackathon.partcipantLimit}</div>
               </div>
+              {!isRegister ? (
+                <button
+                  onClick={() => register()}
+                  disabled={!user}
+                  className='btn mx-1 text-xl font-semibold bg-orange-500 w-min text-white py-2 px-5 rounded-lg'
+                >
+                  Register
+                </button>
+              ) : (
+                <button
+                  onClick={() => register()}
+                  disabled={true}
+                  className='btn mx-1 text-xl font-semibold bg-gray-500 w-min text-white py-2 px-5 rounded-lg'
+                >
+                  Registered
+                </button>
+              )}
             </div>
-            <div className='mx-3 my-5 md:my-7'>
-              {hackathon.description}
-              {parse(hackathon.additionalDetails)}
-            </div>
+          </div>
+          <div className='mx-3 my-5 md:my-7'>
+            {hackathon.description}
+            {parse(hackathon.additionalDetails)}
           </div>
         </div>
       </div>
