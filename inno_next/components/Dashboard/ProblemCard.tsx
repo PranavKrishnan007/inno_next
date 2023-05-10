@@ -10,7 +10,7 @@ export default function ProblemCard(problem: IProblem) {
   const {push} = useRouter();
   return (
     <div >
-      <Card className='flex border-b gap-1 shadow-lg mt-2 hover:bg-slate-100'   >
+      <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100'   >
         <div className='max-w-1/4 my-auto px-2'>
           <Image
             src={problem.header_img}

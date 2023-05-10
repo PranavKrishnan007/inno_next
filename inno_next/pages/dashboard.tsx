@@ -36,7 +36,7 @@ export default function Dashboard( props :any) {
             <div className="sticky top-0 z-20">
                 <Branding/>
             </div>
-            <div className="container mx-auto px-4 md:px-8">
+            <div className="container mx-auto px-4 md:px-8 ">
                 <div className="flex flex-row gap-4">
                     <div className="w-3/4">
                         <div className="mt-4 rounded-xl p-1 bg-gray-300/30 ">
@@ -56,9 +56,9 @@ export default function Dashboard( props :any) {
                             </div>
                         </div>
                         <div className="pt-4">
-                            <div className="bg-white border rounded-xl p-2">
+                            <div className="bg-slate-50 border rounded-xl max-h-[70vh] overflow-auto no-scrollbar ">
                                 <Tabs defaultValue="editProfile">
-                                    <Tabs.List>
+                                    <Tabs.List className="sticky top-0 z-10 bg-slate-100">
                                         <Tabs.Tab value="editProfile" icon={<IconPhoto size="0.8rem"/>}>Edit
                                             Profile</Tabs.Tab>
                                         <Tabs.Tab value="problems" icon={<IconMessageCircle size="0.8rem"/>}>Your
