@@ -44,12 +44,13 @@ export const AuthProvider = ({ children } : any) => {
 
       if(res.user) {
         console.log(axhttp.defaults.headers)
-        const user = await axhttp.get(`/users/${res.user.id}?populate=*`)
-        setUser(user as unknown as IUser )
+        const user = await axhttp.get(`/users/${res.user.id}?populate[0]=genericuser`)
+        setUser(user as any )
+        console.log(user)
         Cookies.set('token', res.jwt)
         Cookies.set('user', JSON.stringify(user))
         axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
-        router.push('/dashboard')
+        router.push('/home')
       }
     }
     catch (err) {
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children } : any) => {
     Cookies.set('token', process.env.API_TOKEN as string)
     Cookies.remove('user')
     axhttp.defaults.headers.common['Authorization'] = `Bearer ${process.env.API_TOKEN}`
-    router.push('/login')
+    window.location.pathname = '/login'
   }
 
   return (

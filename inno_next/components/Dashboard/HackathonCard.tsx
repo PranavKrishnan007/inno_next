@@ -3,20 +3,24 @@ import { Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight, IconEdit } from '@tabler/icons-react'
 import { IHackathon } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
+import { useRouter } from 'next/navigation'
 
 export default function HackathonCard(hackathon: IHackathon) {
+  const router = useRouter()
+  
   return (
     <div>
       <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
-        <div className='min-w-max my-auto'>
+        <div className='max-w-1/4 min-w-max my-auto'>
           <Image
             src={hackathon.header_img}
             height='160'
+            width='180'
             alt='Norway'
             radius='md'
           />
         </div>
-        <div className='ml-10'>
+        <div className='ml-10 min-w-4/6'>
           <Group position='apart' mt='md' mb='xs'>
             <div className='flex flex-row justify-start space-x-2 items-center'>
               <div className='font-bold text-2xl line-clamp-1'>{hackathon.title}</div>
@@ -35,6 +39,7 @@ export default function HackathonCard(hackathon: IHackathon) {
               mt='md'
               radius='md'
               className='bg-blue-100 hover:bg-blue-200 my-4 md:mr-5'
+              onClick={() => router.push(`/hackathon/${hackathon.id}`)}
             >
               More Info <IconArrowRight />
             </Button>

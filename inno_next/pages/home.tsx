@@ -141,7 +141,7 @@ export default function Listings() {
                                                 <HackathonCard {...hackathon} key={index} />
                                             ))}
                                     </div>
-                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>
