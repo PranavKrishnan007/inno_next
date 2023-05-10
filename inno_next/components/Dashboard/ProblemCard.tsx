@@ -10,18 +10,18 @@ export default function ProblemCard(problem: IProblem) {
   const {push} = useRouter();
   return (
     <div >
-      <Card className='flex border-b gap-1'  padding='sm'  >
+      <Card className='flex border-b gap-1 shadow-lg mt-2 hover:bg-slate-100'   >
         <div className='max-w-1/4 my-auto px-2'>
           <Image
             src={problem.header_img}
             height='160'
             width='180'
-            alt='Norway'
+            alt='Image'
             radius='sm'
             className='bg-gray-200 rounded-2xl'
           />
         </div>
-        <div className="min-w-4/6">
+        <div className="w-full">
           <Group position='apart' mt='md' mb='xs'>
             <div className=' font-extrabold text-ellipsis overflow-hidden text-gray-700 text-lg line-clamp-1'>{problem.title}</div>
             <Badge className='text-lg p-3'>
