@@ -33,9 +33,9 @@ export default function Dashboard( props :any) {
     }, [])
     return (
         <div className="h-screen overflow-y-scroll">
+            <Branding/>
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex flex-row justify-center items-center p-10 gap-6">
-                  <Branding />
                 </div>
                 <div className="flex flex-row gap-4">
                     <div className="w-3/4">
