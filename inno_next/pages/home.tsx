@@ -84,15 +84,17 @@ export default function Listings() {
     const { push } = useRouter();
 
     return (
-        <div className="min-h-screen  mx-auto ">
-            <Branding />
-            <div className="bg-white container mx-auto  flex flex-col">
+        <div className="min-h-screen mx-auto ">
+            <div className="sticky top-0 z-20">
+                <Branding />
+            </div>
+            <div className="bg-white container mx-auto flex flex-col">
                 <div className="flex flex-row gap-10 pb-2 h-fit min-h-[80vh]">
                     <div className="flex flex-col gap-4 w-3/4 pt-4">
                         <div className="flex flex-row w-full gap-2 ">
                             <div className="bg-white w-full p-2 rounded-full">
                                 <div className="flex flex-row h-full justify-center shadow gap-1 p-1 items-center rounded-md bg-gray-300/30">
-                                    {tabs?.map((tabName, index) => (
+                                {tabs?.map((tabName, index) => (
                                         <div className={clsx([
                                             "flex justify-center items-center w-1/3 h-full p-2 rounded-md  font-semibold hover:bg-primary/80  hover:text-white transition duration-300 ease-in-out",
                                             activeTab === index ? "bg-primary text-white" : "text-gray-500"
@@ -126,22 +128,24 @@ export default function Listings() {
                         <div className="flex flex-row gap-10">
                             <div className="flex flex-col gap-4 w-full">
                                 <div className="bg-white rounded-2xl p-2">
-                                    <div className=" border-2   flex flex-col  rounded-2xl p-2">
-                                        {activeTab === 0 &&
-                                            problems?.map((problem, index) => (
-                                                <ProblemCard {...problem} key={index} />
-                                            ))
-                                        }
-                                        {activeTab === 1 &&
-                                            innovations?.map((innovation, index) => (
-                                                <InnovationCard {...innovation} key={index} />
-                                            ))}
-                                        {activeTab === 2 &&
-                                            hackathons?.map((hackathon, index) => (
-                                                <HackathonCard {...hackathon} key={index} />
-                                            ))}
+                                    <div className="shadow-2xl">
+                                        <div className="border-y max-h-[65vh] overflow-auto flex-col no-scrollbar p-2">
+                                            {activeTab === 0 &&
+                                                problems?.map((problem, index) => (
+                                                    <ProblemCard {...problem} key={index} />
+                                                ))
+                                            }
+                                            {activeTab === 1 &&
+                                                innovations?.map((innovation, index) => (
+                                                    <InnovationCard {...innovation} key={index} />
+                                                ))}
+                                            {activeTab === 2 &&
+                                                hackathons?.map((hackathon, index) => (
+                                                    <HackathonCard {...hackathon} key={index} />
+                                                ))}
+                                        </div>
                                     </div>
-                              </div>
+                                </div>
                             </div>
                         </div>
                     </div>
