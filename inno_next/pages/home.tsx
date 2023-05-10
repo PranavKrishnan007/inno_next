@@ -114,7 +114,7 @@ export default function Listings() {
                           <div className="w-1/3 bg-gray-300/30 p-1 rounded-lg border-2 border-white">
                               <Button
                                 className="bg-primary hover:bg-orange-500/90 w-full text-white"
-                                onClick={() => {activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : push('/home')}}
+                                onClick={() => {activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : activeTab === 2 ? push('/hackathon/create')  : push('/home')}}
                               >
                                   {activeTab === 0 ? "Create Problems" : activeTab === 1 ? " Create Innovations" : "Create Hackathons"}
                               </Button>
