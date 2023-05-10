@@ -1,12 +1,90 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuill } from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
-import { Button, MultiSelect } from '@mantine/core'
+import { Button } from '@mantine/core'
 import Branding from '@/components/branding'
+import { useAuth } from '@/utils/auth'
+import { IHackathon } from '@/utils/Interfaces'
+import { createHackathon, fileUpload } from '@/utils/Services'
+import { TagSelector } from '@/components/tagSelector'
 
 export default function CreateHackathon() {
   const { quill, quillRef } = useQuill()
-  console.log(quill, quillRef)
+    
+  const {user} = useAuth() as any
+
+  const [problem, setProblem] = useState<IHackathon>({
+     title : '',
+     description : '',
+     tagline : '',
+     header_img : '',
+     partcipantLimit : 250,
+     applicationCloseDate : new Date(),
+     applicationOpenDate : new Date(),
+     hackathonStartDate : new Date(),
+    hackathonEndDate : new Date(),
+    contactDetails : '',
+     additionalDetails : '',
+     tags : [],
+  })
+
+  useEffect(()=>{
+      if(quill) {
+          quill.getModule('toolbar').addHandler('image', imageHandler)
+      }
+  })
+
+  const handleProblemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+      if (e.target.id === 'header_img') {
+          fileUpload(e).then(res => {
+              if(!res) return
+              setProblem({
+                  ...problem,
+                  header_img: res.value
+              })
+      })
+      return
+  }
+
+      setProblem({
+          ...problem,
+          [e.target.id]: e.target.value
+      })
+  }
+
+  const handleSelectChange = (e : string[]) => {
+      setProblem({
+          ...problem,
+          tags : e
+      })
+  }
+
+  const submit = ()=> {
+      const hackathonData:IHackathon = {
+          ...problem,
+          additionalDetails : quill.root.innerHTML,
+          author : parseInt(user.id),
+      }
+      createHackathon(hackathonData)
+  }
+
+  const imageHandler = async () =>{
+      const input = document.createElement('input');  
+
+      input.setAttribute('type', 'file');  
+      input.setAttribute('accept', 'image/*');  
+      input.click();  
+
+
+      input.onchange = async (e:any) => {  
+          const imageData = await fileUpload(e);
+          if(!imageData) return 
+          const range = quill.getSelection();
+          quill.insertEmbed(range.index, 'image', imageData.value )
+      }; 
+  }
+
 
   
   return (
@@ -27,9 +105,9 @@ export default function CreateHackathon() {
                 Hackathon Title
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='hackathonTitle'
+                id='title'
                 type='text'
                 placeholder='Hackathon Title'
               />
@@ -46,74 +124,44 @@ export default function CreateHackathon() {
                   />
                 </svg>
                 <span className="mt-2 text-base leading-normal">Select a file</span>
-                <input id='header_img' onChange={() => {}} type='file' className="hidden" />
+                <input id='header_img' onChange={handleProblemChange} type='file' className="hidden" />
               </label>
               <div>
-                <img src={'/assets/c20-tst-cover.jpg'} alt="" className="flex object-cover" width="700px" height="300px" />
+                <img src={problem.header_img || '/assets/c20-tst-cover.jpg'} alt="" className="flex object-cover" width="700px" height="300px" />
               </div>
             </div>
             <div className='pb-4'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Tagline``
+                Tagline
               </label>
-              <textarea
-                onChange={() => null}
+              <input
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='hackathonTitle'
+                id='tagline'
               />
-            </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>About</label>
-              <div className='w-full h-72'>
-                <div style={{ height: '100%', width: '100%' }}>
-                  <div ref={quillRef} className='rounded-b-xl' />
-                </div>
-              </div>
             </div>
             <div className='w-full bg-white md:pt-10 pt-28 rounded-lg'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>Tags</label>
-              <MultiSelect
-                data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
-                placeholder='Select a tag'
-                transitionProps={{
-                  duration: 150,
-                  transition: 'pop-top-left',
-                  timingFunction: 'ease',
-                }}
-                searchable
-                className='focus:border-primary focus:border-2'
-                nothingFound='No tags found'
-                id='tags'
-              />
+              <TagSelector id='tags' createable={true} onChange={handleSelectChange} ></TagSelector>
             </div>
             <div className='pb-4'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>
                 Contact Details
               </label>
-              <textarea
-                onChange={() => null}
+              <input
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='contactDetails'
               />
             </div>
             <div className='pb-4'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Additional Details
-              </label>
-              <textarea
-                onChange={() => null}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='additionalDetails'
-              />
-            </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Prize
+                Description
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='prize'
+                id='description'
               />
             </div>
             <div className='pb-4'>
@@ -121,7 +169,7 @@ export default function CreateHackathon() {
                 Participant Limit
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='paticipantLimit'
                 type='number'
@@ -132,10 +180,10 @@ export default function CreateHackathon() {
                 Application Open Date
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='applicationOpenDate'
-                type='date'
+                type='datetime-local'
               />
             </div>
             <div className='pb-4'>
@@ -143,21 +191,29 @@ export default function CreateHackathon() {
                 Application Close Date
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='applicationCloseDate'
-                type='date'
+                type='datetime-local'
               />
+            </div>
+            <div className='pb-4'>
+              <label className='block text-gray-700 text-2xl font-medium mb-2'>Additional Details</label>
+              <div className='w-full h-72'>
+                <div style={{ height: '100%', width: '100%' }}>
+                  <div ref={quillRef} className='rounded-b-xl' />
+                </div>
+              </div>
             </div>
             <div className='pb-4'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>
                 Hackathon Start Date
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='hackathonStartDate'
-                type='date'
+                type='datetime-local'
               />
             </div>
             <div className='pb-4'>
@@ -165,14 +221,15 @@ export default function CreateHackathon() {
                 Hackathon End Date
               </label>
               <input
-                onChange={() => null}
+                onChange={handleProblemChange}
                 className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
                 id='hackathonEndDate'
-                type='date'
+                type='datetime-local'
               />
             </div>
+         
             <div className='pt-5'>
-              <Button type='submit' variant='outline'>
+              <Button onClick={submit} variant='outline'>
                 Submit for Moderation
               </Button>
             </div>

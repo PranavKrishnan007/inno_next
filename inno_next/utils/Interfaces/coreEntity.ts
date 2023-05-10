@@ -41,11 +41,11 @@ export interface IHackathon {
   hackathonEndDate: Date
   contactDetails: string
   additionalDetails: string
-  tags: number[] | string[]
-  badges: string[] | number[]
-  participants: string[]
+  tags?: number[] | string[]
+  badges?: string[] | number[]
+  participants?: any
   accepted?: boolean
-  enduser?: number
+  author?: any
 }
 
 export interface ITags {

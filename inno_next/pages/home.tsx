@@ -52,22 +52,6 @@ const NOTICE = [
         title: 'this is one notice',
         description: 'this is the description of the notice',
     },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
 ]
 const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
