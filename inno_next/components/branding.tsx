@@ -8,7 +8,7 @@ const Branding = () => {
   const {push} = useRouter();
   const {logout} = useAuth() as any
   return (
-    <div className="sticky top-0 py-5  flex flex-col md:flex-row w-full relavtive w-screen shadow-xl justify-center items-center gap-4 md:gap-10">
+    <div className="sticky top-0 py-5 flex flex-col md:flex-row w-full justify-center items-center gap-4 md:gap-10">
       <img src="/assets/innopsi.png" alt="innopsi_logo" onClick={()=>{push('/home')}} className="h-20 object-contain" />
       <img src="/assets/g20c20.png" alt="g20c20_logo" onClick={()=>{push('/home')}} className="object-contain" />
       <div className="absolute right-32 border-2 border-white hover:border-3 hover:p-0 hover:m-1 hover:border-orange-400 bg-gray-300/30 p-1 rounded-full ">
