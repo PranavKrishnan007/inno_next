@@ -55,7 +55,7 @@ const NOTICE = [
 ]
 const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
-    const [activeTab, setActiveTab] = useState(1);
+    const [activeTab, setActiveTab] = useState(0);
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
     const [innovations, setInnovations] = useState<IInnovation[]>([]);
