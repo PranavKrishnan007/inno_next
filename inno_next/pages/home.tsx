@@ -128,7 +128,7 @@ export default function Listings() {
                         <div className="flex flex-row gap-10">
                             <div className="flex flex-col gap-4 w-full">
                                 <div className="bg-white rounded-2xl p-2">
-                                    <div className="border-y shadow-2xl max-h-[65vh] overflow-auto flex-col no-scrollbar p-2">
+                                    <div className="border-y bg-gray-50 shadow-2xl max-h-[65vh] overflow-auto flex-col no-scrollbar p-2">
                                         {activeTab === 0 &&
                                             problems?.map((problem, index) => (
                                                 <ProblemCard {...problem} key={index} />
