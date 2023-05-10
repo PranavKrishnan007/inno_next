@@ -477,7 +477,7 @@ export default function RegisterForm() {
               </button>
             )}
           </div>
-          <div className="flex justify-center text-white text-lg max-w-xl font-light whitespace-nowrap">Already a member ?<a href="/register" className="ml-1 text-hover-primary">Log in</a></div>
+          <div className="flex justify-center text-white text-lg max-w-xl font-light whitespace-nowrap">Already a member ?<a href="/login" className="ml-1 text-hover-primary">Log in</a></div>
         </div>
       </div>
     <div className="w-1/2 hidden md:block bg-white h-full">

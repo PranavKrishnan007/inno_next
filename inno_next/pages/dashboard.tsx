@@ -8,10 +8,9 @@ import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity
 import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
 import { useAuth } from "@/utils/auth";
 import { IUser } from "@/utils/Interfaces";
-import {useRouter} from "next/navigation";
 import Branding from "@/components/branding";
 // const user = "Someone";
-export default function Dashboard( props :any) {
+export default function Dashboard() {
 
     const [problems, setProblems] = useState<IProblem[]>([]);
     const [hackathons, setHackathons] = useState<IHackathon[]>([]);
@@ -38,7 +37,7 @@ export default function Dashboard( props :any) {
                   <Branding />
                 </div>
                 <div className="flex flex-row gap-4">
-                    <div className="w-3/4">
+                    <div className="w-full">
                         <div className=" rounded-xl p-1 bg-gray-300/30 ">
                             <div
                                 className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
@@ -131,7 +130,7 @@ export default function Dashboard( props :any) {
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="problems" pt="xs">
-                                        <div className="px-8 py-4 flex flex-col gap-3  w-full">
+                                        <div className="px-8 py-4 flex flex-col gap-3 w-full">
                                             {problems?.map((problem:IProblem, index:number) => (
                                                 <ProblemCard {...problem} key={index}/>
                                             ))}
@@ -139,7 +138,7 @@ export default function Dashboard( props :any) {
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="innovations" pt="xs">
-                                        <div className="px-8 py-4 flex flex-col gap-3  w-full">
+                                        <div className="px-8 py-4 flex flex-col gap-3 w-full">
                                             {innovations?.map((innovation:IInnovation, index:number) => (
                                                 <InnovationCard {...innovation} key={index}/>
                                             ))}
@@ -147,21 +146,21 @@ export default function Dashboard( props :any) {
                                     </Tabs.Panel>
 
                                     <Tabs.Panel value="hackathons" pt="xs">
-                                        <div className="px-8 py-4 flex flex-col gap-3  w-full">
+                                        <div className="px-8 py-4 flex flex-col gap-3 w-full">
                                             {hackathons?.map((hackathon:IHackathon, index:number) => (
                                                 <HackathonCard {...hackathon} key={index}/>
                                             ))}
                                         </div>
                                     </Tabs.Panel>
+
+                                    <Tabs.Panel value="hackathon_submission" pt="xs">
+                                        <div className="px-8 py-4 flex flex-col gap-3 w-full">
+                                            {hackathons?.map((hackathon:IHackathon, index:number) => (
+                                              <HackathonCard {...hackathon} key={index}/>
+                                            ))}
+                                        </div>
+                                    </Tabs.Panel>
                                 </Tabs>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="w-1/4 flex flex-col">
-                        <div className="bg-white rounded-xl p-2">
-                            <div
-                                className="bg-gray-300/30 rounded-xl p-2 flex justify-center items-center text-gray-500">
-                                Notifications
                             </div>
                         </div>
                     </div>
