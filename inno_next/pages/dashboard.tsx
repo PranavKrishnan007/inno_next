@@ -33,14 +33,14 @@ export default function Dashboard( props :any) {
     }, [])
     return (
         <div className="h-screen overflow-y-scroll">
-            <Branding/>
+            <div className="sticky top-0 z-20">
+                <Branding/>
+            </div>
             <div className="container mx-auto px-4 md:px-8">
-                <div className="flex flex-row justify-center items-center p-10 gap-6">
-                </div>
                 <div className="flex flex-row gap-4">
                     <div className="w-3/4">
-                        <div className=" rounded-xl p-1 bg-gray-300/30 ">
-                            <div
+                        <div className="mt-4 rounded-xl p-1 bg-gray-300/30 ">
+                        <div
                                 className="w-full flex flex-row rounded-lg p-10 bg-gradient-to-r from-blue-600 to-emerald-200">
                                 <div className="flex flex-col">
                                     <div className="text-white text-5xl">
@@ -157,7 +157,7 @@ export default function Dashboard( props :any) {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/4 flex flex-col">
+                    <div className="mt-3 w-1/4 flex flex-col">
                         <div className="bg-white rounded-xl p-2">
                             <div
                                 className="bg-gray-300/30 rounded-xl p-2 flex justify-center items-center text-gray-500">
