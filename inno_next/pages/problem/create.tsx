@@ -3,8 +3,7 @@ import 'quill/dist/quill.snow.css'
 import { Button } from '@mantine/core'
 import Branding from '@/components/branding'
 import { IProblem } from '@/utils/Interfaces'
-import { useState } from 'react'
-import { useLayoutEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createProblem, fileUpload } from '@/utils/Services'
 import { useAuth } from '@/utils/auth'
 import { TagSelector } from '@/components/tagSelector'
@@ -22,7 +21,7 @@ export default function CreateProblem() {
         tags: [],
     })
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         if(quill) {
             quill.getModule('toolbar').addHandler('image', imageHandler)
         }

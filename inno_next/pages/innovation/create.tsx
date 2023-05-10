@@ -5,7 +5,7 @@ import Branding from '@/components/branding'
 import { IInnovation } from '@/utils/Interfaces'
 import { createInnovation, fileUpload } from '@/utils/Services'
 import { useAuth } from '@/utils/auth'
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { TagSelector } from '@/components/tagSelector'
 
 export default function CreateInnovation() {
@@ -20,7 +20,7 @@ export default function CreateInnovation() {
        tags : [],
     })
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         if(quill) {
             quill.getModule('toolbar').addHandler('image', imageHandler)
         }
