@@ -23,7 +23,7 @@ export default function Problem() {
           setProblems(res);
         }
         ) : null;
-      },[])
+      },[slug])
 
     return (
         <div className="">

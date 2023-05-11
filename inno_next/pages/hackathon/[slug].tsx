@@ -42,7 +42,7 @@ export default function Hackathon() {
         })
         res && setHackathon(res as IHackathon)
       })
-  }, [isRegister, slug])
+  }, [slug])
 
   const register = () => {
     registerForHackathon(hackathon.id + '', user.id).then((res: IStrapiServerData) => {

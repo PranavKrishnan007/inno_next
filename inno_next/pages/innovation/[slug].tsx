@@ -22,7 +22,7 @@ export default function Innovation() {
       setInnovation(res);
     }
     ) : null;
-  }, [])
+  }, [slug])
 
 
   return (
@@ -42,12 +42,15 @@ export default function Innovation() {
             <div className="w-full justify-center tracking-normal text-lg px-10">
               {parse(innovation.description)}
             </div>
-            <div className="bg-gray-100 w-full mt-4 p-4">
-              <CommentCard comment={null} />
-            </div>
+           
           </div>
+          <div className="bg-gray-100 w-full mt-4 p-4">
+              {/* <CommentCard comment={null} /> */}
+            </div>
         </div>
+        
       </div>
+      
     </div>
   )
 }
