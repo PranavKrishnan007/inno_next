@@ -10,7 +10,7 @@ export default function HackathonCard(hackathon: IHackathon) {
   
   return (
     <div>
-      <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
+      <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
         <div className='max-w-1/4 min-w-max my-auto'>
           <Image
             src={hackathon.header_img}

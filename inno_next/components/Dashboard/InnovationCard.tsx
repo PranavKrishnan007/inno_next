@@ -9,17 +9,18 @@ export default function InnovationCard(innovation: IInnovation) {
   const {push} = useRouter();
   return (
     <div>
-      <Card className='flex gap-2' shadow='sm' padding='lg' radius='md' withBorder>
+      <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
         <div className='max-w-1/4  min-w-max my-auto'>
           <Image
             src={innovation.header_img}
             height='160'
             width='180'
-            alt='Norway'
-            radius='md'
+            alt='Image'
+            radius='sm'
           />
+
         </div>
-        <div className='ml-10 min-w-4/6'>
+        <div className='w-full'>
           <Group position='apart' mt='md' mb='xs'>
             <div className='font-bold text-2xl'>{innovation.title}</div>
             <Badge className='text-lg p-3'>
