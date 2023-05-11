@@ -104,19 +104,16 @@ export default function RegisterForm() {
     if (pass !== checkPass) {
       console.log('Password does not match');
     }
-    if (pass === checkPass && pass.length > 8) {
-      const event = new CustomEvent('input', {
-        detail: {
-          id: 'password',
-          value: pass,
-          type: 'text',
-        },
-      });
-      handleFormChange(event);
+    if (pass === checkPass) {
+      setUserForm( (prevState: any) => ({
+        ...prevState,
+        password :  pass, 
+      }))
     }
   }, [pass, checkPass]);
 
   const nextScreen = () => {
+    console.log(userForm)
     if (loginSection === 2 && pass.length < 8) {
       toast.error('Password must be at least 8 characters long');
       return;
@@ -242,7 +239,7 @@ export default function RegisterForm() {
                 </div>
                 <div className="flex flex-col">
                   <label className="text-lg font-light ml-1 text-white">Confirm Password<span className="text-red-500 ml-1">*</span></label>
-                  <input id='password'
+                  <input id='confirmPassword'
                          type="password"
                          className={clsx([
                            "border-2 border-white rounded-lg bg-background p-2 max-w-xl text-white/50 placeholder:text-white/50",
