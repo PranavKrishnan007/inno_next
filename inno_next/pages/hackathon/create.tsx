@@ -10,7 +10,7 @@ import { TagSelector } from '@/components/tagSelector'
 
 export default function CreateHackathon() {
   const { quill, quillRef } = useQuill()
-    
+
   const {user} = useAuth() as any
 
   const [problem, setProblem] = useState<IHackathon>({
@@ -70,23 +70,23 @@ export default function CreateHackathon() {
   }
 
   const imageHandler = async () =>{
-      const input = document.createElement('input');  
+      const input = document.createElement('input');
 
-      input.setAttribute('type', 'file');  
-      input.setAttribute('accept', 'image/*');  
-      input.click();  
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/*');
+      input.click();
 
 
-      input.onchange = async (e:any) => {  
+      input.onchange = async (e:any) => {
           const imageData = await fileUpload(e);
-          if(!imageData) return 
+          if(!imageData) return
           const range = quill.getSelection();
           quill.insertEmbed(range.index, 'image', imageData.value )
-      }; 
+      };
   }
 
 
-  
+
   return (
     <div>
       <div>
@@ -123,7 +123,7 @@ export default function CreateHackathon() {
                     d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
                   />
                 </svg>
-                <span className="mt-2 text-base leading-normal">Select a file</span>
+                <span className="mt-2 text-sm text-center md:text-base leading-normal">Select a file</span>
                 <input id='header_img' onChange={handleProblemChange} type='file' className="hidden" />
               </label>
               <div>
@@ -140,7 +140,7 @@ export default function CreateHackathon() {
                 id='tagline'
               />
             </div>
-            <div className='w-full bg-white md:pt-10 pt-28 rounded-lg'>
+            <div className='w-full bg-white pb-4 rounded-lg'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>Tags</label>
               <TagSelector id='tags' createable={true} onChange={handleSelectChange} ></TagSelector>
             </div>
@@ -164,38 +164,40 @@ export default function CreateHackathon() {
                 id='description'
               />
             </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Participant Limit
-              </label>
-              <input
-                onChange={handleProblemChange}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='paticipantLimit'
-                type='number'
-              />
-            </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Application Open Date
-              </label>
-              <input
-                onChange={handleProblemChange}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='applicationOpenDate'
-                type='datetime-local'
-              />
-            </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Application Close Date
-              </label>
-              <input
-                onChange={handleProblemChange}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='applicationCloseDate'
-                type='datetime-local'
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className='pb-4'>
+                <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                  Participant Limit
+                </label>
+                <input
+                  onChange={handleProblemChange}
+                  className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                  id='paticipantLimit'
+                  type='number'
+                />
+              </div>
+              <div className='pb-4'>
+                <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                  Application Open Date
+                </label>
+                <input
+                  onChange={handleProblemChange}
+                  className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                  id='applicationOpenDate'
+                  type='datetime-local'
+                />
+              </div>
+              <div className='pb-4'>
+                <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                  Application Close Date
+                </label>
+                <input
+                  onChange={handleProblemChange}
+                  className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                  id='applicationCloseDate'
+                  type='datetime-local'
+                />
+              </div>
             </div>
             <div className='pb-4'>
               <label className='block text-gray-700 text-2xl font-medium mb-2'>Additional Details</label>
@@ -205,29 +207,30 @@ export default function CreateHackathon() {
                 </div>
               </div>
             </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Hackathon Start Date
-              </label>
-              <input
-                onChange={handleProblemChange}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='hackathonStartDate'
-                type='datetime-local'
-              />
+            <div className="md:pt-10 pt-28 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className='pb-4'>
+                <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                  Hackathon Start Date
+                </label>
+                <input
+                  onChange={handleProblemChange}
+                  className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                  id='hackathonStartDate'
+                  type='datetime-local'
+                />
+              </div>
+              <div className='pb-4'>
+                <label className='block text-gray-700 text-2xl font-medium mb-2'>
+                  Hackathon End Date
+                </label>
+                <input
+                  onChange={handleProblemChange}
+                  className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
+                  id='hackathonEndDate'
+                  type='datetime-local'
+                />
+              </div>
             </div>
-            <div className='pb-4'>
-              <label className='block text-gray-700 text-2xl font-medium mb-2'>
-                Hackathon End Date
-              </label>
-              <input
-                onChange={handleProblemChange}
-                className='appearance-none border border-gray-500/40 rounded-xl w-full p-4 text-gray-700 leading-tight placeholder:text-lg'
-                id='hackathonEndDate'
-                type='datetime-local'
-              />
-            </div>
-         
             <div className='pt-5'>
               <Button onClick={submit} variant='outline'>
                 Submit for Moderation

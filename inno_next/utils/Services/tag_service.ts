@@ -2,7 +2,7 @@ import { ITags, IStrapiServerData } from '../../utils/Interfaces/coreEntity'
 import { axhttp } from './axios_setup'
 
 export const getAllTags = async (): Promise<ITags[]> => {
-  const tags: IStrapiServerData[] = await axhttp.get('/tags/').then((res) => res.data)
+  const tags: IStrapiServerData[] = await axhttp.get('/tags/').then((res) => res?.data)
   if (!tags) return []
   const formattedTags: ITags[] = tags?.map((tag: IStrapiServerData) => {
     return {
