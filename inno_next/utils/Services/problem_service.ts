@@ -29,7 +29,6 @@ export const getProblemsByUser = async (userId: string): Promise<IProblem[]> => 
 
 // create problem
 export const createProblem = async (problem: IProblem): Promise<IProblem> => {
-	console.log(problem);
 	const res = responseHandler(
 		(await axhttp.post('/problems/', {
 			data: problem,

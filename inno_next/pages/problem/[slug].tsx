@@ -19,7 +19,7 @@ export default function Problem() {
     
       useEffect( () => {
         slug ? getProblem(slug as string).then(res => {
-          console.log(res)
+
           setProblems(res);
         }
         ) : null;

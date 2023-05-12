@@ -12,10 +12,8 @@ const responseHandler = (response: any) => {
 export const getAllHackathons = async (): Promise<IHackathon[]> => {
 	const res = responseHandler(await axhttp.get('/hackathons?filters[accepted][$eq]=true&populate=*')) as IStrapiServerData[];
 	if (!res) return [];
-	console.log(res);
 	return res?.map((hackathon: IStrapiServerData) => {
 		hackathon.attributes.id = hackathon.id;
-		console.log(hackathon.attributes);
 		return hackathon.attributes as IHackathon;
 	});
 };
@@ -65,7 +63,7 @@ export const getHackathonByUser = async (userId: string) => {
 	if (!res) return [] as IHackathon[];
 	return res?.map((hackathon: IStrapiServerData) => {
 		hackathon.attributes.id = hackathon.id;
-		console.log(hackathon.attributes);
+
 		return hackathon.attributes as IHackathon;
 	});
 };
@@ -75,7 +73,6 @@ export const getHackathonByParticipant = async (userId: string) => {
 	if (!res) return {} as IHackathon[];
 	return res?.map((hackathon: IStrapiServerData) => {
 		hackathon.attributes.id = hackathon.id;
-		console.log(hackathon.attributes);
 		return hackathon.attributes as IHackathon;
 	});
 };

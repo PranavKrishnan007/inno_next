@@ -76,7 +76,7 @@ export default function Listings() {
         }
         if (activeTab == 2) {
             getAllHackathons().then((res: IHackathon[]) => {
-                console.log(res)
+            
                 setHackathons(res)
             })
             return
@@ -86,15 +86,11 @@ export default function Listings() {
 
 
     const searchBasedOnTags = (selectedTags:string[]) => {
-        
-        // setProblems(problems.filter(problem => {
-        //     problem.tags.forEach(tag => {
-        //         console.log(tag)
-        //     })}))
-        console.log(selectedTags)
+
+    
         setProblems(problems.filter(problem => {
             problem.tags?.data.forEach((tag:any)=>{
-            console.log(tag.id)
+        
             selectedTags.includes(tag.id)})
         }))
 

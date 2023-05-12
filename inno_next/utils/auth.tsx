@@ -43,10 +43,10 @@ export const AuthProvider = ({ children } : any) => {
       })
 
       if(res.user) {
-        console.log(axhttp.defaults.headers)
+
         const user = await axhttp.get(`/users/${res.user.id}?populate[0]=genericuser`)
         setUser(user as any )
-        console.log(user)
+     
         Cookies.set('token', res.jwt)
         Cookies.set('user', JSON.stringify(user))
         axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`

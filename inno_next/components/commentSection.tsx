@@ -21,7 +21,6 @@ const CommentCard = ( {entityId, entityType, user} : ICommentSectionProp) => {
 
 	useEffect( () => {
 		getAllComments(entityType, entityId).then((data) => { 
-			console.log(data)
 			setComment(data)
 		})
 	}, [entityId, entityType]) 

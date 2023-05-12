@@ -22,7 +22,6 @@ axhttp.interceptors.response.use(
 		return response.data;
 	},
 	async (error) => {
-		console.log(error);
 		if (error.response?.data?.error) {
 			if (error.response.data.error.details?.details) {
 				toast.error(

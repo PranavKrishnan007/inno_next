@@ -54,7 +54,7 @@ export default function CreateInnovation() {
             content : quill.root.innerHTML,
             author : parseInt(user.id),
         }
-        console.log(problemData)
+
         createInnovation(problemData).then( (res:IInnovation) => {
             if(!res.id) return
             toast.success('Innovation Created')
