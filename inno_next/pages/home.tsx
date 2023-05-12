@@ -16,6 +16,7 @@ import InnovationCard from '@/components/Dashboard/InnovationCard';
 import HackathonCard from '@/components/Dashboard/HackathonCard';
 import { useAuth } from '@/utils/auth';
 import { useRouter } from "next/navigation";
+import { TagSelector } from '@/components/tagSelector';
 
 export function InputWithButton(props: TextInputProps) {
     return (
@@ -83,6 +84,31 @@ export default function Listings() {
     }, [activeTab])
     const { push } = useRouter();
 
+
+    const searchBasedOnTags = (selectedTags:string[]) => {
+        
+        // setProblems(problems.filter(problem => {
+        //     problem.tags.forEach(tag => {
+        //         console.log(tag)
+        //     })}))
+        console.log(selectedTags)
+        setProblems(problems.filter(problem => {
+            problem.tags?.data.forEach((tag:any)=>{
+            console.log(tag.id)
+            selectedTags.includes(tag.id)})
+        }))
+
+        setHackathons(hackathons.filter(hackathon => {
+            hackathon.tags?.data.forEach((tag:any)=> selectedTags.find( id => id+'' == tag.id) )
+        }))
+
+        setInnovations(innovations.filter(innovation => {
+            innovation.tags?.data.forEach((tag:any)=>selectedTags.find( id => id+'' == tag.id))
+        }))
+    }
+    
+    
+
     return (
         <div className="min-h-screen mx-auto ">
             <div className="sticky top-0 z-20">
@@ -116,7 +142,7 @@ export default function Listings() {
                             <div className="w-1/3 bg-gray-300/30 p-1 rounded-lg border-2 border-white">
                                 <Button
                                     className="bg-primary hover:bg-orange-500/90 w-full text-white"
-                                    onClick={() => { activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : push('/home') }}
+                                    onClick={() => { activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : activeTab === 2 ? push('/hackathon/create') : push('/home') }}
                                 >
                                     {activeTab === 0 ? "Create Problems" : activeTab === 1 ? " Create Innovations" : "Create Hackathons"}
                                 </Button>
@@ -152,24 +178,9 @@ export default function Listings() {
                             <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full pt-3">Select Tags</p>
                         </div>
                         <div className="border bg-white mb-6 mt-2 p-1 mx-1 rounded-full w-ful">
-                            <MultiSelect
-                                data={['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8']}
-                                placeholder="Select a tag"
-                                styles={(theme) => ({
-                                    input: {
-                                        '&:focus-within': {
-                                            borderColor: theme.colors.orange[7],
-                                        },
-                                    },
-                                })}
-                                transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
-                                searchable
-                                nothingFound='No tags found'
-                                radius="xl"
-                                variant="filled"
-                            />
+                           <TagSelector id="tagSearch" createable={false} onChange={searchBasedOnTags} ></TagSelector>
                         </div>
-                        <div className="flex justify-between">
+                        {/* <div className="flex justify-between">
                             <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full pt-3">Select Badge</p>
                         </div>
                         <div className="border bg-white mb-6 mt-2 p-1 mx-1 rounded-full w-ful">
@@ -210,7 +221,7 @@ export default function Listings() {
                                 radius="xl"
                                 variant="filled"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

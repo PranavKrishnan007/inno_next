@@ -1,25 +1,34 @@
 import Branding from "@/components/branding";
 import { IInnovation } from "@/utils/Interfaces";
-import { getInnovation } from "@/utils/Services";
+import { entities, getInnovation } from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import CommentCard from "@/components/commentSection";
+import { useAuth } from "@/utils/auth";
 
 
 export default function Innovation() {
   const router = useRouter();
   const { slug } = router.query;
   const [innovation, setInnovation] = useState<IInnovation>({
+    id: 1,
     title: '',
     content : '',
     header_img : '',
     description : ''
   });
+  const {user} = useAuth() as any;
 
-  useEffect( () => {
+  useLayoutEffect( () => {
     slug ? getInnovation(slug as string).then(res => {
-      setInnovation(res);
+      setInnovation({
+        id : res.id,
+        title : res.title,
+        content : res.content,
+        header_img : res.header_img,
+        description :  res.description
+      });
     }
     ) : null;
   }, [slug])
@@ -30,7 +39,9 @@ export default function Innovation() {
       <div className="absolute w-full flex flex-col top-0 z-50">
         <Branding />
       </div>
-      <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
+      {
+        innovation && (
+          <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
         <div className="h-screen py-10">
           <div className="h-full bg-white border rounded-2xl p-10">
             <div className="rounded-xl h-52 px-10 text-left text-5xl text-white">
@@ -45,11 +56,13 @@ export default function Innovation() {
            
           </div>
           <div className="bg-gray-100 w-full mt-4 p-4">
-              {/* <CommentCard comment={null} /> */}
+          <CommentCard entityId={innovation.id} entityType={entities.INNOVATION} user={user}  ></CommentCard>
             </div>
         </div>
         
       </div>
+        )
+      }
       
     </div>
   )

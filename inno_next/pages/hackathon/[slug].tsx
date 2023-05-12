@@ -1,6 +1,6 @@
 import Branding from '@/components/branding'
 import { IHackathon } from '@/utils/Interfaces'
-import { getHackathon, registerForHackathon } from '@/utils/Services'
+import { entities, getHackathon, registerForHackathon } from '@/utils/Services'
 import { Image } from '@mantine/core'
 import { useRouter } from 'next/router'
 import parse from 'html-react-parser'
@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '@/utils/auth'
 import { IStrapiServerData } from '@/utils/Interfaces/coreEntity'
 import { toast } from 'react-toastify'
+import CommentCard from '@/components/commentSection'
 
 export default function Hackathon() {
   const router = useRouter()
@@ -105,6 +106,7 @@ export default function Hackathon() {
             </div>
           </div>
         </div>
+        <CommentCard entityId={hackathon.id} entityType={entities.HACKATHON} user={user}  ></CommentCard>
       </div>
     </div>
   )
