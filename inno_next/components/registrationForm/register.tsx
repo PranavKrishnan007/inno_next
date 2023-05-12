@@ -112,6 +112,11 @@ export default function RegisterForm() {
     }
   }, [pass, checkPass]);
 
+  const firstScreen = (value: number) => {
+    setUser({value})
+    nextScreen()
+  }
+
   const nextScreen = () => {
     console.log(userForm)
     if (loginSection === 2 && pass.length < 8) {
@@ -150,7 +155,7 @@ export default function RegisterForm() {
                   "border-2 border-white flex flex-row justify-center items-center  text-white font-light rounded-lg hover:bg-blue-950 text-xl py-4 px-4",
                   orgOrUser === 0 && "!bg-blue-950  !border-primary  !font-medium",
                 ])}
-                        onClick={() => setUser({ value: 0 })}
+                        onClick={() => firstScreen(0)}
                 >
                   <img
                     src='/assets/user%202.svg'
@@ -163,7 +168,7 @@ export default function RegisterForm() {
                   "border-2 border-white flex flex-row justify-center items-center text-white font-light rounded-lg hover:bg-blue-950 text-xl py-4 px-4",
                   orgOrUser === 1 && "!bg-blue-950 !border-primary !font-medium",
                 ])}
-                        onClick={() => setUser({ value: 1 })}
+                        onClick={() => firstScreen(1)}
                 >
                   <img
                     src='/assets/user%202.svg'
@@ -460,7 +465,10 @@ export default function RegisterForm() {
               </button>
             )}
             {orgOrUser === 0 && (
-              <button className="bg-hover-primary text-lg font-medium text-white w-full rounded-lg p-2"
+              <button className={clsx([
+                "bg-hover-primary text-lg font-medium text-white w-full rounded-lg p-2",
+                loginSection === 0 ? "hidden" : "block"
+              ])}
                       onClick={() => nextScreen()}
               >
                 {loginSection === 4 ? 'Sign Up' : 'Continue'}
