@@ -7,9 +7,11 @@ import { useEffect, useState } from 'react'
 import { createProblem, fileUpload } from '@/utils/Services'
 import { useAuth } from '@/utils/auth'
 import { TagSelector } from '@/components/tagSelector'
+import { useRouter } from 'next/navigation'
 export default function CreateProblem() {
     const { quill, quillRef } = useQuill()
     const {user} = useAuth() as any
+    const router = useRouter()
     const [problem, setProblem] = useState<IProblem>({
         title: '',
         description: '',
@@ -50,7 +52,10 @@ export default function CreateProblem() {
             content : quill.root.innerHTML,
             author : user.id as number,
         }
-        createProblem(problemData)
+        createProblem(problemData).then( (res : IProblem) => {
+            if(!res.id) return
+            router.push('/dashboard')
+        })
     }
 
     const imageHandler = async () =>{

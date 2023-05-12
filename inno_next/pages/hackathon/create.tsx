@@ -7,6 +7,8 @@ import { useAuth } from '@/utils/auth'
 import { IHackathon } from '@/utils/Interfaces'
 import { createHackathon, fileUpload } from '@/utils/Services'
 import { TagSelector } from '@/components/tagSelector'
+import router from 'next/router'
+import { toast } from 'react-toastify'
 
 export default function CreateHackathon() {
   const { quill, quillRef } = useQuill()
@@ -66,7 +68,11 @@ export default function CreateHackathon() {
           additionalDetails : quill.root.innerHTML,
           author : parseInt(user.id),
       }
-      createHackathon(hackathonData)
+      createHackathon(hackathonData).then( (res:IHackathon) => {
+            if(!res.id) return
+            toast.success('Hackathon Created')
+            router.push(`/dashboard`)
+      })
   }
 
   const imageHandler = async () =>{

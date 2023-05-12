@@ -7,12 +7,14 @@ import { createInnovation, fileUpload } from '@/utils/Services'
 import { useAuth } from '@/utils/auth'
 import { useState, useEffect } from 'react'
 import { TagSelector } from '@/components/tagSelector'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 export default function CreateInnovation() {
     const { quill, quillRef } = useQuill()
 
     const {user} = useAuth() as any
-
+    const router = useRouter()
     const [problem, setProblem] = useState<IInnovation>({
         title : '',
         description : '',
@@ -53,7 +55,11 @@ export default function CreateInnovation() {
             author : parseInt(user.id),
         }
         console.log(problemData)
-        createInnovation(problemData)
+        createInnovation(problemData).then( (res:IInnovation) => {
+            if(!res.id) return
+            toast.success('Innovation Created')
+            router.push('/dashboard')
+        })
     }
 
     const imageHandler = async () =>{
