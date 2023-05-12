@@ -59,3 +59,23 @@ export const getHackathonRegistrations = async (hackathonId: string) => {
 	if (!res) return false;
 	return res;
 };
+
+export const getHackathonByUser = async (userId: string) => {
+	const res = responseHandler(await axhttp.get(`/hackathons?filters\[author\][id][$eq]=${userId}&populate=*`));
+	if (!res) return [] as IHackathon[];
+	return res?.map((hackathon: IStrapiServerData) => {
+		hackathon.attributes.id = hackathon.id;
+		console.log(hackathon.attributes);
+		return hackathon.attributes as IHackathon;
+	});
+};
+
+export const getHackathonByParticipant = async (userId: string) => {
+	const res = responseHandler(await axhttp.get(`/hackathons?filters[participants][$contains][$eq]=${userId}&populate=*`));
+	if (!res) return {} as IHackathon[];
+	return res?.map((hackathon: IStrapiServerData) => {
+		hackathon.attributes.id = hackathon.id;
+		console.log(hackathon.attributes);
+		return hackathon.attributes as IHackathon;
+	});
+};

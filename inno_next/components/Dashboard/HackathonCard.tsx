@@ -27,7 +27,10 @@ export default function HackathonCard(hackathon: IHackathon) {
               <IconEdit className='hover:bg-slate-200 m-1 cursor-pointer hover:shadow-lg active:shadow-none'/>
             </div>
             <Badge className='text-lg p-3'>
-              {hackathon.participants.data.length} <span className='text-base'>Registrations</span>
+              {hackathon.participants && hackathon.participants.data.length} <span className='text-base'>Registrations</span>
+            </Badge>
+            <Badge className='text-lg p-3 bg-green-100'>
+              {hackathon.accepted ?  (<span className='text-base'>ACCEPTED</span>) : (<span className='text-red'>PENDING</span>)}
             </Badge>
           </Group>
           <div className='text-lg my-1 text-slate-600'>{hackathon.tagline}</div>
@@ -44,6 +47,9 @@ export default function HackathonCard(hackathon: IHackathon) {
               More Info <IconArrowRight />
             </Button>
             <TagDisplayer tags={hackathon.tags} ></TagDisplayer>
+            <div>
+    
+            </div>
           </div>
         </div>
       </Card>

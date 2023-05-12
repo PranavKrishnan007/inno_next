@@ -5,7 +5,7 @@ import ProblemCard from "@/components/Dashboard/ProblemCard";
 import InnovationCard from "@/components/Dashboard/InnovationCard";
 import HackathonCard from "@/components/Dashboard/HackathonCard";
 import { IProblem, IHackathon, IInnovation } from "@/utils/Interfaces/coreEntity";
-import { getAllProblems, getAllInnovations, getAllHackathons } from "@/utils/Services";
+import { getAllProblems, getAllInnovations, getAllHackathons, getHackathonByUser } from "@/utils/Services";
 import { useAuth } from "@/utils/auth";
 import { IUser } from "@/utils/Interfaces";
 import {useRouter} from "next/navigation";
@@ -27,7 +27,8 @@ export default function Dashboard( props :any) {
                 setInnovations(res)
             })
 
-            getAllHackathons().then((res:IHackathon[]) => {
+            getHackathonByUser( user?.id +  "" ).then((res:IHackathon[]) => {
+                console.log(res)
                 setHackathons(res)
             })
     }, [])

@@ -77,7 +77,7 @@ const CommentCard = ( {entityId, entityType, user} : ICommentSectionProp) => {
 								<div className='text-xs font-normal text-gray-500'>{new Date(comment.createdAt).toDateString()}</div>
 							</div>
 						</div>
-						<button onClick={() => setReply(!reply)}>Reply</button>
+						
 					</div>
 					<div className='p-2'>
 						<div className='text-sm font-normal text-gray-900'>{comment.content}</div>

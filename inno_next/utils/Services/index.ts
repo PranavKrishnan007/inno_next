@@ -9,5 +9,12 @@ export {
 	getInnovationsByUser,
 } from './innovation_service';
 export { getAllProblems, getProblemsByUser, createProblem, getProblem } from './problem_service';
-export { getAllHackathons, createHackathon, getHackathon, registerForHackathon } from './hackathon_service';
+export {
+	getAllHackathons,
+	createHackathon,
+	getHackathon,
+	registerForHackathon,
+	getHackathonByUser,
+	getHackathonByParticipant,
+} from './hackathon_service';
 export { entities, getAllComments, createComment, deleteComment } from './comment_service';
