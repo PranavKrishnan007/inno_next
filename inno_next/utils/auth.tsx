@@ -50,7 +50,7 @@ export const AuthProvider = ({ children } : any) => {
         Cookies.set('token', res.jwt)
         Cookies.set('user', JSON.stringify(user))
         axhttp.defaults.headers.common['Authorization'] = `Bearer ${res.jwt}`
-        router.push('/home')
+        window.location.href = '/home'
       }
     }
     catch (err) {
