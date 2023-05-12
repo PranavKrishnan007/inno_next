@@ -3,11 +3,12 @@ import {  Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
 import { IProblem } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 
 export default function ProblemCard(problem: IProblem) {
   const {push} = useRouter();
+  const pathName = usePathname();
   return (
     <div >
       <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100'   >
@@ -27,6 +28,13 @@ export default function ProblemCard(problem: IProblem) {
             <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
             </Badge>
+           {
+            pathName === '/dashboard' && (
+              <Badge className='text-lg p-3 bg-green-100'>
+              {problem.status &&  (<span className='text-base'>{problem.status}</span>)}
+            </Badge>
+            )
+           }
           </Group>
           <div className='min-w-full text-ellipsis  overflow-hidden text-md text-gray-500 tracking-wide line-clamp-3'>{problem.description}</div>
           <div className=' flex justify-start items-center'>

@@ -35,7 +35,7 @@ export const getAllInnovations = async (): Promise<IInnovation[]> => {
 };
 
 export const getInnovationsByUser = async (userId: string): Promise<IInnovation[]> => {
-	const res = responseHandler((await axhttp.get(`/innovations?filters[user]=${userId}`)) as IStrapiServerData[]);
+	const res = responseHandler((await axhttp.get(`/innovations?filters\[author\][id][$eq]=${userId}&populate=*`)) as IStrapiServerData[]);
 	if (!res) return [];
 	return res?.map((innovation: IStrapiServerData) => {
 		innovation.attributes.id = innovation.id;

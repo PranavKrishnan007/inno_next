@@ -3,10 +3,11 @@ import { Avatar, Badge, Button, Card, Group, Image, Tabs, Textarea, TextInput } 
 import { IconArrowRight } from '@tabler/icons-react'
 import { IInnovation } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function InnovationCard(innovation: IInnovation) {
   const {push} = useRouter();
+  const pathName = usePathname();
   return (
     <div>
       <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
@@ -26,6 +27,13 @@ export default function InnovationCard(innovation: IInnovation) {
             <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
             </Badge>
+            {
+              pathName === '/dashboard' && (
+                <Badge className='text-lg p-3 bg-green-100'>
+              {innovation.status &&  (<span className='text-base'>{innovation.status}</span>)}
+            </Badge>)
+            }
+
           </Group>
           <div className='max-w-full text-md text-gray-600 line-clamp-3'>{innovation.description}</div>
           <div className=' flex justify-start items-center'>

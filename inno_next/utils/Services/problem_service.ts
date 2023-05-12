@@ -19,7 +19,7 @@ export const getAllProblems = async (): Promise<IProblem[]> => {
 };
 // get problems by login user
 export const getProblemsByUser = async (userId: string): Promise<IProblem[]> => {
-	const res = responseHandler((await axhttp.get(`/problems?filters[user]=${userId}`)) as IStrapiServerData[]);
+	const res = responseHandler((await axhttp.get(`/problems?filters\[author\][id][$eq]=${userId}&populate=*`)) as IStrapiServerData[]);
 	if (!res) return [];
 	return res?.map((problem: IStrapiServerData) => {
 		problem.attributes.id = problem.id;

@@ -3,11 +3,11 @@ import { Badge, Button, Card, Group, Image } from '@mantine/core'
 import { IconArrowRight, IconEdit } from '@tabler/icons-react'
 import { IHackathon } from '@/utils/Interfaces/coreEntity'
 import { TagDisplayer } from '../tagDisplayer'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function HackathonCard(hackathon: IHackathon) {
   const router = useRouter()
-  
+  const pathName = usePathname()
   return (
     <div>
       <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
@@ -29,9 +29,13 @@ export default function HackathonCard(hackathon: IHackathon) {
             <Badge className='text-lg p-3'>
               {hackathon.participants && hackathon.participants.data.length} <span className='text-base'>Registrations</span>
             </Badge>
-            <Badge className='text-lg p-3 bg-green-100'>
+            {
+              pathName === '/dashboard' && (
+                <Badge className='text-lg p-3 bg-green-100'>
               {hackathon.accepted ?  (<span className='text-base'>ACCEPTED</span>) : (<span className='text-red'>PENDING</span>)}
             </Badge>
+              )
+            }
           </Group>
           <div className='text-lg my-1 text-slate-600'>{hackathon.tagline}</div>
           <div className='max-w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
