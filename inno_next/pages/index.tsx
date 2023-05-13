@@ -48,26 +48,27 @@ export default function Home() {
   const { push } = useRouter();
 
   return (
-    <div className="absolute ">
-      <div className="flex z-30 sticky top-0 justify-between bg-white shadow-md w-full px-20 py-5">
+    <div className="absolute">
+      <div className="flex z-30 sticky top-0 justify-between bg-white shadow-md w-full px-4 md:px-20 py-4">
         <h2 className="flex gap-10" onClick={() => { push('/') }} >
           <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 p-1 object-contain" />
           <img src="/assets/g20c20.png" alt="g20c20_logo" className="h-10 p-1 object-contain" />
         </h2>
-        <h2 className=" font-bold">
-          <Link href='/dashboard' className="hover:text-blue-500 text-md text-gray-700">Go to dashboard</Link>
-        </h2>
+        <div className="font-bold h-full pt-2">
+          <Link href='/dashboard' className="hover:text-blue-500 h-full text-md text-gray-700">Go to dashboard</Link>
+        </div>
+
       </div>
-      <div >
-        <div className="flex justify-between px-52  pt-32" >
-          <img src="/assets/vector-4.png" alt="innopsi_logo" className="relative z-0 h-20 object-contain" />
-          <img src="/assets/vector-7.png" alt="g20c20_logo" className="relative z-0 h-20 object-contain" />
+      <div className="py-14">
+        <div className="flex justify-between px-52 pt-32" >
+          <img src="/assets/vector-4.png" alt="innopsi_logo" className="relative z-0 h-20 object-contain hidden md:block" />
+          <img src="/assets/vector-7.png" alt="g20c20_logo" className="relative z-0 h-20 object-contain hidden md:block" />
         </div>
         <div className="flex flex-col justify-center -mt-10 text-center gap-5 px-20  pt-10" >
-          <div className=" absolute inset-0 mt-20 ">
+          <div className="absolute inset-0 mt-20">
             <img src="/assets/Ellipse%201.png" alt="g20c20_logo" className="mx-auto object-contain" />
           </div>
-          <div className="relative z-20">
+          <div className="relative z-20 flex flex-col gap-4">
             <h1 className="text-7xl text-gray-800 font-extrabold">
               Transform <span className="text-orange-500">problems</span> into solutions.
             </h1>
@@ -76,7 +77,7 @@ export default function Home() {
             </h2>
           </div>
         </div>
-        <div className="flex justify-center mt-4 gap-10" >
+        <div className="flex justify-center mt-10 gap-10" >
           <Button onClick={() => push('/register')} className="bg-blue-500 w-1/5 hover:bg-blue-600" fullWidth size="xl" uppercase>
             Join Us
           </Button>
@@ -84,48 +85,54 @@ export default function Home() {
             Login
           </Button>
         </div>
-        <div className="flex justify-between my-6  px-48">
-          <img src="/assets/vector-5.png" alt="innopsi_logo" className="h-48 object-contain" />
-          <img src="/assets/vector-6.png" alt="g20c20_logo" className="h-48 object-contain" />
+        <div className="w-full hidden md:block">
+          <div className="flex justify-between my-6 px-48">
+            <img src="/assets/vector-5.png" alt="innopsi_logo" className="h-48 object-contain" />
+            <img src="/assets/vector-6.png" alt="g20c20_logo" className="h-48 object-contain" />
+          </div>
         </div>
+
       </div>
-      <div className="xl:flex mx-auto bg-blue-950 min-h-[40vh] px-32 py-20">
-        <div className="flex-1 p-4 my-auto text-left text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mt-5 ">
+      <div className="xl:flex mx-auto bg-blue-950 min-h-[40vh] px-8 md:px-32 py-20">
+        <div className="flex-1 p-4 my-auto text-white text-center md:text-left">
+          <h1 className="text-5xl md:text-6xl font-bold mt-5 ">
             Change <span className="text-orange-500">the</span> world!!
           </h1>
-          <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
+          <h4 className="text-xl mt-4 tracking-wide ">
             Be the change you wish to see in the world. Join Innopsi and together,
             let's create a positive impact through meaningful discussions and problem-solving.
           </h4>
-          <div className="flex justify-between pt-12 pl-20" >
-            <img src="/assets/vector-2.png" alt="g20c20_logo" className="h-64 object-contain" />
+          <div className="hidden md:block">
+            <div className="flex justify-between pt-12 pl-20" >
+              <img src="/assets/vector-2.png" alt="g20c20_logo" className="h-64 object-contain" />
+            </div>
           </div>
+
         </div>
         <div className="flex p-10 m-4 h-fit my-auto  rounded-3xl">
           <img src="/assets/illustration-12.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl" />
         </div>
       </div>
-      <div className="xl:flex mx-auto px-32">
+      <div className="xl:flex mx-auto px-8 md:px-32">
         <div className="flex p-10 m-4 h-fit my-auto rounded-3xl">
           <img src="/assets/illustration-11.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl" />
         </div>
-        <div className="flex-1 p-4 my-auto text-left text-blue-950">
-          <h1 className="text-4xl md:text-6xl font-bold mt-5 ">
+        <div className="flex-1 md:p-4 my-auto pb-14 md:pb-0 text-center md:text-left text-blue-950">
+          <h1 className="text-5xl md:text-6xl font-bold mt-5 ">
             What <span className="text-orange-500">we</span> do?
           </h1>
-          <h4 className="text-lg md:text-xl mt-4 tracking-wide">
+          <h4 className="text-xl mt-4 tracking-wide">
             We offer comprehensive platform that empowers users to seek solutions to everyday challenges
             within the context United Nations Sustainable Development Goals. Join our community and collaborate with experts to solve your
             problems.
           </h4>
-          <div className=" mt-4 px-48 " >
+          <div className="mt-4 px-48 hidden md:block">
             <img src="/assets/vector-1.png" alt="innopsi_logo" className="h-48 object-contain" />
           </div>
         </div>
       </div>
       <div className=" justify-center mx-auto bg-blue-950 py-20 text-white text-center h-fit">
-        <h2 className="text-6xl font-bold "> 
+        <h2 className="md:text-6xl text-4xl font-bold ">
           Ideate | Create | Empower
         </h2>
         <p className="text-2xl mt-5">
@@ -133,19 +140,19 @@ export default function Home() {
         </p>
         <img src="/assets/vector-3.png" alt="g20c20_logo" className="my-auto h-[40vh] object-contain w-full p-10" />
       </div>
-      <h4 className="text-2xl pt-20 md:text-4xl my-4 px-20 mx-auto font-bold tracking-wide text-blue-950 ">
+      {/* <h4 className="text-2xl pt-20 md:text-4xl my-4 px-20 mx-auto font-bold tracking-wide text-blue-950 ">
         Glimpse of Challenges...
-      </h4>
-      <div className="flex flex-col px-20 mx-auto gap-3 my-6">
+      </h4> */}
+      {/* <div className="flex flex-col px-20 mx-auto gap-3 my-6">
         {problems.map((problem, index) => (
           <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'} />
         ))}
         <Link href='/home' className="relative z-10 text-center hover:text-blue-500 hover:">
           view more
         </Link>
-      </div>
-      <div className="flex-1  mx-auto  px-32 py-12  my-auto text-left text-blue-950 ">
-        <h4 className="text-2xl md:text-2xl my-4 font-bold tracking-wide">
+      </div> */}
+      <div className="flex-1 mx-auto md:px-32 px-8 py-16 md:py-24 text-center md:text-left text-blue-950 ">
+        <h4 className="text-5xl my-4 font-bold tracking-wide">
           Our Mission
         </h4>
         <h4 className="text-lg md:text-xl mt-4 tracking-wide ">
@@ -156,17 +163,17 @@ export default function Home() {
           they need to make a societal impact.
         </h4>
       </div>
-      <div className="flex mx-auto bg-blue-950 p-4 mt-12 text-white px-32  my-auto text-left text-blue-950 ">
-        <img src="/assets/amm-c20.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-1/2 inline-flex rounded-3xl" />
+      <div className="flex flex-col md:flex-row mx-auto bg-blue-950 p-4 mt-12 text-white  md:px-32  px-8 pb-16 md:pb-0 my-auto text-left text-blue-950 ">
+        <img src="/assets/amm-c20.png" alt="g20c20_logo" className="my-auto p-10 object-contain md:w-1/2 inline-flex rounded-3xl" />
         <div className="my-auto">
-          <h4 className="text-xl font-medium  md:text-xl mt-4 tracking-wide ">
+          <h4 className="text-3xl font-semibold  md:text-xl mt-4 tracking-wide ">
             Message from the Chair, C20 India 2023
             <br />
-            <p className=" font-light">
+            <p className="mt-2 font-medium">
               Our Inspiration
             </p>
             <br />
-            <p className="text-lg font-light w-5/6">
+            <p className="text-xl font-light md:w-5/6">
               Knowledge is like a river. Its nature is to flow to all corners of the world and nourish the culture there.
               By sharing knowledge and experiences, we can prevent the beautiful flower that is this world from wilting.
               By bringing together diverse streams of knowledge, we can create a magnificent river. May this great river
@@ -181,7 +188,7 @@ export default function Home() {
           </h4>
         </div>
       </div>
-      <div className="flex justify-between px-48 bg-slate-100" >
+      {/* <div className="flex justify-between px-48 bg-slate-100" >
         <div className="flex justify-center text-center gap-5 px-20  align-middle py-10" >
           <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 object-contain my-auto" />
         </div>
@@ -191,7 +198,7 @@ export default function Home() {
         <p className='inline-block text-sm my-auto font-light align-middle'>
           Partners
         </p>
-      </div>
+      </div> */}
 
     </div>
   );
