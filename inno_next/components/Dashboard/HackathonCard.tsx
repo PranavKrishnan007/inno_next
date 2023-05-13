@@ -20,11 +20,10 @@ export default function HackathonCard(hackathon: IHackathon) {
             radius='md'
           />
         </div>
-        <div className='md:w-full'>
+        <div className='md:w-full px-2'>
           <Group className="justify-between flex-col md:flex-row" mt='md' mb='xs'>
             <div className='flex flex-row justify-start space-x-2 items-center'>
               <div className='font-bold text-2xl line-clamp-1'>{hackathon.title}</div>
-              <IconEdit className='hover:bg-slate-200 m-1 cursor-pointer hover:shadow-lg active:shadow-none' />
             </div>
             <div className='flex flex-row gap-2'>
               <Badge className='text-lg p-3'>
@@ -39,7 +38,7 @@ export default function HackathonCard(hackathon: IHackathon) {
               }
             </div>
           </Group>
-          <div className='text-lg w-4/5 text-justify mx-auto md:w-full my-1 text-slate-600'>{hackathon.tagline}</div>
+          <div className='text-lg w-4/5 text-justify mx-auto md:w-full font-medium my-1 text-slate-600'>{hackathon.tagline}</div>
           <div className='w-4/5 text-justify mx-auto md:w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
           <div className='flex flex-col md:flex-row justify-start items-center'>
             <Button
