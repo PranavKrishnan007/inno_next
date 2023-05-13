@@ -8,7 +8,6 @@ import { isEmptyObject } from "@tiptap/react";
 const Branding = () => {
     const { push } = useRouter();
     const { logout } = useAuth() as any
-    const isMdScreen = window.matchMedia('(min-width: 768px) and (max-width: 1023px)').matches;
 
     return (
         <div className="sticky top-0 py-5 bg-white flex container mx-auto flex-col md:flex-row border-b-2 border-gray-300/30 justify-between items-center gap-4 md:gap-10">            <div className="flex gap-10 ">
