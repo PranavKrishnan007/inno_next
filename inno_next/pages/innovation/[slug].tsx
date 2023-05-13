@@ -54,7 +54,7 @@ export default function Innovation() {
                 {parse(innovation.description)}
               </div>
             </div>
-            <div className="bg-gray-100 w-full mt-4 p-4">
+            <div className=" w-full mt-4 p-4">
               <CommentCard entityId={innovation.id} entityType={entities.INNOVATION} user={user}  ></CommentCard>
             </div>
           </div>
