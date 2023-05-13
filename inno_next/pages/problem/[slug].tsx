@@ -3,7 +3,7 @@ import { IProblem } from "@/utils/Interfaces";
 import {entities, getProblem} from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { IconAlertTriangle } from "@tabler/icons-react";
 import CommentCard from "@/components/commentSection";
 import {useAuth} from "@/utils/auth";
@@ -13,6 +13,7 @@ export default function Problem() {
     const router = useRouter();
     const { slug } = router.query;
     const [problem, setProblems] = useState<IProblem>({
+        id: 1,
         title: '',
         content: '',
         header_img: '',
@@ -22,9 +23,9 @@ export default function Problem() {
     const { user } = useAuth() as any;
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         slug ? getProblem(slug as string).then(res => {
-
+            console.log(res)
             setProblems(res);
         }
         ) : null;
