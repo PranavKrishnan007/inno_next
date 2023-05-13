@@ -10,7 +10,7 @@ export default function HackathonCard(hackathon: IHackathon) {
   const pathName = usePathname()
   return (
     <div>
-      <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
+      <Card className='flex flex-col items-center md:flex-row  border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
         <div className='max-w-1/4 min-w-max my-auto'>
           <Image
             src={hackathon.header_img}
@@ -20,11 +20,10 @@ export default function HackathonCard(hackathon: IHackathon) {
             radius='md'
           />
         </div>
-        <div className='ml-10 min-w-4/6'>
-          <Group position='apart' mt='md' mb='xs'>
+        <div className='md:w-full px-2'>
+          <Group className="justify-between flex-col md:flex-row" mt='md' mb='xs'>
             <div className='flex flex-row justify-start space-x-2 items-center'>
               <div className='font-bold text-2xl line-clamp-1'>{hackathon.title}</div>
-              <IconEdit className='hover:bg-slate-200 m-1 cursor-pointer hover:shadow-lg active:shadow-none' />
             </div>
             <div className='flex flex-row gap-2'>
               <Badge className='text-lg p-3'>
@@ -39,9 +38,9 @@ export default function HackathonCard(hackathon: IHackathon) {
               }
             </div>
           </Group>
-          <div className='text-lg my-1 text-slate-600'>{hackathon.tagline}</div>
-          <div className='max-w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
-          <div className=' flex justify-start items-center'>
+          <div className='text-lg w-4/5 text-justify mx-auto md:w-full font-medium my-1 text-slate-600'>{hackathon.tagline}</div>
+          <div className='w-4/5 text-justify mx-auto md:w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
+          <div className='flex flex-col md:flex-row justify-start items-center'>
             <Button
               variant='light'
               color='blue'
