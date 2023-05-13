@@ -49,23 +49,35 @@ export default function Home() {
 
   return (
     <div className="absolute">
-      <div className="flex z-30 sticky top-0 justify-between bg-white shadow-md w-full px-4 md:px-20 py-4">
+      <div className="flex z-30 relative top-0  justify-between  w-full px-4 md:px-20 py-4">
         <h2 className="flex gap-10" onClick={() => { push('/') }} >
-          <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 p-1 object-contain" />
-          <img src="/assets/g20c20.png" alt="g20c20_logo" className="h-10 p-1 object-contain" />
+          <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10  md:h-14  p-1  object-contain" />
+          <img src="/assets/g20c20.png" alt="g20c20_logo" className="h-10  md:h-14 p-1 object-contain" />
         </h2>
-        <div className="font-bold h-full pt-2">
-          <Link href='/dashboard' className="hover:text-blue-500 h-full text-md text-gray-700">Go to dashboard</Link>
+        <div className="font-extrabold h-full pt-2">
+          <Link href='/dashboard' className="hover:text-blue-500 h-full text-md md:text-xl text-gray-600">Go to dashboard</Link>
         </div>
-
       </div>
-      <div className="py-14">
+      <div>
+        <div className="relative top-0 z-20 -mt-24">
+          <svg className="w-full h-152  fill-amber-200" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25" className="shape-fill"></path>
+            <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5" className="shape-fill"></path>
+            <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                className="shape-fill"></path>
+          </svg>
+        </div>
         <div className="flex justify-between px-52 pt-32" >
           <img src="/assets/vector-4.png" alt="innopsi_logo" className="relative z-0 h-20 object-contain hidden md:block" />
           <img src="/assets/vector-7.png" alt="g20c20_logo" className="relative z-0 h-20 object-contain hidden md:block" />
         </div>
         <div className="flex flex-col justify-center -mt-10 text-center gap-5 px-20  pt-10" >
-          <div className="absolute inset-0 mt-20">
+          <div className="absolute inset-0 mt-40">
             <img src="/assets/Ellipse%201.png" alt="g20c20_logo" className="mx-auto object-contain" />
           </div>
           <div className="relative z-20 flex flex-col gap-4">
@@ -91,11 +103,23 @@ export default function Home() {
             <img src="/assets/vector-6.png" alt="g20c20_logo" className="h-48 object-contain" />
           </div>
         </div>
-
+        <div>
+          <svg className="w-full h-152 transform rotate-180 fill-blue-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25" className="shape-fill text-blue-700"></path>
+            <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5" className="shape-fill text-blue-700"></path>
+            <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                className="shape-fill text-blue-700"></path>
+          </svg>
+        </div>
       </div>
-      <div className="xl:flex mx-auto bg-blue-950 min-h-[40vh] px-8 md:px-32 py-20">
+      <div className="xl:flex mx-auto bg-blue-950 min-h-[40vh] px-8 md:px-32 py-20 -mt-2 ">
         <div className="flex-1 p-4 my-auto text-white text-center md:text-left">
-          <h1 className="text-5xl md:text-6xl font-bold mt-5 ">
+          <h1 className="text-5xl md:text-6xl font-bold  ">
             Change <span className="text-orange-500">the</span> world!!
           </h1>
           <h4 className="text-xl mt-4 tracking-wide ">
@@ -107,11 +131,23 @@ export default function Home() {
               <img src="/assets/vector-2.png" alt="g20c20_logo" className="h-64 object-contain" />
             </div>
           </div>
-
         </div>
         <div className="flex p-10 m-4 h-fit my-auto  rounded-3xl">
           <img src="/assets/illustration-12.png" alt="g20c20_logo" className="my-auto p-10 object-contain w-full rounded-3xl" />
         </div>
+      </div>
+      <div className="relative top-0 z-20 -mt-2">
+        <svg className="w-full h-152 fill-blue-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25" className="shape-fill"></path>
+          <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5" className="shape-fill"></path>
+          <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="shape-fill"></path>
+        </svg>
       </div>
       <div className="xl:flex mx-auto px-8 md:px-32">
         <div className="flex p-10 m-4 h-fit my-auto rounded-3xl">
@@ -131,7 +167,20 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" justify-center mx-auto bg-blue-950 py-20 text-white text-center h-fit">
+      <div>
+        <svg className="w-full h-152 transform rotate-180 fill-blue-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25" className="shape-fill text-blue-700"></path>
+          <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5" className="shape-fill text-blue-700"></path>
+          <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="shape-fill text-blue-700"></path>
+        </svg>
+      </div>
+      <div className=" justify-center mx-auto bg-blue-950 py-20 -mt-2 text-white text-center h-fit">
         <h2 className="md:text-6xl text-4xl font-bold ">
           Ideate | Create | Empower
         </h2>
@@ -140,18 +189,20 @@ export default function Home() {
         </p>
         <img src="/assets/vector-3.png" alt="g20c20_logo" className="my-auto h-[40vh] object-contain w-full p-10" />
       </div>
-      {/* <h4 className="text-2xl pt-20 md:text-4xl my-4 px-20 mx-auto font-bold tracking-wide text-blue-950 ">
-        Glimpse of Challenges...
-      </h4> */}
-      {/* <div className="flex flex-col px-20 mx-auto gap-3 my-6">
-        {problems.map((problem, index) => (
-          <ProblemCard {...problem} key={index} header_img="" tags={['something']} content={'this is the content.'} />
-        ))}
-        <Link href='/home' className="relative z-10 text-center hover:text-blue-500 hover:">
-          view more
-        </Link>
-      </div> */}
-      <div className="flex-1 mx-auto md:px-32 px-8 py-16 md:py-24 text-center md:text-left text-blue-950 ">
+      <div className="bg-gray-900 relative top-0 z-20 -mt-2 ">
+        <svg className="w-full h-152  fill-blue-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25" className="shape-fill"></path>
+          <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5" className="shape-fill"></path>
+          <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="shape-fill"></path>
+        </svg>
+      </div>
+      <div className="flex-1 mx-auto bg-gray-900  md:px-32 px-8 -mt-10 py-24 text-center md:text-left text-gray-100 ">
         <h4 className="text-5xl my-4 font-bold tracking-wide">
           Our Mission
         </h4>
@@ -163,7 +214,20 @@ export default function Home() {
           they need to make a societal impact.
         </h4>
       </div>
-      <div className="flex flex-col md:flex-row mx-auto bg-blue-950 p-4 mt-12 text-white  md:px-32  px-8 pb-16 md:pb-0 my-auto text-left text-blue-950 ">
+      <div   className="bg-gray-900 -mt-2" >
+        <svg className="w-full h-152 transform rotate-180 fill-blue-950" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25" className="shape-fill text-blue-700"></path>
+          <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5" className="shape-fill text-blue-700"></path>
+          <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="shape-fill text-blue-700"></path>
+        </svg>
+      </div>
+      <div className="flex flex-col md:flex-row mx-auto bg-blue-950 p-4 -mt-2 text-white  md:px-32  px-8 pb-16 md:pb-0 my-auto text-left  ">
         <img src="/assets/amm-c20.png" alt="g20c20_logo" className="my-auto p-10 object-contain md:w-1/2 inline-flex rounded-3xl" />
         <div className="my-auto">
           <h4 className="text-3xl font-semibold  md:text-xl mt-4 tracking-wide ">
@@ -188,18 +252,6 @@ export default function Home() {
           </h4>
         </div>
       </div>
-      {/* <div className="flex justify-between px-48 bg-slate-100" >
-        <div className="flex justify-center text-center gap-5 px-20  align-middle py-10" >
-          <img src="/assets/innopsi.png" alt="innopsi_logo" className="h-10 object-contain my-auto" />
-        </div>
-        <p className="inline-block text-sm my-auto font-light align-middle">
-          About Us
-        </p>
-        <p className='inline-block text-sm my-auto font-light align-middle'>
-          Partners
-        </p>
-      </div> */}
-
     </div>
   );
 }
