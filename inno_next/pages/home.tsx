@@ -48,12 +48,7 @@ export function InputWithButton(props: TextInputProps) {
     )
 }
 
-const NOTICE = [
-    {
-        title: 'this is one notice',
-        description: 'this is the description of the notice',
-    },
-]
+
 const tabs = ['Problems', 'Innovations', 'Hackathons']
 export default function Listings() {
     const [activeTab, setActiveTab] = useState(0);
@@ -112,9 +107,9 @@ export default function Listings() {
             </div>
             <div className="bg-white container mx-auto  flex flex-col">
                 <div className="flex flex-row gap-10 pb-2 h-fit min-h-[80vh]">
-                    <div className="flex flex-col gap-4 w-3/4 pt-4">
+                    <div className="flex flex-col gap-4 w-full md:w-3/4 pt-4">
                         <div className="flex flex-row w-full gap-2 ">
-                            <div className="bg-white w-full p-2 rounded-full">
+                            <div className="bg-white w-full rounded-full">
                                 <div className="flex flex-row h-full justify-center shadow gap-1 p-1 items-center rounded-md bg-gray-300/30">
                                     {tabs?.map((tabName, index) => (
                                         <div className={clsx([
@@ -140,11 +135,16 @@ export default function Listings() {
                                     className="bg-primary hover:bg-orange-500/90 w-full text-white"
                                     onClick={() => { activeTab === 0 ? push('/problem/create') : activeTab === 1 ? push('/innovation/create') : activeTab === 2 ? push('/hackathon/create') : push('/home') }}
                                 >
-                                    {activeTab === 0 ? "Create Problems" : activeTab === 1 ? " Create Innovations" : "Create Hackathons"}
+                                    <div className='hidden md:block'>
+                                        {activeTab === 0 ? "Submit Problems" : activeTab === 1 ? " Submit Innovations" : "Create Hackathons"}
+                                    </div>
+                                    <div className='block md:hidden'>
+                                        {activeTab === 0 ? "Submit" : activeTab === 1 ? " Submit" : "Create"}
+                                    </div>
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between hidden md:block">
                             <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full border-t pt-3">{activeTab === 0 ? "Problems" : activeTab === 1 ? "Innovations" : "Hackathons"}</p>
                         </div>
                         <div className="flex flex-row gap-10">
@@ -169,12 +169,12 @@ export default function Listings() {
                             </div>
                         </div>
                     </div>
-                    <div className="pt-4 w-1/4">
+                    <div className="pt-4 hidden md:block md:w-1/4">
                         <div className="flex justify-between">
                             <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full pt-3">Select Tags</p>
                         </div>
-                        <div className="border bg-white mb-6 mt-2 p-1 mx-1 rounded-full w-ful">
-                           <TagSelector id="tagSearch" createable={false} onChange={searchBasedOnTags} ></TagSelector>
+                        <div className='pt-4'>
+                            <TagSelector id="tagSearch" createable={false} onChange={searchBasedOnTags} ></TagSelector>
                         </div>
                         {/* <div className="flex justify-between">
                             <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full pt-3">Select Badge</p>
