@@ -41,5 +41,8 @@ export const createProblem = async (problem: IProblem): Promise<IProblem> => {
 // update problem
 
 export const getProblem = async (problemId: string): Promise<IProblem> => {
-	return responseHandler(await axhttp.get(`/problems/${problemId}`)).attributes as IProblem;
+	const res = responseHandler(await axhttp.get(`/problems/${problemId}`)) as IStrapiServerData;
+	if (!res) return {} as IProblem;
+	res.attributes.id = res.id;
+	return res.attributes as IProblem;
 };
