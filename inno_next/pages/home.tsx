@@ -139,7 +139,7 @@ export default function Listings() {
                                         {activeTab === 0 ? "Submit Problems" : activeTab === 1 ? " Submit Innovations" : "Create Hackathons"}
                                     </div>
                                     <div className='block md:hidden'>
-                                        {activeTab === 0 ? "Submit" : activeTab === 1 ? " Submit" : "Create"}
+                                        {"create"}
                                     </div>
                                 </Button>
                             </div>

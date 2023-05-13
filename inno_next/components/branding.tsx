@@ -3,11 +3,12 @@ import { useAuth } from '@/utils/auth'
 import { Avatar, Menu } from '@mantine/core'
 import { IconLogout, IconSettings } from '@tabler/icons-react'
 import Link from 'next/link'
-import { isEmptyObject } from "@tiptap/react";
+import { IUser } from "@/utils/Interfaces";
 
 const Branding = () => {
     const { push } = useRouter();
     const { logout } = useAuth() as any
+    const { user } = useAuth() as { user: IUser }
 
     return (
         <div className="sticky top-0 py-5 bg-white flex container mx-auto flex-col md:flex-row border-b-2 border-gray-300/30 justify-between items-center gap-4 md:gap-10">            <div className="flex gap-10 ">
@@ -16,7 +17,7 @@ const Branding = () => {
             <div className="border-2 block md:hidden border-white hover:border-3 hover:p-0 hover:m-1 hover:border-orange-400 bg-gray-300/30 rounded-full ">
                 <Menu shadow="md" width={200} transitionProps={{ transition: 'pop-top-right', duration: 150 }}>
                     <Menu.Target>
-                        <Avatar size="md" radius="xl" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" />
+                        <Avatar size="md" radius="xl" src={user?.avatar} />
                     </Menu.Target>
                     <Menu.Dropdown>
                         <Menu.Item icon={<IconSettings size={14} />}> <Link href='/home' >Home</Link></Menu.Item>
@@ -39,7 +40,7 @@ const Branding = () => {
                 <div className="border-2 inline-block border-white hover:border-3 hover:p-0 hover:m-1 hover:border-orange-400 bg-gray-300/30 p-1 rounded-full ">
                     <Menu shadow="md" width={200} transitionProps={{ transition: 'pop-top-right', duration: 150 }}>
                         <Menu.Target>
-                            <Avatar size="md" radius="xl" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" />
+                            <Avatar size="md" radius="xl" src={user?.avatar} />
                         </Menu.Target>
                         <Menu.Dropdown>
                             <Menu.Item icon={<IconLogout size={14} />} onClick={logout} >Log Out</Menu.Item>
