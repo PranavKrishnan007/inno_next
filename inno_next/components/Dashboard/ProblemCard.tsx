@@ -25,9 +25,9 @@ export default function ProblemCard(problem: IProblem) {
         <div className="w-full">
           <Group position='apart' mt='md' mb='xs'>
             <div className=' font-extrabold text-ellipsis overflow-hidden text-gray-700 text-lg line-clamp-1'>{problem.title}</div>
-            <Badge className='text-lg p-3'>
+            {/* <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
-            </Badge>
+            </Badge> */}
            {
             pathName === '/dashboard' && (
               <Badge className='text-lg p-3 bg-green-100'>

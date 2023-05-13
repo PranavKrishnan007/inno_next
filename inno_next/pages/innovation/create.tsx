@@ -80,7 +80,7 @@ export default function CreateInnovation() {
 
 
     return (
-      <div className="min-h-screen container mx-auto px-4 md:px-8 md:py-10 relative">
+      <div className="min-h-screen container mx-auto px-4 md:px-8 relative">
           <div className="bg-white sticky flex flex-col top-0 z-50">
               <Branding />
               <div className='mt-4'>
@@ -89,7 +89,7 @@ export default function CreateInnovation() {
                   </div>
               </div>
           </div>
-          <form className='bg-white rounded-b-xl flex shadow-2xl flex-col p-4 md:p-8'>
+          <form className='bg-white rounded-b-xl flex flex-col p-4 md:p-8'>
               <div className="flex flex-row items-center justify-center bg-grey-lighter gap-4">
                   <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue-800">
                       <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

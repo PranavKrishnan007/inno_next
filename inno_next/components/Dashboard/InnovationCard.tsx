@@ -11,7 +11,7 @@ export default function InnovationCard(innovation: IInnovation) {
   return (
     <div>
       <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
-        <div className='max-w-1/4  min-w-max my-auto'>
+        <div className='max-w-1/4 px-2 my-auto'>
           <Image
             src={innovation.header_img}
             height='160'
@@ -24,9 +24,9 @@ export default function InnovationCard(innovation: IInnovation) {
         <div className='w-full'>
           <Group position='apart' mt='md' mb='xs'>
             <div className='font-bold text-2xl'>{innovation.title}</div>
-            <Badge className='text-lg p-3'>
+            {/* <Badge className='text-lg p-3'>
               12 <span className='text-base'>Upvotes</span>
-            </Badge>
+            </Badge> */}
             {
               pathName === '/dashboard' && (
                 <Badge className='text-lg p-3 bg-green-100'>

@@ -144,9 +144,6 @@ export default function Listings() {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex justify-between hidden md:block">
-                            <p className="text-xl px-2 font-bold text-gray-700 tracking-wide w-full border-t pt-3">{activeTab === 0 ? "Problems" : activeTab === 1 ? "Innovations" : "Hackathons"}</p>
-                        </div>
                         <div className="flex flex-row gap-10">
                             <div className="flex flex-col gap-4 w-full">
                                 <div className="bg-white rounded-2xl p-2">
