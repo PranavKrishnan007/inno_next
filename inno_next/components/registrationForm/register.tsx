@@ -60,7 +60,6 @@ export default function RegisterForm() {
     e: CustomEvent | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const { id, value, type } = e instanceof CustomEvent ? e.detail : e.target;
-    console.log(id, value);
 
     if (type === 'file') {
       fileUpload(e as React.ChangeEvent<HTMLInputElement>)
@@ -68,7 +67,6 @@ export default function RegisterForm() {
           updateState(id, res.value);
         })
         .catch((err) => {
-          console.log(err);
         });
       return;
     }
@@ -102,7 +100,7 @@ export default function RegisterForm() {
 
   useEffect(() => {
     if (pass !== checkPass) {
-      console.log('Password does not match');
+  
     }
     if (pass === checkPass) {
       setUserForm( (prevState: any) => ({
@@ -118,7 +116,6 @@ export default function RegisterForm() {
   }
 
   const nextScreen = () => {
-    console.log(userForm)
     if (loginSection === 2 && pass.length < 8) {
       toast.error('Password must be at least 8 characters long');
       return;
