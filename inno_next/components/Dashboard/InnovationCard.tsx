@@ -10,7 +10,7 @@ export default function InnovationCard(innovation: IInnovation) {
   const pathName = usePathname();
   return (
     <div>
-      <Card className='flex border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
+      <Card className='flex  flex-col items-center md:flex-row   border-b gap-1 shadow-lg my-4 hover:bg-slate-100' >
         <div className='max-w-1/4 px-2 my-auto'>
           <Image
             src={innovation.header_img}
@@ -21,22 +21,18 @@ export default function InnovationCard(innovation: IInnovation) {
           />
 
         </div>
-        <div className='w-full'>
-          <Group position='apart' mt='md' mb='xs'>
+        <div className='md:w-full'>
+          <Group className="justify-between flex-col md:flex-row" mt='md' mb='xs'>
             <div className='font-bold text-2xl'>{innovation.title}</div>
-            {/* <Badge className='text-lg p-3'>
-              12 <span className='text-base'>Upvotes</span>
-            </Badge> */}
             {
               pathName === '/dashboard' && (
                 <Badge className='text-lg p-3 bg-green-100'>
               {innovation.status &&  (<span className='text-base'>{innovation.status}</span>)}
             </Badge>)
             }
-
           </Group>
-          <div className='max-w-full text-md text-gray-600 line-clamp-3'>{innovation.description}</div>
-          <div className=' flex justify-start items-center'>
+          <div className='text-md w-4/5 text-justify mx-auto md:w-full text-gray-600 line-clamp-3'>{innovation.description}</div>
+          <div className='flex flex-col md:flex-row  justify-start items-center'>
             <Button
               variant='light'
               color='blue'

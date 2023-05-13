@@ -52,7 +52,7 @@ export default function Problem() {
                                 {parse(problem.content)}
                             </div>
                             <div className=" w-full mt-4 p-4">
-                                <CommentCard entityId={problem.id} entityType={entities.INNOVATION} user={user}  ></CommentCard>
+                                <CommentCard entityId={problem.id} entityType={entities.PROBLEM} user={user}  ></CommentCard>
                             </div>
                         </div>
                     </div> :
