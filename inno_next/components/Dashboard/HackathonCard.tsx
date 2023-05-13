@@ -24,18 +24,20 @@ export default function HackathonCard(hackathon: IHackathon) {
           <Group position='apart' mt='md' mb='xs'>
             <div className='flex flex-row justify-start space-x-2 items-center'>
               <div className='font-bold text-2xl line-clamp-1'>{hackathon.title}</div>
-              <IconEdit className='hover:bg-slate-200 m-1 cursor-pointer hover:shadow-lg active:shadow-none'/>
+              <IconEdit className='hover:bg-slate-200 m-1 cursor-pointer hover:shadow-lg active:shadow-none' />
             </div>
-            <Badge className='text-lg p-3'>
-              {hackathon.participants && hackathon.participants.data.length} <span className='text-base'>Registrations</span>
-            </Badge>
-            {
-              pathName === '/dashboard' && (
-                <Badge className='text-lg p-3 bg-green-100'>
-              {hackathon.accepted ?  (<span className='text-base'>ACCEPTED</span>) : (<span className='text-red'>PENDING</span>)}
-            </Badge>
-              )
-            }
+            <div className='flex flex-row gap-2'>
+              <Badge className='text-lg p-3'>
+                {hackathon.participants && hackathon.participants.data.length} <span className='text-base'>Registrations</span>
+              </Badge>
+              {
+                pathName === '/dashboard' && (
+                  <Badge className='text-lg p-3 bg-green-100'>
+                    {hackathon.accepted ? (<span className='text-base'>ACCEPTED</span>) : (<span className='text-red'>PENDING</span>)}
+                  </Badge>
+                )
+              }
+            </div>
           </Group>
           <div className='text-lg my-1 text-slate-600'>{hackathon.tagline}</div>
           <div className='max-w-full text-md text-gray-600 line-clamp-3'>{hackathon.description}</div>
@@ -52,7 +54,7 @@ export default function HackathonCard(hackathon: IHackathon) {
             </Button>
             <TagDisplayer tags={hackathon.tags} ></TagDisplayer>
             <div>
-    
+
             </div>
           </div>
         </div>

@@ -150,6 +150,11 @@ export default function Dashboard(props: any) {
                                                     <div>
                                                         No Problems Submitted
                                                     </div>
+                                                    <a href="/problem/create">
+                                                        <button className="text-lg bg-background hover:bg-blue-800 py-2 px-4 text-white rounded-xl">
+                                                            Create
+                                                        </button>
+                                                    </a>
                                                 </div>}
                                         </div>
                                     </Tabs.Panel>
@@ -167,6 +172,11 @@ export default function Dashboard(props: any) {
                                                 <div>
                                                     No Innovations Submitted
                                                 </div>
+                                                <a href="/innovation/create">
+                                                    <button className="text-lg bg-background hover:bg-blue-800 py-2 px-4 text-white rounded-xl">
+                                                        Create
+                                                    </button>
+                                                </a>
                                             </div>}
                                         </div>
                                     </Tabs.Panel>
@@ -185,6 +195,11 @@ export default function Dashboard(props: any) {
                                                     <div>
                                                         No Hackathons Created
                                                     </div>
+                                                    <a href="/hackathon/create">
+                                                        <button className="text-lg bg-background hover:bg-blue-800 py-2 px-4 text-white rounded-xl">
+                                                            Create
+                                                        </button>
+                                                    </a>
                                                 </div>}
                                         </div>
                                     </Tabs.Panel>
