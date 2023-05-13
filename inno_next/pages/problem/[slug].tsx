@@ -1,10 +1,12 @@
 import Branding from "@/components/branding";
 import { IProblem } from "@/utils/Interfaces";
-import { getProblem } from "@/utils/Services";
+import {entities, getProblem} from "@/utils/Services";
 import parse from 'html-react-parser';
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { IconAlertTriangle } from "@tabler/icons-react";
+import CommentCard from "@/components/commentSection";
+import {useAuth} from "@/utils/auth";
 
 export default function Problem() {
 
@@ -17,6 +19,8 @@ export default function Problem() {
         description: '',
         tags: []
     });
+    const { user } = useAuth() as any;
+
 
     useEffect(() => {
         slug ? getProblem(slug as string).then(res => {
@@ -46,6 +50,9 @@ export default function Problem() {
                             </div>
                             <div className="w-full tracking-normal text-lg px-10">
                                 {parse(problem.content)}
+                            </div>
+                            <div className=" w-full mt-4 p-4">
+                                <CommentCard entityId={problem.id} entityType={entities.INNOVATION} user={user}  ></CommentCard>
                             </div>
                         </div>
                     </div> :
