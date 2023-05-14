@@ -50,7 +50,7 @@ const CommentCard = ( {entityId, entityType, user} : ICommentSectionProp) => {
 	}
 
 	return (
-		<div className="p-10 border bg-slate-50 rounded-xl">
+		<div className="md:p-10 p-2 border bg-slate-50 rounded-xl">
 			<div>
 				<h2 className='sticky top-0 z-10  text-gray-700 text-2xl font-bold'>Comments</h2>
 			</div>
@@ -73,7 +73,7 @@ const CommentCard = ( {entityId, entityType, user} : ICommentSectionProp) => {
 			<div className="max-h-[70vh] mt-4 overflow-auto scroll-smooth no-scrollbar">
 			{
 			 comments && comments.map( (comment)=> 
-			 <div className='flex  flex-row mt-4 bg-white mr-10 rounded-lg p-4 relative shadow-md hover:shadow-lg  transition-shadow duration-800'>
+			 <div className='flex flex-row mt-4 bg-white mr-0 md:mr-10 rounded-lg p-4 relative shadow-md hover:shadow-lg  transition-shadow duration-800'>
 				<div className='flex flex-col w-full '>
 					<div className='flex flex-row w-full justify-between  items-center'>
 						<div className='flex flex-row gap-2 px-2'>

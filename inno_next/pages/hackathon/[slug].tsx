@@ -68,9 +68,8 @@ export default function Hackathon() {
             </div>
             <div className="w-full text-center pt-10 font-semibold tracking-wider text-5xl">
               {hackathon.title}
-              hello world
             </div>
-            <h3 className='px-10 py-5 text-lg font-medium text-gray-800'>{hackathon.tagline}</h3>
+            <h3 className='px-10 py-5 text-lg text-center font-medium text-gray-800'>{hackathon.tagline}</h3>
             <div>
               <div className='flex flex-col container bg-white rounded-xl'>
                 <div className='flex flex-col mx-10  border bg-slate-50 rounded-xl '>
