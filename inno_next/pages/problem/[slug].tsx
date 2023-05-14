@@ -25,7 +25,6 @@ export default function Problem() {
 
     useLayoutEffect(() => {
         slug ? getProblem(slug as string).then(res => {
-            console.log(res)
             setProblems(res);
         }
         ) : null;
